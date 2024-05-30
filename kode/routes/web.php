@@ -6,7 +6,6 @@ use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\User\CartController;
 use App\Http\Controllers\WishListController;
-
 use App\Http\Controllers\User\CheckoutController;
 use App\Http\Controllers\User\CouponController;
 use App\Http\Controllers\User\DigitalProductOrderController;
