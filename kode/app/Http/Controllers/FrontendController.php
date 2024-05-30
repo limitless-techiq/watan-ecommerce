@@ -58,7 +58,7 @@ class FrontendController extends Controller
 
         return $this->productService->productStock($request);
     }
-
+    ///ali
 
     public function index()
     {
