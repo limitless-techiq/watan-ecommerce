@@ -5,7 +5,7 @@
           <div class="browse-by-categorie d-xl-block d-none">
               <ul class="browse-categories-items">
                    @php
-                      $physicalCategories = $categories->filter(function ($category) {
+                        $physicalCategories = $categories->filter(function ($category) {
                         return $category->physicalProduct->isNotEmpty();
                       });
                     

@@ -41,6 +41,8 @@
                                             {{translate("Sign In")}}
                                         </button>
                                     </div>
+                                    <br>
+                                    <a href="{{ route('seller.register') }}">You Don't Have An Account?</a>
                                 </form>
                             </div>
                         </div>

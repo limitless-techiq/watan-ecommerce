@@ -59,6 +59,8 @@
                                             {{translate("Sign In")}}
                                         </button>
                                     </div>
+                                    <br>
+                                    <a href="{{route('seller.login') }}">Already registered?</a>
                                 </form>
                             </div>
                         </div>

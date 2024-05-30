@@ -15,10 +15,9 @@
                 </div>
 
                 <div class="mt-3 mt-lg-0">
-                    <a href="{{route('seller.product.create')}}"
-                        class="btn btn-soft-success waves ripple-light">
-                            <i class="ri-add-circle-line align-middle me-1"></i>
-                            {{translate('Add Product')}}
+                    <a href="{{route('seller.product.create')}}" class="btn btn-soft-success waves ripple-light">
+                        <i class="ri-add-circle-line align-middle me-1"></i>
+                        {{translate('Add Product')}}
                     </a>
                 </div>
             </div>
@@ -32,23 +31,26 @@
                             <div class="d-flex align-items-start justify-content-between">
                                 <div class="flex-shrink-0">
                                     <span class="overview-icon">
-                                        <i class="ri-money-euro-box-line text-info"></i>
+                                        <img src="{{asset('assets/images/frontend/seller/dashboard/8.png')}}"
+                                            width="52" height="52" style="object-fit: contain;">
+
                                     </span>
                                 </div>
 
                                 <div class="text-end">
                                     <h4 class="fs-22 fw-bold ff-secondary mb-2">
-                                      {{show_currency()}}{{short_amount($seller->balance)}}
+                                        {{show_currency()}}{{short_amount($seller->balance)}}
                                     </h4>
 
 
                                     <p class="text-uppercase fw-medium text-muted mb-3">
-                                         {{translate("Total Balance")}}
+                                        {{translate("Total Balance")}}
                                     </p>
 
-                                    <a href="{{route('seller.transaction.history')}}" class="d-flex align-items-center justify-content-end gap-1">
+                                    <a href="{{route('seller.transaction.history')}}"
+                                        class="d-flex align-items-center justify-content-end gap-1">
                                         {{translate('View All')}}
-                                         <i class="ri-arrow-right-line"></i>
+                                        <i class="ri-arrow-right-line"></i>
                                     </a>
                                 </div>
 
@@ -64,23 +66,25 @@
                             <div class="d-flex align-items-start justify-content-between">
                                 <div class="flex-shrink-0">
                                     <span class="overview-icon">
-                                        <i class="ri-wallet-2-fill text-danger"></i>
+                                        <img src="{{asset('assets/images/frontend/seller/dashboard/2.png')}}"
+                                            width="52" height="52" style="object-fit: contain;">
                                     </span>
                                 </div>
 
                                 <div class="text-end">
                                     <h4 class="fs-22 fw-bold ff-secondary mb-2">
-                                      {{show_currency()}}{{short_amount($data['withdraw_amount'])}}
+                                        {{show_currency()}}{{short_amount($data['withdraw_amount'])}}
                                     </h4>
 
 
                                     <p class="text-uppercase fw-medium text-muted mb-3">
-                                         {{translate("Total Withdraw")}}
+                                        {{translate("Total Withdraw")}}
                                     </p>
 
-                                    <a href="{{route('seller.transaction.history')}}" class="d-flex align-items-center justify-content-end gap-1">
+                                    <a href="{{route('seller.transaction.history')}}"
+                                        class="d-flex align-items-center justify-content-end gap-1">
                                         {{translate('View All')}}
-                                         <i class="ri-arrow-right-line"></i>
+                                        <i class="ri-arrow-right-line"></i>
                                     </a>
                                 </div>
 
@@ -95,23 +99,25 @@
                             <div class="d-flex align-items-start justify-content-between">
                                 <div class="flex-shrink-0">
                                     <span class="overview-icon">
-                                        <i class="bx bxl-product-hunt text-success"></i>
+                                        <img src="{{asset('assets/images/frontend/seller/dashboard/1.png')}}"
+                                            width="52" height="52" style="object-fit: contain;">
                                     </span>
                                 </div>
 
                                 <div class="text-end">
                                     <h4 class="fs-22 fw-bold ff-secondary mb-2">
-                                       {{$data['physical']}}
+                                        {{$data['physical']}}
                                     </h4>
 
 
                                     <p class="text-uppercase fw-medium text-muted mb-3">
-                                         {{translate("Total Product")}}
+                                        {{translate("Total Product")}}
                                     </p>
 
-                                    <a href="{{route('seller.product.index')}}" class="d-flex align-items-center justify-content-end gap-1">
+                                    <a href="{{route('seller.product.index')}}"
+                                        class="d-flex align-items-center justify-content-end gap-1">
                                         {{translate('View All')}}
-                                         <i class="ri-arrow-right-line"></i>
+                                        <i class="ri-arrow-right-line"></i>
                                     </a>
                                 </div>
 
@@ -126,23 +132,25 @@
                             <div class="d-flex align-items-start justify-content-between">
                                 <div class="flex-shrink-0">
                                     <span class="overview-icon">
-                                        <i class="bx bxl-product-hunt text-success"></i>
+                                        <img src="{{asset('assets/images/frontend/seller/dashboard/login_bg.jpg')}}"
+                                            width="52" height="52" style="object-fit: contain;">
                                     </span>
                                 </div>
 
                                 <div class="text-end">
                                     <h4 class="fs-22 fw-bold ff-secondary mb-2">
-                                       {{$data['physical']}}
+                                        {{$data['physical']}}
                                     </h4>
 
 
                                     <p class="text-uppercase fw-medium text-muted mb-3">
-                                         {{translate("Total Product")}}
+                                        {{translate("Total Product")}}
                                     </p>
 
-                                    <a href="{{route('seller.product.index')}}" class="d-flex align-items-center justify-content-end gap-1">
+                                    <a href="{{route('seller.product.index')}}"
+                                        class="d-flex align-items-center justify-content-end gap-1">
                                         {{translate('View All')}}
-                                         <i class="ri-arrow-right-line"></i>
+                                        <i class="ri-arrow-right-line"></i>
                                     </a>
                                 </div>
 
@@ -157,25 +165,27 @@
                             <div class="d-flex align-items-start justify-content-between">
                                 <div class="flex-shrink-0">
                                     <span class="overview-icon">
-                                        <i class="ri-terminal-window-fill text-success"></i>
+                                        <img src="{{asset('assets/images/frontend/seller/dashboard/4.png')}}"
+                                            width="52" height="52" style="object-fit: contain;">
                                     </span>
                                 </div>
 
                                 <div class="text-end">
                                     <h4 class="fs-22 fw-bold ff-secondary mb-2">
-                                       <span
-                                            class="counter-value" data-target="{{$data['digital']}}">{{$data['digital']}}
+                                        <span class="counter-value"
+                                            data-target="{{$data['digital']}}">{{$data['digital']}}
                                         </span>
                                     </h4>
 
 
                                     <p class="text-uppercase fw-medium text-muted mb-3">
-                                         {{translate('Digital Products')}}
+                                        {{translate('Digital Products')}}
                                     </p>
 
-                                    <a href="{{route('seller.digital.product.index')}}"  class="d-flex align-items-center justify-content-end gap-1">
+                                    <a href="{{route('seller.digital.product.index')}}"
+                                        class="d-flex align-items-center justify-content-end gap-1">
                                         {{translate('View All')}}
-                                         <i class="ri-arrow-right-line"></i>
+                                        <i class="ri-arrow-right-line"></i>
                                     </a>
                                 </div>
 
@@ -190,14 +200,15 @@
                             <div class="d-flex align-items-start justify-content-between">
                                 <div class="flex-shrink-0">
                                     <span class="overview-icon">
-                                        <i class="ri-device-line text-primary"></i>
+                                        <img src="{{asset('assets/images/frontend/seller/dashboard/3.png')}}"
+                                            width="52" height="52" style="object-fit: contain;">
                                     </span>
                                 </div>
 
                                 <div class="text-end">
                                     <h4 class="fs-22 fw-bold ff-secondary mb-2">
-                                       <span
-                                            class="counter-value" data-target="{{$order['digital_order']}}">{{$order['digital_order']}}
+                                        <span class="counter-value"
+                                            data-target="{{$order['digital_order']}}">{{$order['digital_order']}}
                                         </span>
                                     </h4>
 
@@ -206,9 +217,10 @@
                                         {{translate('Digital Orders')}}
                                     </p>
 
-                                    <a href="{{route('seller.digital.order.index')}}"   class="d-flex align-items-center justify-content-end gap-1">
+                                    <a href="{{route('seller.digital.order.index')}}"
+                                        class="d-flex align-items-center justify-content-end gap-1">
                                         {{translate('View All')}}
-                                         <i class="ri-arrow-right-line"></i>
+                                        <i class="ri-arrow-right-line"></i>
                                     </a>
                                 </div>
                             </div>
@@ -222,14 +234,15 @@
                             <div class="d-flex align-items-start justify-content-between">
                                 <div class="flex-shrink-0">
                                     <span class="overview-icon">
-                                        <i class="ri-swap-line text-primary"></i>
+                                        <img src="{{asset('assets/images/frontend/seller/dashboard/5.png')}}"
+                                            width="52" height="52" style="object-fit: contain;">
                                     </span>
                                 </div>
 
                                 <div class="text-end">
                                     <h4 class="fs-22 fw-bold ff-secondary mb-2">
-                                      <span
-                                            class="counter-value" data-target="{{$order['order']}}">{{$order['order']}}
+                                        <span class="counter-value"
+                                            data-target="{{$order['order']}}">{{$order['order']}}
                                         </span>
                                     </h4>
 
@@ -237,9 +250,10 @@
                                         {{translate('Total Orders')}}
                                     </p>
 
-                                    <a href="{{route('seller.order.index')}}" class="d-flex align-items-center justify-content-end gap-1">
+                                    <a href="{{route('seller.order.index')}}"
+                                        class="d-flex align-items-center justify-content-end gap-1">
                                         {{translate('View All')}}
-                                         <i class="ri-arrow-right-line"></i>
+                                        <i class="ri-arrow-right-line"></i>
                                     </a>
                                 </div>
                             </div>
@@ -253,24 +267,25 @@
                             <div class="d-flex align-items-start justify-content-between">
                                 <div class="flex-shrink-0">
                                     <span class="overview-icon">
-                                        <i class='bx bxs-plane-land text-primary' ></i>
+                                        <i class='bx bxs-plane-land text-primary'></i>
                                     </span>
                                 </div>
 
                                 <div class="text-end">
                                     <h4 class="fs-22 fw-bold ff-secondary mb-2">
-                                        <span
-                                            class="counter-value" data-target="{{$order['placed']}}">{{$order['placed']}}
+                                        <span class="counter-value"
+                                            data-target="{{$order['placed']}}">{{$order['placed']}}
                                         </span>
                                     </h4>
 
                                     <p class="text-uppercase fw-medium text-muted mb-3">
-                                         {{translate('Placed Orders')}}
+                                        {{translate('Placed Orders')}}
                                     </p>
 
-                                    <a href="{{route('seller.order.shipped')}}" class="d-flex align-items-center justify-content-end gap-1">
+                                    <a href="{{route('seller.order.shipped')}}"
+                                        class="d-flex align-items-center justify-content-end gap-1">
                                         {{translate('View All')}}
-                                         <i class="ri-arrow-right-line"></i>
+                                        <i class="ri-arrow-right-line"></i>
                                     </a>
                                 </div>
                             </div>
@@ -284,14 +299,14 @@
                             <div class="d-flex align-items-start justify-content-between">
                                 <div class="flex-shrink-0">
                                     <span class="overview-icon">
-                                         <i class="ri-check-double-line text-success"></i>
+                                        <img src="{{asset('assets/images/frontend/seller/dashboard/9.png')}}">
                                     </span>
                                 </div>
 
                                 <div class="text-end">
                                     <h4 class="fs-22 fw-bold ff-secondary mb-2">
-                                        <span
-                                            class="counter-value" data-target="{{$order['delivered']}}">{{$order['delivered']}}
+                                        <span class="counter-value"
+                                            data-target="{{$order['delivered']}}">{{$order['delivered']}}
                                         </span>
                                     </h4>
 
@@ -299,9 +314,10 @@
                                         {{translate('Delivered Orders')}}
                                     </p>
 
-                                    <a href="{{route('seller.order.delivered')}}"  class="d-flex align-items-center justify-content-end gap-1">
+                                    <a href="{{route('seller.order.delivered')}}"
+                                        class="d-flex align-items-center justify-content-end gap-1">
                                         {{translate('View All')}}
-                                         <i class="ri-arrow-right-line"></i>
+                                        <i class="ri-arrow-right-line"></i>
                                     </a>
                                 </div>
                             </div>
@@ -316,15 +332,14 @@
                             <div class="d-flex align-items-start justify-content-between">
                                 <div class="flex-shrink-0">
                                     <span class="overview-icon">
-
-                                         <i class="ri-ship-2-line text-info"></i>
+                                         <img src="{{asset('assets/images/frontend/seller/dashboard/6.png')}}">
                                     </span>
                                 </div>
 
                                 <div class="text-end">
                                     <h4 class="fs-22 fw-bold ff-secondary mb-2">
-                                        <span
-                                            class="counter-value" data-target="{{$order['shipped']}}">{{$order['shipped']}}
+                                        <span class="counter-value"
+                                            data-target="{{$order['shipped']}}">{{$order['shipped']}}
                                         </span>
                                     </h4>
 
@@ -332,9 +347,10 @@
                                         {{translate('Shipped Orders')}}
                                     </p>
 
-                                    <a href="{{route('seller.order.shipped')}}"  class="d-flex align-items-center justify-content-end gap-1">
+                                    <a href="{{route('seller.order.shipped')}}"
+                                        class="d-flex align-items-center justify-content-end gap-1">
                                         {{translate('View All')}}
-                                         <i class="ri-arrow-right-line"></i>
+                                        <i class="ri-arrow-right-line"></i>
                                     </a>
                                 </div>
                             </div>
@@ -349,14 +365,14 @@
                                 <div class="flex-shrink-0">
                                     <span class="overview-icon">
 
-                                        <i class="ri-close-circle-fill text-danger"></i>
+                                        <img src="{{asset('assets/images/frontend/seller/dashboard/7.png')}}">
                                     </span>
                                 </div>
 
                                 <div class="text-end">
                                     <h4 class="fs-22 fw-bold ff-secondary mb-2">
-                                        <span
-                                            class="counter-value" data-target="{{$order['canceled']}}">{{$order['canceled']}}
+                                        <span class="counter-value"
+                                            data-target="{{$order['canceled']}}">{{$order['canceled']}}
                                         </span>
                                     </h4>
 
@@ -364,9 +380,10 @@
                                         {{translate('Canceled Orders')}}
                                     </p>
 
-                                    <a href="{{route('seller.order.cancel')}}"  class="d-flex align-items-center justify-content-end gap-1">
+                                    <a href="{{route('seller.order.cancel')}}"
+                                        class="d-flex align-items-center justify-content-end gap-1">
                                         {{translate('View All')}}
-                                         <i class="ri-arrow-right-line"></i>
+                                        <i class="ri-arrow-right-line"></i>
                                     </a>
                                 </div>
                             </div>
@@ -388,8 +405,8 @@
 
                                 <div class="text-end">
                                     <h4 class="fs-22 fw-bold ff-secondary mb-2">
-                                        <span
-                                            class="counter-value" data-target="{{$data['total_ticket']}}">{{$data['total_ticket']}}
+                                        <span class="counter-value"
+                                            data-target="{{$data['total_ticket']}}">{{$data['total_ticket']}}
                                         </span>
                                     </h4>
 
@@ -397,9 +414,10 @@
                                         {{translate('Total Tickets')}}
                                     </p>
 
-                                    <a href="{{route('seller.ticket.index')}}"  class="d-flex align-items-center justify-content-end gap-1">
+                                    <a href="{{route('seller.ticket.index')}}"
+                                        class="d-flex align-items-center justify-content-end gap-1">
                                         {{translate('View All')}}
-                                         <i class="ri-arrow-right-line"></i>
+                                        <i class="ri-arrow-right-line"></i>
                                     </a>
                                 </div>
                             </div>
@@ -421,8 +439,7 @@
 
                         <div class="card-body">
                             <div class="table-responsive table-card">
-                                <table
-                                    class="table table-hover table-centered align-middle table-nowrap">
+                                <table class="table table-hover table-centered align-middle table-nowrap">
                                     <thead class="text-muted table-light">
                                         <tr>
                                             <th>{{translate('Date')}}</th>
@@ -435,35 +452,40 @@
 
                                     <tbody>
                                         @forelse($transactions as $transaction)
-                                            <tr>
-                                                <td data-label="{{translate('Time')}}">
-                                                    <span>{{diff_for_humans($transaction->created_at)}}</span><br>
-                                                    {{get_date_time($transaction->created_at)}}
-                                                </td>
+                                        <tr>
+                                            <td data-label="{{translate('Time')}}">
+                                                <span>{{diff_for_humans($transaction->created_at)}}</span><br>
+                                                {{get_date_time($transaction->created_at)}}
+                                            </td>
 
-                                                <td data-label="{{translate('Transaction ID')}}">
-                                                    {{($transaction->transaction_number)}}
-                                                </td>
+                                            <td data-label="{{translate('Transaction ID')}}">
+                                                {{($transaction->transaction_number)}}
+                                            </td>
 
-                                                <td data-label="{{translate('Amount')}}">
-                                                    <span class="@if($transaction->transaction_type == '+')text-success @else text-danger @endif fw-bold">{{ $transaction->transaction_type }} {{show_currency()}}{{round(short_amount($transaction->amount))}}
-                                                    </span>
-                                                </td>
+                                            <td data-label="{{translate('Amount')}}">
+                                                <span
+                                                    class="@if($transaction->transaction_type == '+')text-success @else text-danger @endif fw-bold">{{
+                                                    $transaction->transaction_type }}
+                                                    {{show_currency()}}{{round(short_amount($transaction->amount))}}
+                                                </span>
+                                            </td>
 
-                                                <td data-label="{{translate('Post Balance')}}">
-                                                    <span class="fw-bold">{{show_currency()}}{{round(short_amount($transaction->post_balance))}} </span>
-                                                </td>
+                                            <td data-label="{{translate('Post Balance')}}">
+                                                <span
+                                                    class="fw-bold">{{show_currency()}}{{round(short_amount($transaction->post_balance))}}
+                                                </span>
+                                            </td>
 
-                                                <td data-label="{{translate('Details')}}">
-                                                    {{($transaction->details) }}
-                                                </td>
-                                            </tr>
+                                            <td data-label="{{translate('Details')}}">
+                                                {{($transaction->details) }}
+                                            </td>
+                                        </tr>
                                         @empty
-                                            <tr>
-                                                <td class="border-bottom-0" colspan="100">
-                                                    @include('admin.partials.not_found')
-                                                </td>
-                                            </tr>
+                                        <tr>
+                                            <td class="border-bottom-0" colspan="100">
+                                                @include('admin.partials.not_found')
+                                            </td>
+                                        </tr>
                                         @endforelse
                                     </tbody>
                                 </table>
@@ -498,9 +520,9 @@
                         </div>
 
                         <div class="card-body">
-                            <div id="chart30" data-colors='["--ig-primary", "--ig-success", "--ig-warning", "--ig-danger", "--ig-info","--ig-primary","--ig-warning"]'
-                                class="apex-charts"
-                               ></div>
+                            <div id="chart30"
+                                data-colors='["--ig-primary", "--ig-success", "--ig-warning", "--ig-danger", "--ig-info","--ig-primary","--ig-warning"]'
+                                class="apex-charts"></div>
                         </div>
                     </div>
                 </div>
@@ -511,12 +533,12 @@
 @endsection
 
 @push('script-include')
-  <script src="{{asset('assets/global/js/apexcharts.js')}}"></script>
+<script src="{{asset('assets/global/js/apexcharts.js')}}"></script>
 @endpush
 
 @push('script-push')
 <script type="text/javascript">
-"use strict";
+    "use strict";
 var chartDonutBasicColors = getChartColorsArray("store-visits-source");
 if (chartDonutBasicColors) {
     var options = {
