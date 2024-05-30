@@ -25,7 +25,7 @@ class RegisteredUserController extends Controller
         $this->productService = new ProductService();
     }
 
-    
+    //---
 
     /**
      * Handle an incoming registration request.
