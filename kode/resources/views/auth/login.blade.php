@@ -161,7 +161,7 @@
 
                     </div>
 
-                    <div class="login-with-options">
+                    {{-- <div class="login-with-options">
                         <h4>{{translate('Or Sign Up With')}}</h4>
                         <ul class="login-with-option">
                             @if(array_key_exists('g_status',json_decode(($general->s_login_google_info),true)))
@@ -186,7 +186,7 @@
                                 @endif
                             @endif
                         </ul>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
 
