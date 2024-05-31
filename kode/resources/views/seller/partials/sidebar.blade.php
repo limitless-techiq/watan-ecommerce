@@ -66,11 +66,11 @@ $sellerOrderCount = App\Models\Order::sellerOrder()->placed()->physicalOrder()->
                                 </a>
                             </li>
 
-                            <li class="nav-item">
+                            {{-- <li class="nav-item">
                                 <a href="{{route('seller.digital.product.index')}}" class='{{request()->routeIs("seller.digital.product.*")?"active" :"" }}  nav-link'>
                                     {{translate("digital Products")}}
                                 </a>
-                            </li>
+                            </li> --}}
 
                         </ul>
                     </div>
@@ -98,13 +98,13 @@ $sellerOrderCount = App\Models\Order::sellerOrder()->placed()->physicalOrder()->
                                     {{translate('Orders')}}
                                 </a>
                             </li>
-                            <li class="nav-item">
+                            {{-- <li class="nav-item">
                                 <a href="{{route('seller.digital.order.index')}}" class='
                                 {{request()->routeIs("seller.digital.order.*")?"active" :""}}
                                 nav-link'>
                                     {{translate('Digital Orders')}}
                                 </a>
-                            </li>
+                            </li> --}}
                         </ul>
                     </div>
                 </li>

@@ -224,7 +224,7 @@
                     </div>
                 </div>
 
-                <div class="col-xxl-3 col-xl-4 col-sm-6">
+                {{-- <div class="col-xxl-3 col-xl-4 col-sm-6">
                     <div class="card card-animate">
                         <div class="card-body">
                             <div class="d-flex align-items-start justify-content-between">
@@ -253,7 +253,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
 
                 <div class="col-xxl-3 col-xl-4 col-sm-6">
                     <div class="card card-animate">
@@ -721,7 +721,7 @@
             </div>
 
             <div class="row">
-                <div class="col-xl-6">
+                {{-- <div class="col-xl-6">
                     <div class="card">
                         <div class="card-header border-0 align-items-center d-flex">
                             <h4 class="card-title mb-0 flex-grow-1">
@@ -772,7 +772,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
 
                 <div class="col-xl-6">
                     <div class="card card-height-100">
