@@ -93,7 +93,7 @@
 									</td>
 
 									<td>
-										<span class="badge badge-soft-dark">1 USD = {{round(($currency->rate))}} {{($currency->name)}}</span>
+										<span class="badge badge-soft-dark">1 USD = {{($currency->rate)}} {{($currency->name)}}</span>
 									</td>
 
 
@@ -121,7 +121,7 @@
 													</a>
 												@endif
 
-												<a data-id="{{$currency->id}}" data-name="{{$currency->name}}"  data-symbol="{{$currency->symbol}}"  data-status="{{$currency->status}}" title="{{translate('Update')}}" data-bs-toggle="tooltip" data-bs-placement="top" data-rate="{{round($currency->rate)}}" data-bs-toggle="modal" data-bs-target="#updatecurrency" href="javascript:void(0)" class="currencydata fs-18 link-warning"><i class="ri-pencil-fill"></i></a>
+												<a data-id="{{$currency->id}}" data-name="{{$currency->name}}"  data-symbol="{{$currency->symbol}}"  data-status="{{$currency->status}}" title="{{translate('Update')}}" data-bs-toggle="tooltip" data-bs-placement="top" data-rate="{{$currency->rate}}" data-bs-toggle="modal" data-bs-target="#updatecurrency" href="javascript:void(0)" class="currencydata fs-18 link-warning"><i class="ri-pencil-fill"></i></a>
 
 												@if($currency->default != '1' &&   session()->get('currency')  != $currency->id )
 													<a href="javascript:void(0);"  title="{{translate('Delete')}}" data-bs-toggle="tooltip" data-bs-placement="top" data-href="{{route('admin.general.setting.currency.delete',$currency->id)}}" class="delete-item fs-18 link-danger">
