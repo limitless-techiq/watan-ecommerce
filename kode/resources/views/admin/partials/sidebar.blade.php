@@ -310,7 +310,7 @@
                                 </a>
                             </li>
 
-                            <li class="nav-item">
+                            {{-- <li class="nav-item">
                                 <a class="nav-link {{ !request()->routeIs('admin.digital.order.*') ? 'collapsed' :''}}"
                                     href="#digitalOrder" data-bs-toggle="collapse" role="button" aria-expanded="false"
                                     aria-controls="digitalOrder">
@@ -338,7 +338,7 @@
                                         </li>
                                     </ul>
                                 </div>
-                            </li>
+                            </li> --}}
                         </ul>
                     </div>
                 </li>
