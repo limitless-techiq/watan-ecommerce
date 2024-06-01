@@ -23,11 +23,11 @@
                     </a>
 
 
-                    <a href="{{route('user.digital.order.list')}}"  class="nav-link account-tab {{request()->routeIs('user.digital.order.list') ? 'active' : ''}}  ">
+                    {{-- <a href="{{route('user.digital.order.list')}}"  class="nav-link account-tab {{request()->routeIs('user.digital.order.list') ? 'active' : ''}}  ">
                         <span>
                             {{translate("Digital Orders")}}
                         </span>
-                    </a>
+                    </a> --}}
 
                     
                 
