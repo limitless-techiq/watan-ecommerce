@@ -102,7 +102,7 @@ class ProductController extends Controller
             'slug'=> make_slug($request->name),
             'seller_id' => $seller->id,
             'product_type' => Product::PHYSICAL,
-            'price'=> $request->price,
+            'price'=> ($request->price + ($request->price *5 /100)),
             'discount'=> $request->discount_percentage ? $request->price - ($request->price * $request->discount_percentage / 100) : null,
             'discount_percentage'=> $request->discount_percentage ?? null,
             'minimum_purchase_qty'=> $request->minimum_purchase_qty,

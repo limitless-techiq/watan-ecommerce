@@ -64,7 +64,7 @@
                                 <div class="col-lg-6">
                                     <div>
                                         <label class="form-label" for="price">
-                                            {{translate("Regular price")}} <span class="text-danger" >*</span>
+                                            {{translate("Regular price (Without tax)")}} <span class="text-danger" >*</span>
                                         </label>
 
                                         <input step="any" required type="text" class="form-control" id="price" name="price"

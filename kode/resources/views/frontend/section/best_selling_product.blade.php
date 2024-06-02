@@ -65,6 +65,7 @@
                                             </span>
 
                                         @endif
+                                        <p style="font-size: 12px; color: #f0c507;">{{translate('Inclusive of taxes')}}</p>
                                     </div>
                                 </div>
                                 <h4 class="product-title">

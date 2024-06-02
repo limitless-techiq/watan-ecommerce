@@ -51,12 +51,14 @@
                             {{show_currency()}}{{short_amount(cal_discount($product->discount_percentage,$product->stock->first()->price))}}
                         </span>
                         <del>
-                            {{show_currency()}}{{short_amount($product->stock->first()?$product->stock->first()->price:$product->price)}}</del>
-                        @else
+                            {{show_currency()}}{{short_amount($product->stock->first()?$product->stock->first()->price:$product->price)}}
+                        </del>
+                    @else
                         <span>
                             {{show_currency()}}{{short_amount($product->stock->first()?$product->stock->first()->price:$product->price)}}
                         </span>
                     @endif
+                    <p style="font-size: 12px; color: #f0c507;">{{translate('Inclusive of taxes')}}</p>
                 </div>
             </div>
         </div>
