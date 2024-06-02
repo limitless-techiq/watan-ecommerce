@@ -210,7 +210,7 @@
 
 
                                     <p class="text-uppercase fw-medium text-muted mb-3">
-                                        {{translate("Inhouse Products")}}
+                                        {{translate("Watan Products")}}
                                     </p>
 
                                     <a href="{{route('admin.item.product.inhouse.index')}}" class="d-flex align-items-center justify-content-end gap-1">
@@ -334,7 +334,7 @@
 
 
                                     <p class="text-uppercase fw-medium text-muted mb-3">
-                                         {{translate('Inhouse Orders')}}
+                                         {{translate('Watan Orders')}}
                                     </p>
 
                                     <a href="{{route('admin.inhouse.order.index')}}" class="d-flex align-items-center justify-content-end gap-1">
@@ -803,7 +803,7 @@
                                             </span>
                                         </h5>
                                         <p class="text-muted mb-0">
-                                            {{translate("Inhouse Product")}}
+                                            {{translate("Watan Product")}}
                                         </p>
                                     </div>
                                 </div>

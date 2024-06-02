@@ -62,7 +62,7 @@ $sellerOrderCount = App\Models\Order::sellerOrder()->placed()->physicalOrder()->
 
                             <li class="nav-item">
                                 <a href="{{route('seller.product.index')}}" class='{{request()->routeIs("seller.product.*")?"active" :"" }}  nav-link'>
-                                    {{translate("Inhouse Product")}}
+                                    {{translate("Watan Product")}}
                                 </a>
                             </li>
 

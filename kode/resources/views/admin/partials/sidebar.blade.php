@@ -166,7 +166,7 @@
                             <li class="nav-item">
                                 <a href="{{route('admin.item.product.inhouse.index')}}"
                                     class=" {{request()->routeIs('admin.item.product.inhouse.*') || request()->routeIs('admin.product.reviews')?'active' :'' }}  nav-link">
-                                    {{translate("Inhouse Product")}}
+                                    {{translate("Watan Product")}}
                                 </a>
                             </li>
 
@@ -283,7 +283,7 @@
                                     {{request()->routeIs('admin.inhouse.order.*')?'active' :''}}
                                     nav-link">
                                     <span>
-                                        {{translate('Inhouse Order')}}
+                                        {{translate('Watan Order')}}
 
                                         @if($physical_product_order_count > 0 )
                                         <small title="{{translate('Placed Order')}}" data-bs-toggle="tooltip"
