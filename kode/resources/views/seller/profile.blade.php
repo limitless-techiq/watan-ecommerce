@@ -14,9 +14,11 @@
 					<div class="card-body p-4">
 						<div class="text-center">
 							<div class="profile-user position-relative d-inline-block mx-auto  mb-4">
-								<img src="{{show_image(file_path()['profile']['seller']['path']."/".$seller->image,file_path()['profile']['seller']['size']) }}"
-									class="rounded-circle avatar-xl img-thumbnail user-profile-image"
-									alt="{{$seller->image}}">
+
+									<img src="{{ $seller->image ? show_image(file_path()['profile']['seller']['path'].'/'.$seller->image, file_path()['profile']['seller']['size']) : asset('assets/images/frontend/seller/dashboard/profile.jpg') }}" 
+									class="rounded-circle avatar-xl img-thumbnail user-profile-image" 
+									alt="{{ $seller->image }}">
+
 							</div>
 
 							<h5 class="fs-16 mb-1">
