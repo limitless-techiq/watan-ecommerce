@@ -31,7 +31,7 @@
                             <div class="d-flex align-items-start justify-content-between">
                                 <div class="flex-shrink-0">
                                     <span class="overview-icon">
-                                        <img src="{{asset('assets/images/frontend/seller/dashboard/8.png')}}"
+                                        <img src="{{asset('assets/images/frontend/seller/dashboard/TOTAL_BALANCE.png')}}"
                                             width="52" height="52" style="object-fit: contain;">
 
                                     </span>
@@ -66,7 +66,7 @@
                             <div class="d-flex align-items-start justify-content-between">
                                 <div class="flex-shrink-0">
                                     <span class="overview-icon">
-                                        <img src="{{asset('assets/images/frontend/seller/dashboard/2.png')}}"
+                                        <img src="{{asset('assets/images/frontend/seller/dashboard/TOTAL_WITHDRAW.png')}}"
                                             width="52" height="52" style="object-fit: contain;">
                                     </span>
                                 </div>
@@ -99,7 +99,7 @@
                             <div class="d-flex align-items-start justify-content-between">
                                 <div class="flex-shrink-0">
                                     <span class="overview-icon">
-                                        <img src="{{asset('assets/images/frontend/seller/dashboard/1.png')}}"
+                                        <img src="{{asset('assets/images/frontend/seller/dashboard/TOTAL_PRODUCT.png')}}"
                                             width="52" height="52" style="object-fit: contain;">
                                     </span>
                                 </div>
@@ -111,7 +111,7 @@
 
 
                                     <p class="text-uppercase fw-medium text-muted mb-3">
-                                        {{translate("Total Product")}}
+                                        {{translate("Total Products")}}
                                     </p>
 
                                     <a href="{{route('seller.product.index')}}"
@@ -234,7 +234,7 @@
                             <div class="d-flex align-items-start justify-content-between">
                                 <div class="flex-shrink-0">
                                     <span class="overview-icon">
-                                        <img src="{{asset('assets/images/frontend/seller/dashboard/5.png')}}"
+                                        <img src="{{asset('assets/images/frontend/seller/dashboard/TOTAL_ORDERS.png')}}"
                                             width="52" height="52" style="object-fit: contain;">
                                     </span>
                                 </div>
@@ -299,7 +299,7 @@
                             <div class="d-flex align-items-start justify-content-between">
                                 <div class="flex-shrink-0">
                                     <span class="overview-icon">
-                                        <img src="{{asset('assets/images/frontend/seller/dashboard/9.png')}}">
+                                        <img src="{{asset('assets/images/frontend/seller/dashboard/DELIVERED_ORDERS.png')}}">
                                     </span>
                                 </div>
 
@@ -332,7 +332,7 @@
                             <div class="d-flex align-items-start justify-content-between">
                                 <div class="flex-shrink-0">
                                     <span class="overview-icon">
-                                         <img src="{{asset('assets/images/frontend/seller/dashboard/6.png')}}">
+                                         <img src="{{asset('assets/images/frontend/seller/dashboard/SHIPPED_ORDERS.png')}}">
                                     </span>
                                 </div>
 
@@ -365,7 +365,7 @@
                                 <div class="flex-shrink-0">
                                     <span class="overview-icon">
 
-                                        <img src="{{asset('assets/images/frontend/seller/dashboard/7.png')}}">
+                                        <img src="{{asset('assets/images/frontend/seller/dashboard/CANCELED_ORDERS.png')}}">
                                     </span>
                                 </div>
 
