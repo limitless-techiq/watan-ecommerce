@@ -88,7 +88,7 @@
                     <button type="button" class="btn waves ripple-dark" id="page-header-user-dropdown"
                         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <span class="d-flex align-items-center">
-                            <img class="rounded-circle header-profile-user" src="{{show_image(file_path()['profile']['seller']['path'].'/'.auth_user('seller')->image,file_path()['profile']['seller']['size'])}}"
+                            <img class="rounded-circle header-profile-user" src="{{auth_user('seller')->image ? show_image(file_path()['profile']['seller']['path'].'/'.auth_user('seller')->image,file_path()['profile']['seller']['size']) : asset('assets/images/frontend/seller/dashboard/profile.jpg')}}"
                                 alt="{{auth_user('seller')->image}}">
 
                             <span class="text-start ms-xl-2 d-none d-lg-block lh-1">

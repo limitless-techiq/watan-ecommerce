@@ -15,11 +15,12 @@
                 </div>
 
                 <div class="mt-3 mt-lg-0">
-                    <a href="{{route('seller.product.create')}}" class="btn btn-soft-success btn-lg waves ripple-light">
+                    <a href="{{route('seller.product.create')}}" class="btn btn-soft-success btn-lg waves ripple-light"
+                       style="font-size: 1.5rem; padding: 1rem 2rem; border-radius: 0.5rem;">
                         <i class="ri-add-circle-line align-middle me-1"></i>
                         {{translate('Add Product')}}
                     </a>
-                </div>
+                </div>                
                 
             </div>
 
