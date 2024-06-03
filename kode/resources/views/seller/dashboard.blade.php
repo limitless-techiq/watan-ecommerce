@@ -15,11 +15,12 @@
                 </div>
 
                 <div class="mt-3 mt-lg-0">
-                    <a href="{{route('seller.product.create')}}" class="btn btn-soft-success waves ripple-light">
+                    <a href="{{route('seller.product.create')}}" class="btn btn-soft-success btn-lg waves ripple-light">
                         <i class="ri-add-circle-line align-middle me-1"></i>
                         {{translate('Add Product')}}
                     </a>
                 </div>
+                
             </div>
 
             <div class="row">
@@ -299,7 +300,8 @@
                             <div class="d-flex align-items-start justify-content-between">
                                 <div class="flex-shrink-0">
                                     <span class="overview-icon">
-                                        <img src="{{asset('assets/images/frontend/seller/dashboard/DELIVERED_ORDERS.png')}}">
+                                        <img src="{{asset('assets/images/frontend/seller/dashboard/DELIVERED_ORDERS.png')}}"
+                                        width="52" height="52">
                                     </span>
                                 </div>
 
@@ -332,7 +334,8 @@
                             <div class="d-flex align-items-start justify-content-between">
                                 <div class="flex-shrink-0">
                                     <span class="overview-icon">
-                                         <img src="{{asset('assets/images/frontend/seller/dashboard/SHIPPED_ORDERS.png')}}">
+                                         <img src="{{asset('assets/images/frontend/seller/dashboard/SHIPPED_ORDERS.png')}}"
+                                         width="52" height="52">
                                     </span>
                                 </div>
 
@@ -365,7 +368,8 @@
                                 <div class="flex-shrink-0">
                                     <span class="overview-icon">
 
-                                        <img src="{{asset('assets/images/frontend/seller/dashboard/CANCELED_ORDERS.png')}}">
+                                        <img src="{{asset('assets/images/frontend/seller/dashboard/CANCELED_ORDERS.png')}}"
+                                        width="52" height="52">
                                     </span>
                                 </div>
 
