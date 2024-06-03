@@ -46,32 +46,42 @@
                         </div>
 
                         <div class="card-body">
-                            <div class="row g-3">
-                                <div class="col-lg-6">
-                                    <div>
-                                        <label class="form-label" for="name">
-                                            {{translate("Product Title")}} <span class="text-danger" >*</span>
-                                        </label>
-
-                                        <input  name="name" id="name" type="text" class="form-control"  value="{{old('name')}}"
-                                            placeholder="Enter product title" required>
-                                        <div class="invalid-feedback">
-                                            {{translate("Please Enter a product title")}}
+                            <div class="row g-4">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="mb-3">
+                                            <label class="form-label" for="name">
+                                                {{translate("Product Title")}} <span class="text-danger">*</span>
+                                            </label>
+                                            <input name="name" id="name" type="text" class="form-control" value="{{old('name')}}"
+                                                placeholder="{{translate("Enter product title")}}" required>
+                                            <div class="invalid-feedback">
+                                                {{translate("Please Enter a product title")}}
                                             </div>
+                                        </div>
                                     </div>
                                 </div>
-
-                                <div class="col-lg-6">
-                                    <div>
+                                
+                                <div class="row">
+                                    <div class="col-lg-6 mb-3">
                                         <label class="form-label" for="price">
-                                            {{translate("Regular price (Without tax)")}} <span class="text-danger" >*</span>
+                                            {{translate("Regular price (Without taxes)")}} <span class="text-danger">*</span>
                                         </label>
-
                                         <input step="any" required type="text" class="form-control" id="price" name="price"
                                             value="{{old('price')}}" placeholder="{{translate('Product Price')}}">
-
+                                    </div>
+                                    <div class="col-lg-6 mb-3">
+                                        <label class="form-label" for="tax_percentage">
+                                            {{translate("Tax Percentage(%)")}} <span class="text-danger">*</span>
+                                        </label>
+                                        <input step="any" required type="number" class="form-control" id="tax_percentage" name="tax_percentage"
+                                            value="{{old('tax_percentage') ? old('tax_percentage') : 0 }}" placeholder="{{translate('Tax percentage')}}">
                                     </div>
                                 </div>
+                                
+                                
+                                
+                                
 
                                 <div class="col-lg-4">
                                     <div>
@@ -198,7 +208,7 @@
                             </div>
 
                             <div class="mb-3 attribute_options" id="attribute_options">
-
+                                س
                             </div>
 
                             <div class="varient_combination" id="varient_combination">
@@ -321,7 +331,7 @@
                             </p>
 
                             <textarea class="form-control" name="warranty_policy" rows="5"
-                                    placeholder="Enter Warrenty Policy" >{{old('warranty_policy')}}</textarea>
+                                    placeholder={{translate("Enter Warrenty Policy")}} >{{old('warranty_policy')}}</textarea>
                         </div>
 
                     </div>
