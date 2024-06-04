@@ -401,39 +401,40 @@
     });
 
     $('.discount_percentage').on('keyup', function() {
-        var discount = $(this).val();
-        var taxx_percentage = $("#tax_percentage").val();
-        var original_price1 = $("#price").val();
-        var original_price = original_price1 + (original_price1 * taxx_percentage / 100);
+    var discount = $(this).val();
+    var tax_percentage = $("#tax_percentage").val();
+    var original_price = $("#price").val();
+    var price_with_tax = parseFloat(original_price) + (parseFloat(original_price) * parseFloat(tax_percentage) / 100);
+    
+    if (parseFloat(discount) > 100) {
+        $(this).val('');
+        $("#discountAmount").text('');
+        alert("Discount Can Not Be Greater Than Original Price");
+    } else {
+        var discounted_price = price_with_tax - (price_with_tax * parseFloat(discount) / 100);
         
-        if (discount > 100) {
-            $(this).val('');
-            $("#dicountAmount").text('');
-            toaster( "{{translate('Discount Can Not Be Greater Than Original Price')}}", 'danger');
+        if(parseFloat(discount) !== 0){
+            $("#discountAmount").text("Discount Price: " + discounted_price);
         } else {
-            var discounted_price = (original_price - (original_price * discount / 100));
-
-            if(discount!=0){
-                $("#dicountAmount").text(`Discount Price {{$general->currency_symbol}}`+discounted_price);
-            }else{
-                $("#dicountAmount").text('');
-            }
-
+            $("#discountAmount").text('');
         }
-    });
+    }
+});
 
-    $('#price').on('keyup', function() {
-        var price = $(this).val();
-        var discount = $("#discount_percentage").val();
-        var taxx_percentage = $("#tax_percentage").val();
-        var price1 =price + (price * taxx_percentage /100);
-        if(price1!=0 && discount!=0){
-            var discounted_price = price1 - (price1 * discount / 100);
-            $("#dicountAmount").text(`Discount Price{{$general->currency_symbol}}`+discounted_price);
-        }else{
-            $("#dicountAmount").text('');
-        }
-    });
+$('#price').on('keyup', function() {
+    var price = $(this).val();
+    var discount = $("#discount_percentage").val();
+    var tax_percentage = $("#tax_percentage").val();
+    var price_with_tax = parseFloat(price) + (parseFloat(price) * parseFloat(tax_percentage) / 100);
+    
+    if(parseFloat(price) !== 0 && parseFloat(discount) !== 0){
+        var discounted_price = price_with_tax - (price_with_tax * parseFloat(discount) / 100);
+        $("#discountAmount").text("Discount Price: " + discounted_price);
+    } else {
+        $("#discountAmount").text('');
+    }
+});
+
 
     if (window.File && window.FileList && window.FileReader) {
         $("#product_gallery_image").on("change", function(e) {
