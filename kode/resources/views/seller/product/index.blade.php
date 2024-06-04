@@ -153,8 +153,8 @@
                                     </td>
 
                                     <td data-label="{{translate('Info')}}">
-                                        <span>{{translate('Regular Price')}} : {{$general->currency_symbol}}{{round(short_amount
-                                        ($product->price))}} {{translate('Discount Price')}} : {{$general->currency_symbol}}{{round(short_amount($product->discount))}}</span>
+                                        <span>{{translate('Regular Price')}} : {{$general->currency_symbol}}{{short_amount
+                                        ($product->price)}} {{translate('Discount Price')}} : {{$general->currency_symbol}}{{short_amount($product->discount)}}</span>
 
                                     </td>
 

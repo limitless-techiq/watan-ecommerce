@@ -60,15 +60,20 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-lg-6">
-                                        <div>
+                                    <div class="row">
+                                        <div class="col-lg-6 mb-3">
                                             <label class="form-label" for="price">
-                                                {{translate("Regular price")}} <span class="text-danger" >*</span>
+                                                {{translate("Regular price (Without taxes)")}} <span class="text-danger">*</span>
                                             </label>
-
                                             <input  step="any" type="number" class="form-control" id="price" name="price"
                                                 value="{{($product->price)}}" placeholder="{{translate('Product Price')}}">
-
+                                        </div>
+                                        <div class="col-lg-6 mb-3">
+                                            <label class="form-label" for="tax_percentage">
+                                                {{translate("Tax Percentage(%)")}} <span class="text-danger">*</span>
+                                            </label>
+                                            <input step="any" required type="number" class="form-control" id="tax_percentage" name="tax_percentage"
+                                                value="{{old('tax_percentage') ? old('tax_percentage') : 0 }}" placeholder="{{translate('Tax percentage')}}">
                                         </div>
                                     </div>
 
@@ -439,34 +444,40 @@
     });
 
     $('.discount_percentage').on('keyup', function() {
-        var discount = $(this).val();
-        var original_price = $("#price").val();
-        if (discount > 100) {
-            $(this).val('');
-            $("#dicountAmount").text('');
-            toaster( "{{translate('Discount Can Not Be Greater Than Original Price')}}", 'danger');
+    var discount = $(this).val();
+    var tax_percentage = $("#tax_percentage").val();
+    var original_price = $("#price").val();
+    var price_with_tax = parseFloat(original_price) + (parseFloat(original_price) * parseFloat(tax_percentage) / 100);
+    
+    if (parseFloat(discount) > 100) {
+        $(this).val('');
+        $("#dicountAmount").text('');
+        alert("Discount Can Not Be Greater Than Original Price");
+    } else {
+        var discounted_price = price_with_tax - (price_with_tax * parseFloat(discount) / 100);
+        
+        if(parseFloat(discount) !== 0){
+            $("#dicountAmount").text("Discount Price: " + discounted_price);
         } else {
-            var discounted_price = original_price - (original_price * discount / 100);
-
-            if(discount!=0){
-                $("#dicountAmount").text(`Discount Price {{$general->currency_symbol}}`+discounted_price);
-            }else{
-                $("#dicountAmount").text('');
-            }
-
-        }
-    });
-
-    $('#price').on('keyup', function() {
-        var price = $(this).val();
-        var discount = $("#discount_percentage").val();
-        if(price!=0 && discount!=0){
-            var discounted_price = price - (price * discount / 100);
-            $("#dicountAmount").text(`Discount Price{{$general->currency_symbol}}`+discounted_price);
-        }else{
             $("#dicountAmount").text('');
         }
-    });
+    }
+});
+
+$('#price').on('keyup', function() {
+    var price = $(this).val();
+    var discount = $("#discount_percentage").val();
+    var tax_percentage = $("#tax_percentage").val();
+    var price_with_tax = parseFloat(price) + (parseFloat(price) * parseFloat(tax_percentage) / 100);
+    
+    if(parseFloat(price) !== 0 && parseFloat(discount) !== 0){
+        var discounted_price = price_with_tax - (price_with_tax * parseFloat(discount) / 100);
+        $("#dicountAmount").text("Discount Price: " + discounted_price);
+    } else {
+        $("#dicountAmount").text('');
+    }
+});
+
 
     if (window.File && window.FileList && window.FileReader) {
         $("#product_gallery_image").on("change", function(e) {
