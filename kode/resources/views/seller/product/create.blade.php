@@ -425,8 +425,10 @@
     $('#price').on('keyup', function() {
         var price = $(this).val();
         var discount = $("#discount_percentage").val();
-        if(price!=0 && discount!=0){
-            var discounted_price = price - (price * discount / 100);
+        var taxx_percentage = $("#tax_percentage").val();
+        var price1 = price * taxx_percentage /100;
+        if(price1!=0 && discount!=0){
+            var discounted_price = price1 - (price1 * discount / 100);
             $("#dicountAmount").text(`Discount Price{{$general->currency_symbol}}`+discounted_price);
         }else{
             $("#dicountAmount").text('');
