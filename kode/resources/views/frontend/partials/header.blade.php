@@ -200,7 +200,7 @@
                                 </div>
                             </a>
                         </div>
-                        <div class="header-action-container">
+                        {{-- <div class="header-action-container">
                             <a href="{{route('compare')}}" class="each-action-item d-lg-flex d-none">
                                 <div class="position-relative">
                                     <div class="header-action-icon">
@@ -213,7 +213,7 @@
                                     {{translate('Compare list')}}
                                 </div>
                             </a>
-                        </div>
+                        </div> --}}
                         <div class="header-action-container">
                             <div class="each-action-item d-lg-flex d-none">
                                 <div class="position-relative">
