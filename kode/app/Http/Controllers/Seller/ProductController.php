@@ -121,79 +121,78 @@ class ProductController extends Controller
             'warranty_policy'=> $request->warranty_policy,
             'status'=> Product::NEW,
         ]);
+        
 
-        return $product;
+        $collection = collect( $request);
 
-    //     $collection = collect( $request);
+        $choice_options = array();
+        if (isset($collection['choice_no']) && $collection['choice_no']) {
+            $str = '';
+            $item = array();
+            foreach ($collection['choice_no'] as $key => $no) {
+                $str = 'choice_options_' . $no;
+                $item['attribute_id'] = $no;
+                $attribute_data = array();
+                foreach ($collection[$str] as $key => $eachValue) {
+                    array_push($attribute_data, $eachValue);
+                }
+                unset($collection[$str]);
 
-    //     $choice_options = array();
-    //     if (isset($collection['choice_no']) && $collection['choice_no']) {
-    //         $str = '';
-    //         $item = array();
-    //         foreach ($collection['choice_no'] as $key => $no) {
-    //             $str = 'choice_options_' . $no;
-    //             $item['attribute_id'] = $no;
-    //             $attribute_data = array();
-    //             foreach ($collection[$str] as $key => $eachValue) {
-    //                 array_push($attribute_data, $eachValue);
-    //             }
-    //             unset($collection[$str]);
+                $item['values'] = $attribute_data;
+                array_push($choice_options, $item);
+            }
+        }
+        $choice_options = json_encode($choice_options, JSON_UNESCAPED_UNICODE);
+        if (isset($collection['choice_no']) && $collection['choice_no']) {
+            $attributes = json_encode($collection['choice_no']);
+            unset($collection['choice_no']);
+        } else {
+            $attributes = json_encode(array());
+        }
+        $product->attributes_value =   $choice_options;
+        $product->attributes =   $attributes;
+        $product->save();
 
-    //             $item['values'] = $attribute_data;
-    //             array_push($choice_options, $item);
-    //         }
-    //     }
-    //     $choice_options = json_encode($choice_options, JSON_UNESCAPED_UNICODE);
-    //     if (isset($collection['choice_no']) && $collection['choice_no']) {
-    //         $attributes = json_encode($collection['choice_no']);
-    //         unset($collection['choice_no']);
-    //     } else {
-    //         $attributes = json_encode(array());
-    //     }
-    //     $product->attributes_value =   $choice_options;
-    //     $product->attributes =   $attributes;
-    //     $product->save();
+        if($request->hasFile('gallery_image')){
+            $galleryImage = array_filter($request->gallery_image);
+            ProductGallery::imageStore($request, $galleryImage, $product->id);
+        }
 
-    //     if($request->hasFile('gallery_image')){
-    //         $galleryImage = array_filter($request->gallery_image);
-    //         ProductGallery::imageStore($request, $galleryImage, $product->id);
-    //     }
+        if($request->shipping_delivery_id){
+            if($request->shipping_delivery_id[0] == 0){
+                $shippingDeliveries = ShippingDelivery::pluck('id');
 
-    //     if($request->shipping_delivery_id){
-    //         if($request->shipping_delivery_id[0] == 0){
-    //             $shippingDeliveries = ShippingDelivery::pluck('id');
-
-    //             foreach($shippingDeliveries as $value){
-    //                 ProductShippingDelivery::create([
-    //                     'product_id' => $product->id,
-    //                     'shipping_delivery_id' => $value
-    //                 ]);
-    //             }
-    //         }
-    //         else{
-    //             foreach($request->shipping_delivery_id as $value){
-    //                 ProductShippingDelivery::create([
-    //                     'product_id' => $product->id,
-    //                     'shipping_delivery_id' => $value
-    //                 ]);
-    //             }
-    //         }
-    //     }
-
-
-    //     $this->stockStore($request->only([
-    //         'choice_no','product_id'
-    //    ]), $product);
+                foreach($shippingDeliveries as $value){
+                    ProductShippingDelivery::create([
+                        'product_id' => $product->id,
+                        'shipping_delivery_id' => $value
+                    ]);
+                }
+            }
+            else{
+                foreach($request->shipping_delivery_id as $value){
+                    ProductShippingDelivery::create([
+                        'product_id' => $product->id,
+                        'shipping_delivery_id' => $value
+                    ]);
+                }
+            }
+        }
 
 
-    //    $subscription->total_product -=1;
+        $this->stockStore($request->only([
+            'choice_no','product_id'
+       ]), $product);
 
-    //    $subscription->save();
+
+       $subscription->total_product -=1;
+
+       $subscription->save();
 
  
 
       
-    //     return back()->with('success', translate("Product has been created"));
+        return back()->with('success', translate("Product has been created"));
 
     }
 
