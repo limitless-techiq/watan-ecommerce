@@ -335,7 +335,7 @@ class FrontendController extends Controller
     {
         $category = Category::where('status', '1')->where('id', $id)->firstOrFail();
 
-        $title = ucfirst(get_translation($category->name)) . ucfirst(get_translation( " all products"));
+        $title = ucfirst(get_translation($category->name)) .  " all products";
         $products = Product::search()->where(function ($query) use ($id) {
             $query->where('category_id', $id)
                 ->orWhere('sub_category_id',  $id);
