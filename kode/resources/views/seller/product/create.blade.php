@@ -402,7 +402,9 @@
 
     $('.discount_percentage').on('keyup', function() {
         var discount = $(this).val();
+        var taxx_percentage = $("#tax_percentage").val();
         var original_price = $("#price").val();
+        original_price = original_price +(original_price*taxx_percentage/100);
         if (discount > 100) {
             $(this).val('');
             $("#dicountAmount").text('');
