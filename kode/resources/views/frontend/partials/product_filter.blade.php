@@ -75,12 +75,12 @@
 						</div>
 					</div>
 					<div class="formCost d-flex gap-2 align-items-center">
-						<input class="form-control form-control-sm" name="search_min" id="skip-value-lower" type="number"  value="{{$search_min}}" min="{{short_amount($general->search_min)}}" max="{{short_amount($general->search_max)}}" />
+						<input class="form-control form-control-sm" name="search_min" id="skip-value-lower" type="number"  value="{{$search_min}}" min="1" max="1000000" />
 							<span class="text-muted fs-14">
 								{{translate('to')}}
 							</span>
 						<input
-							class="form-control form-control-sm" name="search_max" id="skip-value-upper" type="number" value="{{$search_max}}" min="{{short_amount($general->search_min)}}" max="{{short_amount($general->search_max)}}"/>
+							class="form-control form-control-sm" name="search_max" id="skip-value-upper" type="number" value="{{$search_max}}" min="1" max="1000000"/>
 					</div>
 				</div>
 
