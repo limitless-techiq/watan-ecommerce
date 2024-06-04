@@ -62,10 +62,10 @@
                                     {{translate("Quick View")}}
                                 </button>
                             </div>
-                            <ul class="hover-action">
+                            {{-- <ul class="hover-action">
                                 <li><a class="comparelist compare-btn wave-btn" data-product_id="{{$product->id}}" href="javascript:void(0)"> <i class="fa-solid fa-code-compare"></i></a></li>
 
-                            </ul>
+                            </ul> --}}
 
                             <span class="offer-tag">{{translate('off')}} @if($product->pivot->discount_type == 0)
                                 {{show_currency()}}@else%@endif{{round(($product->pivot->discount))}}
