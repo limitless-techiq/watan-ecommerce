@@ -408,15 +408,15 @@
     
     if (parseFloat(discount) > 100) {
         $(this).val('');
-        $("#discountAmount").text('');
+        $("#dicountAmount").text('');
         alert("Discount Can Not Be Greater Than Original Price");
     } else {
         var discounted_price = price_with_tax - (price_with_tax * parseFloat(discount) / 100);
         
         if(parseFloat(discount) !== 0){
-            $("#discountAmount").text("Discount Price: " + discounted_price);
+            $("#dicountAmount").text("Discount Price: " + discounted_price);
         } else {
-            $("#discountAmount").text('');
+            $("#dicountAmount").text('');
         }
     }
 });
@@ -429,9 +429,9 @@ $('#price').on('keyup', function() {
     
     if(parseFloat(price) !== 0 && parseFloat(discount) !== 0){
         var discounted_price = price_with_tax - (price_with_tax * parseFloat(discount) / 100);
-        $("#discountAmount").text("Discount Price: " + discounted_price);
+        $("#dicountAmount").text("Discount Price: " + discounted_price);
     } else {
-        $("#discountAmount").text('');
+        $("#dicountAmount").text('');
     }
 });
 
