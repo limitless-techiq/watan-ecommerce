@@ -67,7 +67,7 @@
                                         <label class="form-label" for="price">
                                             {{translate("Regular price (Without taxes)")}} <span class="text-danger">*</span>
                                         </label>
-                                        <input step="any" required type="text" class="form-control" id="price" name="price"
+                                        <input step="any" required type="number" class="form-control" id="price" name="price"
                                             value="{{old('price')}}" placeholder="{{translate('Product Price')}}">
                                     </div>
                                     <div class="col-lg-6 mb-3">
@@ -402,13 +402,16 @@
 
     $('.discount_percentage').on('keyup', function() {
         var discount = $(this).val();
-        var original_price = $("#price").val();
+        var taxx_percentage = $("#tax_percentage").val();
+        var original_price1 = $("#price").val();
+        var original_price = original_price1 + (original_price1 * taxx_percentage / 100);
+        
         if (discount > 100) {
             $(this).val('');
             $("#dicountAmount").text('');
             toaster( "{{translate('Discount Can Not Be Greater Than Original Price')}}", 'danger');
         } else {
-            var discounted_price = original_price - (original_price * discount / 100);
+            var discounted_price = (original_price - (original_price * discount / 100));
 
             if(discount!=0){
                 $("#dicountAmount").text(`Discount Price {{$general->currency_symbol}}`+discounted_price);
@@ -422,8 +425,10 @@
     $('#price').on('keyup', function() {
         var price = $(this).val();
         var discount = $("#discount_percentage").val();
-        if(price!=0 && discount!=0){
-            var discounted_price = price - (price * discount / 100);
+        var taxx_percentage = $("#tax_percentage").val();
+        var price1 =price + (price * taxx_percentage /100);
+        if(price1!=0 && discount!=0){
+            var discounted_price = price1 - (price1 * discount / 100);
             $("#dicountAmount").text(`Discount Price{{$general->currency_symbol}}`+discounted_price);
         }else{
             $("#dicountAmount").text('');
