@@ -94,7 +94,19 @@
                                                         {{$product->name}}
                                                   </a>
                                             </h4>
-                        
+                                            <div class="priceAndRatting">
+                                                    <div class="product-price">
+                                                        @if(($product->discount_percentage) > 0)
+                                                            
+                                                            @else
+                                                            <span>
+                                                                {{show_currency()}}{{short_amount($product->stock->first()?$product->stock->first()->price:$product->price)}}
+                                                            </span>
+
+                                                        @endif
+                                                    </div>
+
+                                            </div>
 
                                             @php
                                                 $authUser = auth_user('web');
