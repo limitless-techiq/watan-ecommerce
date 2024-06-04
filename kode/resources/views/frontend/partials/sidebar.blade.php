@@ -141,13 +141,13 @@
                                 <i class="fa-solid fa-chevron-right"></i>
                             </a>
                         </li>
-                        <li class="sidebar-nav-item">
+                        {{-- <li class="sidebar-nav-item">
                             <a href="{{route('compare')}}" class="sidebar-nav-link">
                                 <span> <small class="mobile-nav-icon"><i class="fa-solid fa-code-compare"></i></small>
                                     {{translate("Compare")}}
                                 </span> <i class="fa-solid fa-chevron-right"></i>
                             </a>
-                        </li>
+                        </li> --}}
                         @if(auth_user('web'))
                             <li class="sidebar-nav-item">
                                 <a href="{{'user.track.order'}}" class="sidebar-nav-link">
