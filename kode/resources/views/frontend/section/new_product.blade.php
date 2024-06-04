@@ -31,10 +31,10 @@
                                                 {{translate("Quick View")}}
                                             </button>
                                         </div>
-                                        <ul class="hover-action">
+                                        {{-- <ul class="hover-action">
                                             <li><a class="comparelist compare-btn wave-btn" data-product_id="{{$product->id}}" href="javascript:void(0)"><i class="fa-solid fa-code-compare"></i></a></li>
 
-                                        </ul>
+                                        </ul> --}}
                                         @if($product->discount_percentage > 0)
                                            <span class="offer-tag">{{translate('off')}}  {{round($product->discount_percentage)}} %</span>
                                         @endif
