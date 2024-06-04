@@ -77,50 +77,52 @@ class ProductController extends Controller
     {
 
 
-        return $request;
-    //    $subscription = PlanSubscription::where('seller_id',Auth::guard('seller')->user()->id)->where('status',1)->first();
-    //    if(!$subscription){
-    //       return back()->with('error',translate('You dont have any runnig subscription'));
-    //    }
-    //    if($subscription->total_product < 1 ){
-    //        return back()->with('error',translate('You dont have enough product balance to add a new product'));
-    //    }
+     
+       $subscription = PlanSubscription::where('seller_id',Auth::guard('seller')->user()->id)->where('status',1)->first();
+       if(!$subscription){
+          return back()->with('error',translate('You dont have any runnig subscription'));
+       }
+       if($subscription->total_product < 1 ){
+           return back()->with('error',translate('You dont have enough product balance to add a new product'));
+       }
 
-    //    $featuredImage = null;
+       $featuredImage = null;
        
       
-    //     if($request->hasFile('featured_image')){
-    //         try {
-    //             $featuredImage = store_file($request->featured_image,file_path()['product']['featured']['path']);
-    //         }catch (\Exception $exp) {
+        if($request->hasFile('featured_image')){
+            try {
+                $featuredImage = store_file($request->featured_image,file_path()['product']['featured']['path']);
+            }catch (\Exception $exp) {
    
-    //         }
-    //     }
-    //     $seller = Auth::guard('seller')->user();
-    //     $product = Product::create([
-    //         'name'=> $request->name,
-    //         'slug'=> make_slug($request->name),
-    //         'seller_id' => $seller->id,
-    //         'product_type' => Product::PHYSICAL,
-    //         'price'=> ($request->price + ($request->price * $request->tax_percentage /100)),
-    //         'discount'=> $request->discount_percentage ? ($request->price * $request->tax_percentage /100) - ($request->price * $request->discount_percentage / 100) : null,
-    //         'discount_percentage'=> $request->discount_percentage ?? null,
-    //         'minimum_purchase_qty'=> $request->minimum_purchase_qty,
-    //         'maximum_purchase_qty'=> $request->maximum_purchase_qty,
-    //         'brand_id'=> $request->brand_id ?? null,
-    //         'category_id'=> $request->category_id,
-    //         'sub_category_id'=> $request->subcategory_id,
-    //         'short_description'=> build_dom_document( $request->short_description,'seller_short_descripiton'.rand(10,1000)),
-    //         'description'=> build_dom_document($request->description,'seller_descripiton'.rand(10,1000)),
-    //         'shipping_country'=> $request->shipping_country,
-    //         'featured_image'=> $featuredImage,
-    //         'meta_title'=> $request->meta_title,
-    //         'meta_image'=> $featuredImage,
-    //         'meta_keywords'=> $request->meta_keywords ?? null,
-    //         'meta_description'=> $request->meta_description,
-    //         'warranty_policy'=> $request->warranty_policy,
-    //         'status'=> Product::NEW,
-    //     ]);
+            }
+        }
+        $seller = Auth::guard('seller')->user();
+        $product = Product::create([
+            'name'=> $request->name,
+            'slug'=> make_slug($request->name),
+            'seller_id' => $seller->id,
+            'product_type' => Product::PHYSICAL,
+            'price'=> ($request->price + ($request->price * $request->tax_percentage /100)),
+            'discount'=> $request->discount_percentage ? $request->price - ($request->price * $request->discount_percentage / 100) : null,
+            'discount_percentage'=> $request->discount_percentage ?? null,
+            'minimum_purchase_qty'=> $request->minimum_purchase_qty,
+            'maximum_purchase_qty'=> $request->maximum_purchase_qty,
+            'brand_id'=> $request->brand_id ?? null,
+            'category_id'=> $request->category_id,
+            'sub_category_id'=> $request->subcategory_id,
+            'short_description'=> build_dom_document( $request->short_description,'seller_short_descripiton'.rand(10,1000)),
+            'description'=> build_dom_document($request->description,'seller_descripiton'.rand(10,1000)),
+            'shipping_country'=> $request->shipping_country,
+            'featured_image'=> $featuredImage,
+            'meta_title'=> $request->meta_title,
+            'meta_image'=> $featuredImage,
+            'meta_keywords'=> $request->meta_keywords ?? null,
+            'meta_description'=> $request->meta_description,
+            'warranty_policy'=> $request->warranty_policy,
+            'status'=> Product::NEW,
+        ]);
+
+        return $product;
 
     //     $collection = collect( $request);
 
@@ -179,7 +181,7 @@ class ProductController extends Controller
     //     }
 
 
-    //     ->stockStore($request->only([
+    //     $this->stockStore($request->only([
     //         'choice_no','product_id'
     //    ]), $product);
 
