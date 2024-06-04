@@ -404,14 +404,14 @@
         var discount = $(this).val();
         var taxx_percentage = $("#tax_percentage").val();
         var original_price1 = $("#price").val();
-        var original_price = original_price1 * taxx_percentage / 100;
+        var original_price = (original_price1 * taxx_percentage / 100);
         
         if (discount > 100) {
             $(this).val('');
             $("#dicountAmount").text('');
             toaster( "{{translate('Discount Can Not Be Greater Than Original Price')}}", 'danger');
         } else {
-            var discounted_price = original_price - (original_price * discount / 100);
+            var discounted_price = (original_price - (original_price * discount / 100));
 
             if(discount!=0){
                 $("#dicountAmount").text(`Discount Price {{$general->currency_symbol}}`+discounted_price);
@@ -424,8 +424,6 @@
 
     $('#price').on('keyup', function() {
         var price = $(this).val();
-        var taxx_percentage = $("#tax_percentage").val();
-        price = price * taxx_percentage /100;
         var discount = $("#discount_percentage").val();
         if(price!=0 && discount!=0){
             var discounted_price = price - (price * discount / 100);
