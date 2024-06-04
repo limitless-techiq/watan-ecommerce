@@ -86,7 +86,7 @@
 
                                             <input type="number" class="form-control discount_percentage"
                                             id="discount_percentage" name="discount_percentage"
-                                            value="{{round($product->discount_percentage)}}"
+                                            value="{{$product->discount_percentage}}"
                                             placeholder="{{translate('Discount Percentage')}}" >
 
                                             <div class="text-danger" id="dicountAmount">
