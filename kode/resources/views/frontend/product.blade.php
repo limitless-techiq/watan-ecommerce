@@ -97,7 +97,8 @@
                                             <div class="priceAndRatting">
                                                     <div class="product-price">
                                                         @if(($product->discount_percentage) > 0)
-                                                            
+                                                            </span>  <del> {{show_currency()}}{{short_amount($product->stock->first()?$product->stock->first()->price:$product->price)}}</del>
+
                                                             @else
                                                             <span>
                                                                 {{show_currency()}}{{short_amount($product->stock->first()?$product->stock->first()->price:$product->price)}}
