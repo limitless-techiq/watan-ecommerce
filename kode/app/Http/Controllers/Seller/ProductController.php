@@ -153,7 +153,6 @@ class ProductController extends Controller
         $product->attributes =   $attributes;
         $product->save();
 
-        return $product;
 
         if($request->hasFile('gallery_image')){
             $galleryImage = array_filter($request->gallery_image);
