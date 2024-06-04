@@ -103,7 +103,7 @@ class ProductController extends Controller
             'seller_id' => $seller->id,
             'product_type' => Product::PHYSICAL,
             'price'=> ($request->price + ($request->price * $request->tax_percentage /100)),
-            'discount'=> $request->discount_percentage ? ($request->price + ($request->price * $request->tax_percentage /100)) - ($request->price * $request->discount_percentage / 100) : null,
+            'discount'=> $request->discount_percentage ? ($request->price + ($request->price * $request->tax_percentage /100)) - (($request->price + ($request->price * $request->tax_percentage /100)) * $request->discount_percentage / 100) : null,
             'discount_percentage'=> $request->discount_percentage ?? null,
             'minimum_purchase_qty'=> $request->minimum_purchase_qty,
             'maximum_purchase_qty'=> $request->maximum_purchase_qty,
