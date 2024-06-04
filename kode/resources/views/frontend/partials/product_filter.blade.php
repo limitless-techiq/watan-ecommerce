@@ -136,7 +136,7 @@
 		];
 
 		noUiSlider.create(skipSlider, {
-			start: [{{1 }},{{1000000}}],
+			start: [{{$search_min }},{{$search_max}}],
 			connect: true,
 			behaviour: "drag",
 			step: 1,
