@@ -424,6 +424,8 @@
 
     $('#price').on('keyup', function() {
         var price = $(this).val();
+        var taxx_percentage = $("#tax_percentage").val();
+        price = price * taxx_percentage /100;
         var discount = $("#discount_percentage").val();
         if(price!=0 && discount!=0){
             var discounted_price = price - (price * discount / 100);
