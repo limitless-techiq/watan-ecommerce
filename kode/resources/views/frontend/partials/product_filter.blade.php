@@ -89,6 +89,11 @@
 						<input class="form-control form-control-sm" name="search_max" id="skip-value-upper"
 							type="number" value="1000000" min="{{short_amount($general->search_min)}}"
 							max="{{short_amount($general->search_max)}}" />
+						<script>
+							document.getElementById('skip-value-lower').value = 1;
+								document.getElementById('skip-value-upper').value = 1000000;
+						</script>
+
 					</div>
 				</div>
 
