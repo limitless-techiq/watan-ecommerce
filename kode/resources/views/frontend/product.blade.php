@@ -45,7 +45,21 @@
                             </div>
                         </div>
 
-                        
+                        <div class="flex-shrink-0">
+                            <div class="d-flex align-items-start align-items-md-center flex-column flex-sm-row  gap-lg-5 gap-3">
+                                <form action="{{route(Route::currentRouteName(),Route::current()->parameters())}}" method="GET" class="sorting-option">
+                                    <div class="d-flex align-items-center gap-3">
+                                        <label for="sort" class="nowrap form-label mb-0">{{translate('Sort By:')}}</label>
+                                        <select name="sort_by" id="sort" class="form-select form-select-sm" aria-label=".form-select-sm example">
+                                            <option value="default" @if(request()->input('sort_by') == "default") selected="" @endif>{{translate('SORT BY DEFAULT')}}</option>
+                                            <option value="hightolow" @if(request()->input('sort_by') == "hightolow") selected="" @endif>{{translate('Price (High to low)')}}</option>
+                                            <option value="lowtohigh" @if(request()->input('sort_by') == "lowtohigh") selected="" @endif>{{translate('Price (low to High)')}}</option>
+                                        </select>
+                                    </div>
+                                </form>
+                                <p class="fs-14">{{translate('Showing')}} {{$products->firstItem()}} {{translate('of')}} {{$products->lastItem()}} {{translate('of')}} {{$products->total()}} {{translate('Results')}}</p>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="row g-2 g-md-4">
