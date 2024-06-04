@@ -67,7 +67,7 @@
                                         <label class="form-label" for="price">
                                             {{translate("Regular price (Without taxes)")}} <span class="text-danger">*</span>
                                         </label>
-                                        <input step="any" required type="text" class="form-control" id="price" name="price"
+                                        <input step="any" required type="number" class="form-control" id="price" name="price"
                                             value="{{old('price')}}" placeholder="{{translate('Product Price')}}">
                                     </div>
                                     <div class="col-lg-6 mb-3">
