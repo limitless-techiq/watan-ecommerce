@@ -61,21 +61,7 @@ class FrontendController extends Controller
 
     public function index()
     {
-        if (Auth::check()) {
-            $title = "Home Page";
-            $banners = Banner::all();
-            $now = now()->toDateTimeString();
-            $campaigns = Campaign::with('products')
-                ->where('status', '1')
-                ->where('start_time', '<=', $now)
-                ->where('end_time', '>=', $now)
-                ->take(4)
-                ->get();
-            return view('frontend.home', compact('title', 'campaigns'));
-        } else {
-            $title = "Login";
-            return view('auth.login', compact('title'));
-        }
+      
     }
 
     /**
