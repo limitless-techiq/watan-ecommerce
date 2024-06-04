@@ -66,8 +66,8 @@
 			<form action="{{route(Route::currentRouteName(),Route::current()->parameters())}}" method="GET">
 				<div class="range-slider mb-4">
 					@php
-						$search_min = request()->input('search_min') ? request()->input('search_min') : 100;
-						$search_max = request()->input('search_max') ?  request()->input('search_max') : 1000;
+						$search_min = request()->input('search_min') ? request()->input('search_min') : 1;
+						$search_max = request()->input('search_max') ?  request()->input('search_max') : 10000000;
 					@endphp
 					<div class="slider-area">
 						<div id="slider-range" class="slider">
@@ -136,7 +136,7 @@
 		];
 
 		noUiSlider.create(skipSlider, {
-			start: [{{$search_min }},{{$search_max}}],
+			start: [{{1 }},{{1000000}}],
 			connect: true,
 			behaviour: "drag",
 			step: 1,
