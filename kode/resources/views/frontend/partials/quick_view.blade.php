@@ -124,8 +124,8 @@
                         fa-regular
                     @endif fa-heart"></i>
                 </button>
-                {{-- <button class="product-details-love-btn comparelist wave-btn" data-product_id="{{$product->id}}"><i class="fa-solid fa-code-compare"></i></button>
-            </div> --}}
+                <button class="product-details-love-btn comparelist wave-btn" data-product_id="{{$product->id}}"><i class="fa-solid fa-code-compare"></i></button>
+            </div>
         </form>
         <div class="product-detail-btn">
             <a href="javascript:void(0)" data-checkout = "yes" data-product_id = "{{$randNum}}" class="buy-now-btn quick-buy-btn addtocartbtn">
