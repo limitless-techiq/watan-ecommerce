@@ -116,7 +116,7 @@
     </div>
     @if($flag == 1)
         <div class="d-flex align-items-center justify-content-between  mt-4 gap-4 flex-wrap">
-            <a href="{{route('new-products')}}" class="btn-label previestab fs-12"><i class="fa-solid fa-arrow-left label-icon align-middle fs-14 "></i> {{translate('Continue
+            <a href="{{route('new.product')}}" class="btn-label previestab fs-12"><i class="fa-solid fa-arrow-left label-icon align-middle fs-14 "></i> {{translate('Continue
                 Shopping')}}</a>
             <a href="{{route('user.checkout')}}" class="btn-label nexttab fs-12">{{translate('CHECKOUT')}} <i class="fa-solid fa-credit-card label-icon align-middle fs-14"></i></a>
         </div>
