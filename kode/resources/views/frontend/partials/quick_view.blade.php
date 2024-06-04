@@ -124,7 +124,7 @@
                         fa-regular
                     @endif fa-heart"></i>
                 </button>
-                <button class="product-details-love-btn comparelist wave-btn" data-product_id="{{$product->id}}"><i class="fa-solid fa-code-compare"></i></button>
+                {{-- <button class="product-details-love-btn comparelist wave-btn" data-product_id="{{$product->id}}"><i class="fa-solid fa-code-compare"></i></button> --}}
             </div>
         </form>
         <div class="product-detail-btn">
