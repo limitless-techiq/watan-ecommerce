@@ -404,7 +404,7 @@
         var discount = $(this).val();
         var taxx_percentage = $("#tax_percentage").val();
         var original_price1 = $("#price").val();
-        var original_price = (original_price1 * taxx_percentage / 100);
+        var original_price = original_price1 + (original_price1 * taxx_percentage / 100);
         
         if (discount > 100) {
             $(this).val('');
