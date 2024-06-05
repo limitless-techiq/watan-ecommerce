@@ -2,15 +2,16 @@
 
 @push('stylepush')
 <style>
-
     .magnify-container {
-    position: relative;
+        position: relative;
     }
+
     .magnify-container .magnified {
         display: block;
         z-index: 10;
     }
-    .magnify-container .magnifier{
+
+    .magnify-container .magnifier {
         height: 20rem;
         width: 20rem;
         position: absolute;
@@ -25,8 +26,9 @@
         pointer-events: none;
         display: none;
     }
-    @media only screen and (min-width: 320px){
-      .magnify-container .magnifier {
+
+    @media only screen and (min-width: 320px) {
+        .magnify-container .magnifier {
             height: 10rem;
             width: 10rem;
             background-size: 400%;
@@ -35,8 +37,8 @@
         }
     }
 
-    @media only screen and (min-width: 768px){
-      .magnify-container .magnifier {
+    @media only screen and (min-width: 768px) {
+        .magnify-container .magnifier {
             height: 20rem;
             width: 20rem;
             background-size: 400%;
@@ -45,8 +47,8 @@
         }
     }
 
-    @media only screen and (min-width: 992px){
-      .magnify-container .magnifier {
+    @media only screen and (min-width: 992px) {
+        .magnify-container .magnifier {
             height: 10rem;
             width: 10rem;
             background-size: 400%;
@@ -55,8 +57,8 @@
         }
     }
 
-    @media only screen and (min-width: 1200px){
-      .magnify-container .magnifier {
+    @media only screen and (min-width: 1200px) {
+        .magnify-container .magnifier {
             height: 20rem;
             width: 20rem;
             background-size: 400%;
@@ -64,32 +66,33 @@
             margin-top: -10rem !important;
         }
     }
+
     .magnify-container .magnified img {
         width: 100%;
         height: 100%;
         overflow: hidden;
         border-radius: 0.4rem;
     }
-
 </style>
 @endpush
 @section('content')
 
 
 <section class="product-details pt-80 pb-80">
-     <div class="Container">
+    <div class="Container">
         <ul class="route">
             <li><a href="{{route('home')}}">{{translate('Home')}} /</a></li>
 
             <li>
-                <a href="{{route('category.product', [make_slug(get_translation($product->category->name)), $product->category_id])}}">{{get_translation(($product->category->name))}}
+                <a
+                    href="{{route('category.product', [make_slug(get_translation($product->category->name)), $product->category_id])}}">{{get_translation(($product->category->name))}}
                 </a>
             </li>
         </ul>
 
         @php
-             $authUser = auth_user('web');
-             $wishedProducts = $authUser ? $authUser->wishlist->pluck('product_id')->toArray() : [];
+        $authUser = auth_user('web');
+        $wishedProducts = $authUser ? $authUser->wishlist->pluck('product_id')->toArray() : [];
         @endphp
 
         <div class="product-details-container">
@@ -97,9 +100,10 @@
                 <div class="small-img">
                     <div class="small-img-item">
                         @foreach($product->gallery as $gallery)
-                            <div class="gallery-sm-img product-gallery-small-img">
-                                <img src="{{show_image(file_path()['product']['gallery']['path'].'/'.$gallery->image,file_path()['product']['gallery']['size'])}}" alt="{{$gallery->image}}" >
-                            </div>
+                        <div class="gallery-sm-img product-gallery-small-img">
+                            <img src="{{show_image(file_path()['product']['gallery']['path'].'/'.$gallery->image,file_path()['product']['gallery']['size'])}}"
+                                alt="{{$gallery->image}}">
+                        </div>
                         @endforeach
                     </div>
                 </div>
@@ -109,7 +113,9 @@
                         <div class="magnifier">
                         </div>
                         <div class="magnified">
-                            <img class="qv-lg-image" src="{{show_image(file_path()['product']['gallery']['path'].'/'.$product->gallery->first()->image,file_path()['product']['gallery']['size'])}}" alt="{{@$product->gallery->first()->image}}">
+                            <img class="qv-lg-image"
+                                src="{{show_image(file_path()['product']['gallery']['path'].'/'.$product->gallery->first()->image,file_path()['product']['gallery']['size'])}}"
+                                alt="{{@$product->gallery->first()->image}}">
                         </div>
                     </div>
                 </div>
@@ -118,17 +124,17 @@
             <div class="product-detail-middle">
                 <h3 class="details-product-title">
                     {{$product->name}}
-                      @if($product->status == '0')
-                        <span class="product_tag">
-                             {{translate("New Arrival")}}
-                        </span>
-                      @endif
+                    @if($product->status == '0')
+                    <span class="product_tag">
+                        {{translate("New Arrival")}}
+                    </span>
+                    @endif
                 </h3>
 
                 <div class="product-item-review">
                     <div class="ratting mb-0">
                         @php echo show_ratings($product->review->avg('rating')) @endphp
-                        <small class="text-muted" >({{$product->review->count()}} {{translate('Review')}})</small>
+                        <small class="text-muted">({{$product->review->count()}} {{translate('Review')}})</small>
                     </div>
                     <small>{{$product->order->count()}}
                         {{translate('Orders')}}
@@ -136,34 +142,38 @@
                 </div>
 
                 <div class="product-price price-section">
-                    @if(count($product->campaigns) != 0 && $product->campaigns->first()->end_time > Carbon\Carbon::now()->toDateTimeString() &&   $product->campaigns->first()->status == '1')
-                        @if(short_amount($product->campaigns->first()->pivot->discount) == 0)
-                                <span  class="varient-product-price">{{show_currency()}}{{number_format(short_amount($product->price),2)}}
-                                </span>
-                            @else
-                                <span>
-                                    {{show_currency()}}{{number_format(short_amount(discount($product->stock->first()?$product->stock->first()->price:$product->price,$product->campaigns->first()->pivot->discount,$product->campaigns->first()->pivot->discount_type)),2)}}
-                                </span>
-                            <del>
-                                {{show_currency()}}{{number_format(short_amount($product->stock->first()->price),2)}}
-                            </del>
-                        @endif
+                    @if(count($product->campaigns) != 0 && $product->campaigns->first()->end_time >
+                    Carbon\Carbon::now()->toDateTimeString() && $product->campaigns->first()->status == '1')
+                    @if(short_amount($product->campaigns->first()->pivot->discount) == 0)
+                    <span
+                        class="varient-product-price">{{show_currency()}}{{number_format(short_amount($product->price),2)}}
+                    </span>
+                    @else
+                    <span>
+                        {{show_currency()}}{{number_format(short_amount(discount($product->stock->first()?$product->stock->first()->price:$product->price,$product->campaigns->first()->pivot->discount,$product->campaigns->first()->pivot->discount_type)),2)}}
+                    </span>
+                    <del>
+                        {{show_currency()}}{{number_format(short_amount($product->stock->first()->price),2)}}
+                    </del>
+                    @endif
                     @else
 
-                        @if(($product->discount_percentage) > 0)
-                            <span>
-                                {{show_currency()}}{{short_amount(cal_discount($product->discount_percentage,$product->stock->first()->price))}}
-                            </span>
-                            <del> {{show_currency()}}{{short_amount($product->stock->first()?$product->stock->first()->price:$product->price)}}</del>
+                    @if(($product->discount_percentage) > 0)
+                    <span>
+                        {{show_currency()}}{{short_amount(cal_discount($product->discount_percentage,$product->stock->first()->price))}}
+                    </span>
+                    <del>
+                        {{show_currency()}}{{short_amount($product->stock->first()?$product->stock->first()->price:$product->price)}}</del>
 
-                            @else
-                            <span>
-                                {{show_currency()}}{{short_amount($product->stock->first()?$product->stock->first()->price:$product->price)}}
-                            </span>
+                    @else
+                    <span>
+                        {{show_currency()}}{{short_amount($product->stock->first()?$product->stock->first()->price:$product->price)}}
+                    </span>
 
-                        @endif
                     @endif
-
+                    @endif
+                    <br>
+                        <p style="font-size: 12px; color: #f0c507;">{{translate('Inclusive of taxes')}}</p>
                 </div>
 
                 <div class="product-item-summery">
@@ -171,86 +181,93 @@
                 </div>
 
                 @php
-                    $randNum = rand(5,99999999);
-                    $randNum = $randNum."details".$randNum;
+                $randNum = rand(5,99999999);
+                $randNum = $randNum."details".$randNum;
                 @endphp
 
                 <form class="attribute-options-form-{{$randNum}} quick-view-form">
 
                     <input type="hidden" name="id" value="{{ $product->id }}">
-                    @if(count($product->campaigns) != 0 && $product->campaigns->first()->end_time > Carbon\Carbon::now()->toDateTimeString() &&   $product->campaigns->first()->status == '1')
-                       <input type="hidden" name="campaign_id" value="{{ $product->campaigns->first()->id }}">
+                    @if(count($product->campaigns) != 0 && $product->campaigns->first()->end_time >
+                    Carbon\Carbon::now()->toDateTimeString() && $product->campaigns->first()->status == '1')
+                    <input type="hidden" name="campaign_id" value="{{ $product->campaigns->first()->id }}">
                     @endif
                     @foreach (json_decode($product->attributes_value) as $key => $attr_val)
-                        @php
-                            $attributeOption =  \App\Models\Attribute::find($attr_val->attribute_id);
-                        @endphp
-                        <div class="product-colors">
-                            <span> {{ $attributeOption->name }}:</span>
-                            <div class="variant">
-                                @foreach ($attr_val->values as $key => $value)
-                                    <div class="variant-item">
-                                        <input @if ($key == 0) checked @endif type="radio" class="btn-check attribute-select"   name="attribute_id[{{ $attr_val->attribute_id }}]" value="{{$value}}" id="success-outlined-{{$value}}">
-                                        <label class="btn-outline-success variant-btn" for="success-outlined-{{$value}}">   {{ $value }}</label>
-                                    </div>
-                                @endforeach
+                    @php
+                    $attributeOption = \App\Models\Attribute::find($attr_val->attribute_id);
+                    @endphp
+                    <div class="product-colors">
+                        <span> {{ $attributeOption->name }}:</span>
+                        <div class="variant">
+                            @foreach ($attr_val->values as $key => $value)
+                            <div class="variant-item">
+                                <input @if ($key==0) checked @endif type="radio" class="btn-check attribute-select"
+                                    name="attribute_id[{{ $attr_val->attribute_id }}]" value="{{$value}}"
+                                    id="success-outlined-{{$value}}">
+                                <label class="btn-outline-success variant-btn" for="success-outlined-{{$value}}"> {{
+                                    $value }}</label>
                             </div>
-                        </div>
+                            @endforeach
+                        </div> 
+                    </div>
 
                     @endforeach
 
-                    @if(count($product->campaigns) != 0 && $product->campaigns->first()->end_time > Carbon\Carbon::now()->toDateTimeString()  && $product->campaigns->first()->status == '1')
+                    @if(count($product->campaigns) != 0 && $product->campaigns->first()->end_time >
+                    Carbon\Carbon::now()->toDateTimeString() && $product->campaigns->first()->status == '1')
 
-                      <input type="hidden" name="campaign_id" value="{{$product->campaigns->first()->id}}">
+                    <input type="hidden" name="campaign_id" value="{{$product->campaigns->first()->id}}">
 
                     @endif
 
                     @php
-                       $stockQty = (int) @$product->stock->first()->qty ??  0;
+                    $stockQty = (int) @$product->stock->first()->qty ?? 0;
 
                     @endphp
 
                     <div class="stock-status" id="quick-view-stock">
                         @if($stockQty > 0)
-                            <div class="instock">
-                                <i class="fa-solid fa-circle-check"></i>
-                                <p>
-                                    {{translate("In Stock")}}
-                                </p>
-                            </div>
+                        <div class="instock">
+                            <i class="fa-solid fa-circle-check"></i>
+                            <p>
+                                {{translate("In Stock")}}
+                            </p>
+                        </div>
                         @else
-                            <div class="outstock">
-                                <i class="fas fa-times-circle"></i>
-                                <p>
-                                    {{translate("Stock out")}}
-                                </p>
-                            </div>
+                        <div class="outstock">
+                            <i class="fas fa-times-circle"></i>
+                            <p>
+                                {{translate("Stock out")}}
+                            </p>
+                        </div>
                         @endif
                     </div>
 
                     <div class="product-actions-type">
                         <div class="input-step">
                             <button type="button" class="update_qty x decrement ">–</button>
-                            <input type="number" class="product-quantity"  name="quantity" value="1" id="quantity">
+                            <input type="number" class="product-quantity" name="quantity" value="1" id="quantity">
                             <button type="button" class="update_qty y increment ">+</button>
                         </div>
 
-                        <a href="javascript:void(0)"  data-product_id = '{{$randNum }}' class="buy-now addtocartbtn">
+                        <a href="javascript:void(0)" data-product_id='{{$randNum }}' class="buy-now addtocartbtn">
                             <i class="fa-solid fa-cart-shopping"></i>
                         </a>
-                        <button data-product_id ="{{$product->id}}" class="product-details-love-btn wishlistitem">
+                        <button data-product_id="{{$product->id}}" class="product-details-love-btn wishlistitem">
                             <i class="@if(in_array($product->id,$wishedProducts))
                                 fa-solid
                             @else
                                 fa-regular
                             @endif fa-heart"></i>
                         </button>
-                        {{-- <button class="product-details-love-btn comparelist wave-btn" data-product_id="{{$product->id}}"><i class="fa-solid fa-code-compare"></i></button> --}}
+                        {{-- <button class="product-details-love-btn comparelist wave-btn"
+                            data-product_id="{{$product->id}}"><i class="fa-solid fa-code-compare"></i></button> --}}
                     </div>
-               </form>
+                </form>
 
                 <div class="product-detail-btn">
-                    <a href="javascript:void(0)" data-checkout = "yes" data-product_id = '{{$randNum }}'  class="buy-now-btn quick-buy-btn addtocartbtn">
+                    <a href="javascript:void(0)" data-checkout="yes" data-product_id='{{$randNum }}'
+                        class="buy-now-btn quick-buy-btn addtocartbtn">
                         {{translate("Buy Now")}}
                     </a>
 
@@ -286,7 +303,9 @@
                                 <h4 class="card-title mb-0">{{translate("Related Product")}}</h4>
                             </div>
                             <div>
-                                <a href="{{route('category.product', [make_slug(get_translation($product->category->name)), $product->category->id])}}" class="fs-14 view-all-btn">{{translate("view all")}} <i class="fa-solid fa-arrow-right"></i></a>
+                                <a href="{{route('category.product', [make_slug(get_translation($product->category->name)), $product->category->id])}}"
+                                    class="fs-14 view-all-btn">{{translate("view all")}} <i
+                                        class="fa-solid fa-arrow-right"></i></a>
                             </div>
                         </div>
                     </div>
@@ -294,62 +313,67 @@
                     <div class="card-body">
                         <div class="related-product">
                             @forelse($products->take(5) as $rltd_product)
-                                <div class="product-categories-list">
-                                    <div class="product-categories-list-img">
-                                        <a href="{{route('product.details',[make_slug($rltd_product->name),$rltd_product->id])}}">
-                                            <img src="{{show_image(file_path()['product']['featured']['path'].'/'.$rltd_product->featured_image,file_path()['product']['featured']['size'])}}" alt="{{$rltd_product->name}}">
-                                        </a>
-                                    </div>
+                            <div class="product-categories-list">
+                                <div class="product-categories-list-img">
+                                    <a
+                                        href="{{route('product.details',[make_slug($rltd_product->name),$rltd_product->id])}}">
+                                        <img src="{{show_image(file_path()['product']['featured']['path'].'/'.$rltd_product->featured_image,file_path()['product']['featured']['size'])}}"
+                                            alt="{{$rltd_product->name}}">
+                                    </a>
+                                </div>
 
-                                    <div class="product-info p-0">
-                                        <h4 class="product-title sidebar-title"> <a href="{{route('product.details',[make_slug($rltd_product->name),$rltd_product->id])}}">
+                                <div class="product-info p-0">
+                                    <h4 class="product-title sidebar-title"> <a
+                                            href="{{route('product.details',[make_slug($rltd_product->name),$rltd_product->id])}}">
                                             {{$rltd_product->name}}
-                                            </a>
-                                        </h4>
+                                        </a>
+                                    </h4>
 
-                                        <div class="priceAndRatting">
-                                            <div class="product-price">
-                                                @if(($rltd_product->discount_percentage) > 0)
-                                                    <span>
-                                                        {{show_currency()}}{{round(short_amount(cal_discount($rltd_product->discount_percentage,$rltd_product->stock->first()->price)))}}
-                                                    </span>  <del>
-                                                        {{show_currency()}}{{round(short_amount($rltd_product->stock->first()?$rltd_product->stock->first()->price:$rltd_product->price))}}</del>
+                                    <div class="priceAndRatting">
+                                        <div class="product-price">
+                                            @if(($rltd_product->discount_percentage) > 0)
+                                            <span>
+                                                {{show_currency()}}{{round(short_amount(cal_discount($rltd_product->discount_percentage,$rltd_product->stock->first()->price)))}}
+                                            </span> <del>
+                                                {{show_currency()}}{{round(short_amount($rltd_product->stock->first()?$rltd_product->stock->first()->price:$rltd_product->price))}}</del>
 
-                                                    @else
-                                                    <span>
-                                                        {{show_currency()}}{{round(short_amount($rltd_product->stock->first()?$rltd_product->stock->first()->price:$rltd_product->price))}}
-                                                    </span>
+                                            @else
+                                            <span>
+                                                {{show_currency()}}{{round(short_amount($rltd_product->stock->first()?$rltd_product->stock->first()->price:$rltd_product->price))}}
+                                            </span>
 
-                                                @endif
-                                            </div>
+                                            @endif
                                         </div>
-                                        @php
-                                            $rand = rand(1,10000000);
-                                            $rand  = $rand."_rltd_".$rand;
-                                        @endphp
+                                    </div>
+                                    @php
+                                    $rand = rand(1,10000000);
+                                    $rand = $rand."_rltd_".$rand;
+                                    @endphp
 
-                                        <form class="attribute-options-form-{{$rand}}">
-                                            <input type="hidden" name="id" value="{{ $rltd_product->id }}">
-                                        </form>
+                                    <form class="attribute-options-form-{{$rand}}">
+                                        <input type="hidden" name="id" value="{{ $rltd_product->id }}">
+                                    </form>
 
-                                        <div class="product-action">
-                                            <a href="javascript:void(0)" data-product_id="{{ $rand  }}" class="buy-now wave-btn addtocartbtn">
-                                                <span class="buy-now-icon"></span>
-                                                {{translate('Add to cart')}}
-                                            </a>
-                                            <button  data-product_id ="{{$rltd_product->id}}" class="heart-btn wishlistitem"><i class=" @if(in_array($rltd_product->id,$wishedProducts))
+                                    <div class="product-action">
+                                        <a href="javascript:void(0)" data-product_id="{{ $rand  }}"
+                                            class="buy-now wave-btn addtocartbtn">
+                                            <span class="buy-now-icon"></span>
+                                            {{translate('Add to cart')}}
+                                        </a>
+                                        <button data-product_id="{{$rltd_product->id}}"
+                                            class="heart-btn wishlistitem"><i class=" @if(in_array($rltd_product->id,$wishedProducts))
                                                 fa-solid
                                             @else
                                                 fa-regular
                                             @endif fa-heart"></i></button>
-                                        </div>
                                     </div>
                                 </div>
+                            </div>
                             @empty
 
-                                <div class="text-enter fs-12">
-                                    {{translate('No Products Avaialable')}}
-                                </div>
+                            <div class="text-enter fs-12">
+                                {{translate('No Products Avaialable')}}
+                            </div>
 
                             @endforelse
                         </div>
@@ -359,21 +383,29 @@
 
             <div class="col-xl-9 order-1 order-xl-2">
                 <div class="card pd-description-tab">
-                    <div  class="nav tab" id="nav-tab" role="tablist">
-                        <button class="nav-link tablinks active" id="description-tab" data-bs-toggle="tab" data-bs-target="#nav-description" type="button" role="tab" aria-controls="nav-description" aria-selected="true">
+                    <div class="nav tab" id="nav-tab" role="tablist">
+                        <button class="nav-link tablinks active" id="description-tab" data-bs-toggle="tab"
+                            data-bs-target="#nav-description" type="button" role="tab" aria-controls="nav-description"
+                            aria-selected="true">
                             {{translate("Description")}}
                         </button>
-                        <button class="nav-link tablinks " id="reviews-tab" data-bs-toggle="tab" data-bs-target="#nav-reviews" type="button" role="tab" aria-controls="nav-reviews" aria-selected="false">
+                        <button class="nav-link tablinks " id="reviews-tab" data-bs-toggle="tab"
+                            data-bs-target="#nav-reviews" type="button" role="tab" aria-controls="nav-reviews"
+                            aria-selected="false">
                             {{translate("Reviews")}}
                         </button>
 
                         @if($product->warranty_policy)
-                            <button class="nav-link tablinks " id="warranty-tab" data-bs-toggle="tab" data-bs-target="#nav-warranty" type="button" role="tab" aria-controls="nav-warranty" aria-selected="false">
-                                {{translate("Warranty Policy")}}
-                            </button>
+                        <button class="nav-link tablinks " id="warranty-tab" data-bs-toggle="tab"
+                            data-bs-target="#nav-warranty" type="button" role="tab" aria-controls="nav-warranty"
+                            aria-selected="false">
+                            {{translate("Warranty Policy")}}
+                        </button>
                         @endif
 
-                        <button class="nav-link tablinks" id="shipping-tab" data-bs-toggle="tab" data-bs-target="#nav-shipping" type="button" role="tab" aria-controls="nav-shipping" aria-selected="false">
+                        <button class="nav-link tablinks" id="shipping-tab" data-bs-toggle="tab"
+                            data-bs-target="#nav-shipping" type="button" role="tab" aria-controls="nav-shipping"
+                            aria-selected="false">
 
                             {{translate("Shipping Information")}}
                         </button>
@@ -382,9 +414,10 @@
 
 
                     <div class="tab-content pd-description" id="nav-tabContent">
-                        <div class="tab-pane fade show active" id="nav-description" role="tabpanel" aria-labelledby="description-tab">
+                        <div class="tab-pane fade show active" id="nav-description" role="tabpanel"
+                            aria-labelledby="description-tab">
                             <div class="description-content fs-14">
-                               @php echo $product->description @endphp
+                                @php echo $product->description @endphp
                             </div>
                         </div>
 
@@ -402,13 +435,15 @@
                                                     <div class="d-flex align-items-center">
                                                         <div class="flex-grow-1">
                                                             <div class="ratting mb-0">
-                                                                @php echo show_ratings($product->review->avg('rating')) @endphp
+                                                                @php echo show_ratings($product->review->avg('rating'))
+                                                                @endphp
                                                             </div>
                                                         </div>
 
                                                         <div class="flex-shrink-0">
                                                             <p class="mb-0 fs-14">
-                                                            {{round($product->review->avg('rating'))}}  {{translate('out of 5')}}   </p>
+                                                                {{round($product->review->avg('rating'))}}
+                                                                {{translate('out of 5')}} </p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -416,7 +451,7 @@
                                                 <div class="text-center mt-3">
                                                     <div class="text-muted fs-14">{{translate("Total")}}
                                                         <span class="fw-medium">
-                                                        {{$product->review->count()}}
+                                                            {{$product->review->count()}}
                                                         </span> {{translate('Reviews')}}
                                                     </div>
                                                 </div>
@@ -424,29 +459,31 @@
 
                                             <div class="mt-3">
                                                 @for( $i = 5 ; $i>0 ; $i-- )
-                                                    <div class="row align-items-center g-2">
-                                                        <div class="col-auto">
-                                                            <div class="p-2">
-                                                                <h6 class="mb-0 fs-14">{{$i}} {{translate('star')}}</h6>
-                                                            </div>
+                                                <div class="row align-items-center g-2">
+                                                    <div class="col-auto">
+                                                        <div class="p-2">
+                                                            <h6 class="mb-0 fs-14">{{$i}} {{translate('star')}}</h6>
                                                         </div>
+                                                    </div>
 
-                                                        <div class="col">
-                                                            <div class="p-2">
-                                                                <div class="progress progress-sm">
-                                                                    <div class="progress-bar ratting-progres-{{$i}}" role="progressbar" aria-valuenow="50.16" aria-valuemin="0" aria-valuemax="100"></div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-auto">
-                                                            <div class="p-2">
-                                                                <span class="mb-0 text-muted fs-14">
-                                                                    {{$product->review->where('rating',$i)->count()}}
-                                                                </span>
+                                                    <div class="col">
+                                                        <div class="p-2">
+                                                            <div class="progress progress-sm">
+                                                                <div class="progress-bar ratting-progres-{{$i}}"
+                                                                    role="progressbar" aria-valuenow="50.16"
+                                                                    aria-valuemin="0" aria-valuemax="100"></div>
                                                             </div>
                                                         </div>
                                                     </div>
+
+                                                    <div class="col-auto">
+                                                        <div class="p-2">
+                                                            <span class="mb-0 text-muted fs-14">
+                                                                {{$product->review->where('rating',$i)->count()}}
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
 
                                                 @endfor
                                             </div>
@@ -456,13 +493,16 @@
 
                                         @endphp
 
-                                        @if(auth()->user() && product_add_review($product->id, auth()->user()->id) && !in_array( auth()->user()->id ,@$product->review->pluck('user_id')->toArray() ?? []))
+                                        @if(auth()->user() && product_add_review($product->id, auth()->user()->id) &&
+                                        !in_array( auth()->user()->id ,@$product->review->pluck('user_id')->toArray() ??
+                                        []))
 
-                                            <div class="mt-4  text-center">
-                                                <button type="button" class="AddReview-btn" data-bs-toggle="modal" data-bs-target="#addReviewModal">
-                                                    {{translate("Add Your Review")}}
-                                                </button>
-                                            </div>
+                                        <div class="mt-4  text-center">
+                                            <button type="button" class="AddReview-btn" data-bs-toggle="modal"
+                                                data-bs-target="#addReviewModal">
+                                                {{translate("Add Your Review")}}
+                                            </button>
+                                        </div>
                                         @endif
 
 
@@ -470,66 +510,69 @@
                                 </div>
                                 @if($product->review->isNotEmpty())
 
-                                     <div class="position-relative">
+                                <div class="position-relative">
 
-                                        <div class="previous-reviews">
+                                    <div class="previous-reviews">
 
-                                        </div>
-
-                                        <div class="load-more-loader spinner-loader d-none">
-                                            <div class="spinner-border text-dark" role="status">
-                                                <span class="visually-hidden"></span>
-                                             </div>
-                                        </div>
-
-                                        <div class="d-flex align-items-center justify-content-center w-100 mt-5 mb-2 load-more-div d-none">
-                                            <button class="view-more-btn justify-content-center load-more-review">
-                                            {{translate("Load More")}}
-                                            </button>
-                                        </div>
-
-
-                                     </div>
-                                @else
-                                    <div class="text-center py-5">
-                                        <p>{{$product->review->count()}} {{translate('Review for')}} {{($product->name)}}</p>
                                     </div>
+
+                                    <div class="load-more-loader spinner-loader d-none">
+                                        <div class="spinner-border text-dark" role="status">
+                                            <span class="visually-hidden"></span>
+                                        </div>
+                                    </div>
+
+                                    <div
+                                        class="d-flex align-items-center justify-content-center w-100 mt-5 mb-2 load-more-div d-none">
+                                        <button class="view-more-btn justify-content-center load-more-review">
+                                            {{translate("Load More")}}
+                                        </button>
+                                    </div>
+
+
+                                </div>
+                                @else
+                                <div class="text-center py-5">
+                                    <p>{{$product->review->count()}} {{translate('Review for')}} {{($product->name)}}
+                                    </p>
+                                </div>
                                 @endif
                             </div>
                         </div>
 
                         @if($product->warranty_policy)
-                            <div class="tab-pane fade " id="nav-warranty" role="tabpanel" aria-labelledby="warranty-tab">
-                                <div class="description-content">
-                                    {{ $product->warranty_policy }}
-                                </div>
+                        <div class="tab-pane fade " id="nav-warranty" role="tabpanel" aria-labelledby="warranty-tab">
+                            <div class="description-content">
+                                {{ $product->warranty_policy }}
                             </div>
+                        </div>
                         @endif
 
                         <div class="tab-pane fade" id="nav-shipping" role="tabpanel" aria-labelledby="shipping-tab">
                             <div class="shipping-information">
                                 @if($product->shippingDelivery)
 
-                                    <div class="deliver-location">
-                                        <label for="shipping-country" class="shipping-country form-label">
-                                            {{translate("Shipping Zone")}}
-                                        </label>
+                                <div class="deliver-location">
+                                    <label for="shipping-country" class="shipping-country form-label">
+                                        {{translate("Shipping Zone")}}
+                                    </label>
 
-                                        <select class="form-select" id="shipping-country">
-                                            <option>
-                                                {{translate("Select A Zone")}}
-                                            </option>
-                                            @foreach($product->shippingDelivery as $country)
-                                            <option value="{{@$country->shippingDelivery->name}}">{{(@$country->shippingDelivery->name)}}</option>
-                                            @endforeach
-                                        </select>
+                                    <select class="form-select" id="shipping-country">
+                                        <option>
+                                            {{translate("Select A Zone")}}
+                                        </option>
+                                        @foreach($product->shippingDelivery as $country)
+                                        <option value="{{@$country->shippingDelivery->name}}">
+                                            {{(@$country->shippingDelivery->name)}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+
+                                <div id="shipping-information">
+                                    <div class="service-standard">
+
                                     </div>
-
-                                    <div id="shipping-information">
-                                        <div class="service-standard">
-
-                                        </div>
-                                    </div>
+                                </div>
                                 @endif
                             </div>
                         </div>
@@ -542,19 +585,21 @@
 </section>
 
 @php
-    $top_product_section = frontend_section('top-products');
+$top_product_section = frontend_section('top-products');
 @endphp
 
-@includeWhen($top_product_section->status == '1', 'frontend.section.top_product', ['top_product_section' => $top_product_section])
+@includeWhen($top_product_section->status == '1', 'frontend.section.top_product', ['top_product_section' =>
+$top_product_section])
 
 <div class="modal fade" id="addReviewModal" tabindex="-1" aria-labelledby="addReviewModal" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" >
+                <h5 class="modal-title">
                     {{translate("Add Review")}}
                 </h5>
-                <button type="button" class="btn btn-light fs-14 modal-closer rounded-circle" data-bs-dismiss="modal"><i class="fa-solid fa-xmark"></i></button>
+                <button type="button" class="btn btn-light fs-14 modal-closer rounded-circle" data-bs-dismiss="modal"><i
+                        class="fa-solid fa-xmark"></i></button>
             </div>
             <div class="modal-body">
                 <div class="add-review">
@@ -591,7 +636,7 @@
 
 @push('scriptpush')
 <script>
-"use strict"
+    "use strict"
 
 
 $(document).on('change','#shipping-country',function(e){
