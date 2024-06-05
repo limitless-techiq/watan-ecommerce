@@ -332,23 +332,31 @@
                                             {{$rltd_product->name}}
                                         </a>
                                     </h4>
-
                                     <div class="priceAndRatting">
                                         <div class="product-price">
                                             @if(($rltd_product->discount_percentage) > 0)
                                             <span>
-                                                {{show_currency()}}{{round(short_amount(cal_discount($rltd_product->discount_percentage,$rltd_product->stock->first()->price)))}}
-                                            </span> <del>
-                                                {{show_currency()}}{{round(short_amount($rltd_product->stock->first()?$rltd_product->stock->first()->price:$rltd_product->price))}}</del>
-
+                                                {{ show_currency() }}{{
+                                                number_format(short_amount(cal_discount($rltd_product->discount_percentage,
+                                                $rltd_product->stock->first()->price)), 2, '.', ',') }}
+                                            </span>
+                                            <del>
+                                                {{ show_currency() }}{{
+                                                number_format(short_amount($rltd_product->stock->first() ?
+                                                $rltd_product->stock->first()->price : $rltd_product->price), 2, '.',
+                                                ',') }}
+                                            </del>
                                             @else
                                             <span>
-                                                {{show_currency()}}{{round(short_amount($rltd_product->stock->first()?$rltd_product->stock->first()->price:$rltd_product->price))}}
+                                                {{ show_currency() }}{{
+                                                number_format(short_amount($rltd_product->stock->first() ?
+                                                $rltd_product->stock->first()->price : $rltd_product->price), 2, '.',
+                                                ',') }}
                                             </span>
-
                                             @endif
                                         </div>
                                     </div>
+
                                     @php
                                     $rand = rand(1,10000000);
                                     $rand = $rand."_rltd_".$rand;

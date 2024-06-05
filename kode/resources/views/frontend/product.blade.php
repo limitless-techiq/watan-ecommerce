@@ -74,7 +74,8 @@
                                         </select>
                                     </div>
                                 </form>
-                                {{-- <p class="fs-14">{{translate('Showing')}} {{$products->firstItem()}} {{translate('of')}}
+                                {{-- <p class="fs-14">{{translate('Showing')}} {{$products->firstItem()}}
+                                    {{translate('of')}}
                                     {{$products->lastItem()}} {{translate('of')}} {{$products->total()}}
                                     {{translate('Results')}}</p> --}}
                             </div>
@@ -132,22 +133,25 @@
                                         <div class="product-price">
                                             @if(($product->discount_percentage) > 0)
                                             <span>
-                                                {{show_currency()}}{{short_amount(cal_discount($product->discount_percentage,$product->stock->first()->price))}}
+                                                {{ show_currency() }}{{
+                                                number_format(short_amount(cal_discount($product->discount_percentage,
+                                                $product->stock->first()->price)), 2, '.', ',') }}
                                             </span>
-
                                             <del>
-                                                {{show_currency()}}{{short_amount($product->stock->first()?$product->stock->first()->price:$product->price)}}
+                                                {{ show_currency() }}{{
+                                                number_format(short_amount($product->stock->first() ?
+                                                $product->stock->first()->price : $product->price), 2, '.', ',') }}
                                             </del>
-
                                             @else
                                             <span>
-                                                {{show_currency()}}{{short_amount($product->stock->first()?$product->stock->first()->price:$product->price)}}
+                                                {{ show_currency() }}{{
+                                                number_format(short_amount($product->stock->first() ?
+                                                $product->stock->first()->price : $product->price), 2, '.', ',') }}
                                             </span>
-
                                             @endif
                                         </div>
-
                                     </div>
+
 
                                     @php
                                     $authUser = auth_user('web');
