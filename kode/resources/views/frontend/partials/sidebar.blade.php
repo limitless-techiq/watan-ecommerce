@@ -257,12 +257,12 @@
                                     </div>
                                     <div class="formCost d-flex gap-2 align-items-center">
                                         <input class="form-control form-control-sm" name="search_min"
-                                            id="skip-value-lower-1" type="number"
+                                            id="skip-value-lower-1" type="text"
                                             value="{{ number_format($search_min, 2, '.', ',') }}"
                                             min="{{ $search_min }}" max="{{ $search_max }}" />
                                         <span class="text-muted fs-14">{{ translate('to') }}</span>
                                         <input class="form-control form-control-sm" name="search_max"
-                                            id="skip-value-upper-1" type="number"
+                                            id="skip-value-upper-1" type="text"
                                             value="{{ number_format($search_max, 2, '.', ',') }}"
                                             min="{{ $search_min }}" max="{{ $search_max }}" />
                                     </div>
@@ -270,9 +270,8 @@
                                 <button type="submit" class="address-btn wave-btn w-100">{{ translate('filter')
                                     }}</button>
                             </form>
-                            </p>
-
                         </div>
+
                         <div class="py-4">
                             <span class="text-uppercase fs-13 fw-semibold filter-by">
                                 {{translate('Brands')}}
