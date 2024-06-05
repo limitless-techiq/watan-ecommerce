@@ -58,8 +58,8 @@
                             {{show_currency()}}{{short_amount($product->stock->first()?$product->stock->first()->price:$product->price)}}
                         </span>
                     @endif
-                    <br>
-                    <p style="font-size: 12px; color: #f0c507;">{{translate('Inclusive of taxes')}}</p>
+                    {{-- <br>
+                    <p style="font-size: 12px; color: #f0c507;">{{translate('Inclusive of taxes')}}</p> --}}
                 </div>
             </div>
         </div>

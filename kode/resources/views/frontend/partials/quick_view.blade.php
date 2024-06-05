@@ -53,6 +53,8 @@
 
                     @endif
             @endif
+            <br>
+            <p style="font-size: 12px; color: #f0c507;">{{translate('Inclusive of taxes')}}</p>
         </div>
         <div class="product-item-summery">
             @php echo $product->short_description @endphp
