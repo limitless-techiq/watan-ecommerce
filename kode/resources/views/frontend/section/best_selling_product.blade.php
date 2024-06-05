@@ -56,20 +56,19 @@
                                     <div class="product-price">
                                         @if(($product->discount_percentage) > 0)
                                             <span>
-                                                {{ show_currency() }}{{ number_format(short_amount(cal_discount($product->discount_percentage, $product->stock->first()->price)), 2, '.', ',') }}
-                                            </span>
-                                            <del>
-                                                {{ show_currency() }}{{ number_format(short_amount($product->stock->first() ? $product->stock->first()->price : $product->price), 2, '.', ',') }}
-                                            </del>
-                                        @else
+                                                {{show_currency()}}{{short_amount(cal_discount($product->discount_percentage,$product->stock->first()->price))}}
+                                            </span>  <del>
+                                                {{show_currency()}}{{short_amount($product->stock->first()?$product->stock->first()->price:$product->price)}}</del>
+
+                                            @else
                                             <span>
-                                                {{ show_currency() }}{{ number_format(short_amount($product->stock->first() ? $product->stock->first()->price : $product->price), 2, '.', ',') }}
+                                                {{show_currency()}}{{short_amount($product->stock->first()?$product->stock->first()->price:$product->price)}}
                                             </span>
+
                                         @endif
-                                        {{-- <p style="font-size: 12px; color: #f0c507;">{{ translate('Inclusive of taxes') }}</p> --}}
+                                        {{-- <p style="font-size: 12px; color: #f0c507;">{{translate('Inclusive of taxes')}}</p> --}}
                                     </div>
                                 </div>
-                                
                                 <h4 class="product-title">
                                     <a href="{{route('product.details',[make_slug($product->name),$product->id])}}">{{$product->name}}</a>
                                 </h4>
