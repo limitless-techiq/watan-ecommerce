@@ -140,40 +140,44 @@
                         {{translate('Orders')}}
                     </small>
                 </div>
-
                 <div class="product-price price-section">
                     @if(count($product->campaigns) != 0 && $product->campaigns->first()->end_time >
                     Carbon\Carbon::now()->toDateTimeString() && $product->campaigns->first()->status == '1')
                     @if(short_amount($product->campaigns->first()->pivot->discount) == 0)
-                    <span
-                        class="varient-product-price">{{show_currency()}}{{number_format(short_amount($product->price),2)}}
+                    <span class="varient-product-price">
+                        {{ show_currency() }}{{ number_format(short_amount($product->price), 2, '.', ',') }}
                     </span>
                     @else
                     <span>
-                        {{show_currency()}}{{number_format(short_amount(discount($product->stock->first()?$product->stock->first()->price:$product->price,$product->campaigns->first()->pivot->discount,$product->campaigns->first()->pivot->discount_type)),2)}}
+                        {{ show_currency() }}{{ number_format(short_amount(discount($product->stock->first() ?
+                        $product->stock->first()->price : $product->price,
+                        $product->campaigns->first()->pivot->discount,
+                        $product->campaigns->first()->pivot->discount_type)), 2, '.', ',') }}
                     </span>
                     <del>
-                        {{show_currency()}}{{number_format(short_amount($product->stock->first()->price),2)}}
+                        {{ show_currency() }}{{ number_format(short_amount($product->stock->first()->price), 2, '.',
+                        ',') }}
                     </del>
                     @endif
                     @else
-
                     @if(($product->discount_percentage) > 0)
                     <span>
-                        {{show_currency()}}{{short_amount(cal_discount($product->discount_percentage,$product->stock->first()->price))}}
+                        {{ show_currency() }}{{ number_format(short_amount(cal_discount($product->discount_percentage,
+                        $product->stock->first()->price)), 2, '.', ',') }}
                     </span>
                     <del>
-                        {{show_currency()}}{{short_amount($product->stock->first()?$product->stock->first()->price:$product->price)}}</del>
-
+                        {{ show_currency() }}{{ number_format(short_amount($product->stock->first() ?
+                        $product->stock->first()->price : $product->price), 2, '.', ',') }}
+                    </del>
                     @else
                     <span>
-                        {{show_currency()}}{{short_amount($product->stock->first()?$product->stock->first()->price:$product->price)}}
+                        {{ show_currency() }}{{ number_format(short_amount($product->stock->first() ?
+                        $product->stock->first()->price : $product->price), 2, '.', ',') }}
                     </span>
-
                     @endif
                     @endif
                     <br>
-                        <p style="font-size: 12px; color: #f0c507;">{{translate('Inclusive of taxes')}}</p>
+                    <p style="font-size: 12px; color: #f0c507;">{{ translate('Inclusive of taxes') }}</p>
                 </div>
 
                 <div class="product-item-summery">
@@ -208,7 +212,7 @@
                                     $value }}</label>
                             </div>
                             @endforeach
-                        </div> 
+                        </div>
                     </div>
 
                     @endforeach
