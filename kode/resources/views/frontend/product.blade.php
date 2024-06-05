@@ -74,9 +74,9 @@
                                         </select>
                                     </div>
                                 </form>
-                                <p class="fs-14">{{translate('Showing')}} {{$products->firstItem()}} {{translate('of')}}
+                                {{-- <p class="fs-14">{{translate('Showing')}} {{$products->firstItem()}} {{translate('of')}}
                                     {{$products->lastItem()}} {{translate('of')}} {{$products->total()}}
-                                    {{translate('Results')}}</p>
+                                    {{translate('Results')}}</p> --}}
                             </div>
                         </div>
                     </div>
