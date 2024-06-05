@@ -288,17 +288,17 @@
                                 </select>
                             </div>
 
-                            <div class="mt-2">
+                            {{-- <div class="mt-2">
                                 <label for="subcategory_id" class="form-label">{{translate('Sub Category')}}</label>
                                 <select name="subcategory_id" id="subcategory_id" class="form-select" >
                                     <option value="">{{translate('--Select One--')}}</option>
                                 </select>
-                            </div>
+                            </div> --}}
                         </div>
 
                     </div>
 
-                    <div class="card">
+                    {{-- <div class="card">
                         <div class="card-header border-bottom-dashed">
                             <h5 class="card-title mb-0">
                                 {{translate("Product Brand")}}
@@ -317,7 +317,7 @@
                             </div>
                         </div>
 
-                    </div>
+                    </div> --}}
 
                     <div class="card">
                         <div class="card-header border-bottom-dashed">
