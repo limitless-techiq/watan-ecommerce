@@ -66,7 +66,8 @@
                             <td class="text-center">
                                 
                                 <span class="item-product-amount">
-                                    {{show_currency()}}{{short_amount($data->price)*$data->quantity}}
+                                    {{ show_currency() . number_format(short_amount($data->price) * $data->quantity, 2, '.', ',') }}
+
                                 </span>
     
                             </td>
@@ -95,7 +96,8 @@
                         <td></td>
                         <td></td>
                         <td class="text-end text-muted">
-                            {{show_currency()}} <span id="subtotalamount"> {{short_amount($subtotal)}}</span>
+                            {{ show_currency() }} <span id="subtotalamount">{{ number_format(short_amount($subtotal), 2, '.', ',') }}</span>
+
                         </td>
                     </tr>
     
@@ -105,7 +107,8 @@
                         <td></td>
                         <td></td>
                         <td class="text-end">
-                            {{show_currency()}} <span id="totalamount"> {{short_amount($subtotal)}}</span>
+                            {{ show_currency() }} <span id="totalamount">{{ number_format(short_amount($subtotal), 2, '.', ',') }}</span>
+
                         </td>
                     </tr>
                 @endif
