@@ -23,24 +23,21 @@ class CartController extends Controller
 
         $status=$user->status;
 
-        if($status=='0')
-        {
-            return redirect()->route('home')->with('error',translate("Your account has not been verified yet. Contact support."));        
-        }
+        return $status;
 
-        $validator = Validator::make($request->all(), [
-            'id' => 'required|exists:products,id',
-        ],[
-            'product_id.required' => "Product must be selected",
-            'product_id.exists' => "Product doesn't exists",
-        ]);
+        // $validator = Validator::make($request->all(), [
+        //     'id' => 'required|exists:products,id',
+        // ],[
+        //     'product_id.required' => "Product must be selected",
+        //     'product_id.exists' => "Product doesn't exists",
+        // ]);
         
-        if ($validator->fails()) {
-            return response()->json(['validation' => $validator->errors()]);
-        }
+        // if ($validator->fails()) {
+        //     return response()->json(['validation' => $validator->errors()]);
+        // }
 
-        $response = $this->productService->addToCart($request);
-        return response()->json($response);
+        // $response = $this->productService->addToCart($request);
+        // return response()->json($response);
     }
 
     public function getCartData()
@@ -91,7 +88,7 @@ class CartController extends Controller
         {
             return redirect()->route('home')->with('error',translate("Your account has not been verified yet. Contact support."));        
         }
-        
+
         $this->validate($request,[
             'id' => 'required|exists:carts,id',
             'quantity' => 'required|integer|min:0',
