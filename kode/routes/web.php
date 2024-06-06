@@ -99,11 +99,11 @@ Route::middleware($globalMiddleware)->group(function () {
         //Quick view
         Route::get('/quick/view/item', [FrontendController::class, 'quickview'])->name('quick.view.item');
 
-        Route::middleware(['auth','checkUserStatus'])->group(function () {
+        
             //Cart
             Route::post('cart/store', [CartController::class, 'store'])->name('cart.store');
             Route::post('cart/update', [CartController::class, 'updateCart'])->name('cart.update');
-        });
+        
             Route::get('cart/data/get', [CartController::class, 'getCartData'])->name('cart.data.get');
             Route::get('cart/total/item', [CartController::class, 'cartTotalItem'])->name('cart.total.item');
             Route::get('cart/total/amount', [CartController::class, 'totalCartAmount'])->name('cart.total.amount');

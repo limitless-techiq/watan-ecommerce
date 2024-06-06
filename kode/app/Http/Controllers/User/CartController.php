@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\Cart;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Services\Frontend\ProductService;
+use Illuminate\Support\Facades\Auth;
+
 class CartController extends Controller
 {
     public $productService;
@@ -17,7 +19,14 @@ class CartController extends Controller
 
     public function store(Request $request)
     {
+        $user=Auth::user();
 
+        $status=$user->status;
+
+        if($status==0)
+        {
+            return redirect()->route('home')->with('error',translate("Your account has not been verified yet. Contact support."));        
+        }
 
         $validator = Validator::make($request->all(), [
             'id' => 'required|exists:products,id',
