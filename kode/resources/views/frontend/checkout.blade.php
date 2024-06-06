@@ -507,7 +507,8 @@
                                                         </div>
                                                   </div>
                                                 </td>
-                                                <td class="text-end nowrap">{{show_currency()}}{{short_amount($data->total)}}</td>
+                                                <td class="text-end nowrap">{{ show_currency() }}{{ number_format($data->total, 2) }}
+                                                </td>
                                             </tr>
                                             @php
                                               $subTotal += ($data->total);
