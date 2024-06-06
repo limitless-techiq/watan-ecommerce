@@ -99,16 +99,17 @@ Route::middleware($globalMiddleware)->group(function () {
         //Quick view
         Route::get('/quick/view/item', [FrontendController::class, 'quickview'])->name('quick.view.item');
 
-        // Route::middleware(['checkUserStatus'])->group(function () {
-        //     //Cart
+        Route::middleware(['checkUserStatus'])->group(function () {
+            //Cart
             Route::post('cart/store', [CartController::class, 'store'])->name('cart.store')->middleware('checkUserStatus');
             Route::post('cart/update', [CartController::class, 'updateCart'])->name('cart.update')->middleware('checkUserStatus');
+        });
             Route::get('cart/data/get', [CartController::class, 'getCartData'])->name('cart.data.get');
             Route::get('cart/total/item', [CartController::class, 'cartTotalItem'])->name('cart.total.item');
             Route::get('cart/total/amount', [CartController::class, 'totalCartAmount'])->name('cart.total.amount');
             Route::post('cart/delete', [CartController::class, 'delete'])->name('cart.delete');
             Route::get('/view/cart', [CartController::class, 'viewCart'])->name('cart.view');
-        // });
+        
 
         Route::get('/product/live-search', [FrontendController::class, 'productLiveSearch'])->name('product.live.search');
         Route::post('/product/stock', [FrontendController::class, 'productStock'])->name('product.stock.price');
