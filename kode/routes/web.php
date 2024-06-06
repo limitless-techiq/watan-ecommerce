@@ -99,7 +99,7 @@ Route::middleware($globalMiddleware)->group(function () {
         //Quick view
         Route::get('/quick/view/item', [FrontendController::class, 'quickview'])->name('quick.view.item');
 
-        Route::middleware(['checkUserStatus'])->group(function () {
+        Route::middleware(['auth','checkUserStatus'])->group(function () {
             //Cart
             Route::post('cart/store', [CartController::class, 'store'])->name('cart.store');
             Route::post('cart/update', [CartController::class, 'updateCart'])->name('cart.update');
