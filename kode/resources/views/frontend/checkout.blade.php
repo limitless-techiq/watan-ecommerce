@@ -537,7 +537,8 @@
                                 <li class="d-flex align-items-center justify-content-between gap-4 subtotal">
                                     <span class="fw-semibold ps-4 py-4  fs-14 nowrap">
                                         {{translate("Sub Total")}}:</span>
-                                    <span class="fw-semibold text-end pe-4 py-3  fs-14 nowrap" data-sub ="{{$subTotal}}" id="subtotalamount" >{{show_currency()}}{{$subTotal}}</span>
+                                    <span class="fw-semibold text-end pe-4 py-3  fs-14 nowrap" data-sub ="{{$subTotal}}" id="subtotalamount" >{{ show_currency() }}{{ number_format($subTotal, 2) }}
+                                    </span>
                                 </li>
 
                                 <li class="order-coupon-item d-flex align-items-center justify-content-between gap-4 @if(!session()->has('coupon')) d-none @endif">
