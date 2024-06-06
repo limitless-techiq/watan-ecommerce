@@ -503,7 +503,7 @@
                                                                 {{limit_words($data->product->name,2)}}
                                                                 </a>
                                                             </h4>
-                                                            <p class="text-muted fs-12 lh-1">{{show_currency()}}{{short_amount($data->price, 2, '.', ',')}} x {{$data->quantity}}  ({{$data->attributes_value}}) </p>
+                                                            <p class="text-muted fs-12 lh-1">{{show_currency()}}{{short_amount($data->price, 2, '.', ',')}} x {{$data->quantity}}  ({{$data->attributes_value, 2, '.', ','}}) </p>
                                                         </div>
                                                   </div>
                                                 </td>
