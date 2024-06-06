@@ -3,7 +3,7 @@
 
 <div class="breadcrumb-banner">
     <div class="breadcrumb-banner-img">
-        <img src="{{show_image(file_path()['frontend']['path'].'/'.@frontend_section_data($breadcrumb->value,'image'),@frontend_section_data($breadcrumb->value,'image','size'))}}" alt="breadcrumb.jpg">
+        <img src="" alt="breadcrumb.jpg">
     </div>  
     <div class="page-Breadcrumb">
         <div class="Container">
