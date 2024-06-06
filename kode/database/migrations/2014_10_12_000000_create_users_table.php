@@ -25,7 +25,7 @@ return new class extends Migration
             $table->text('address')->nullable();
             $table->string('google_id')->nullable();
             $table->string('password');
-            $table->enum('status',[0,1])->default(1)->comment('Active : 1,Inactive : 0');
+            $table->enum('status',[0,1])->default(0)->comment('Active : 1,Inactive : 0');
             $table->rememberToken();
             $table->timestamps();
         });

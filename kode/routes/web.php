@@ -161,12 +161,10 @@ Route::middleware($globalMiddleware)->group(function () {
                 Route::get('/product/wish/list', [WishListController::class, 'store'])->name('wish.item.store');
                 Route::post('/product/wish/delete', [WishListController::class, 'delete'])->name('wish.item.delete');
 
-                Route::get('checkout/{productId?}', [CheckoutController::class, 'checkout'])->name('checkout')->withoutMiddleware(['auth', 'checkUserStatus'])->middleware(['guest.checkout']);
-                Route::post('order', [CheckoutController::class, 'order'])->name('order')->withoutMiddleware(['auth', 'checkUserStatus'])->middleware(['guest.checkout']);
-
-                Route::get('payment/preview', [PaymentController::class, 'preview'])->name('payment.preview')->withoutMiddleware(['auth', 'checkUserStatus'])->middleware(['guest.checkout']);
-                Route::get('payment/confirm', [PaymentController::class, 'paymentConfirm'])->name('payment.confirm')->withoutMiddleware(['auth', 'checkUserStatus'])->middleware(['guest.checkout']);
-
+                Route::get('checkout/{productId?}', [CheckoutController::class, 'checkout'])->name('checkout')->middleware(['auth', 'checkUserStatus']);
+                Route::post('order', [CheckoutController::class, 'order'])->name('order')->middleware(['auth', 'checkUserStatus']);
+                Route::get('payment/preview', [PaymentController::class, 'preview'])->name('payment.preview')->middleware(['auth', 'checkUserStatus']);
+                Route::get('payment/confirm', [PaymentController::class, 'paymentConfirm'])->name('payment.confirm')->middleware(['auth', 'checkUserStatus']);
 
                 Route::post('digital/product/order', [DigitalProductOrderController::class, 'store'])->name('digital.product.order')->withoutMiddleware(['auth', 'checkUserStatus'])->middleware(['guest.checkout']);
 
