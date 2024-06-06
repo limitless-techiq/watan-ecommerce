@@ -26,7 +26,6 @@ class CartController extends Controller
             'id.exists' => "Product doesn't exist",
         ]);
         
-        // إضافة تحقق من حالة المستخدم
         $validator->after(function ($validator) use ($request) {
             $user = Auth::user();
             if ($user->status != 1) {
@@ -82,21 +81,37 @@ class CartController extends Controller
 
 
     public function updateCart(Request $request)
-    {
-        $user=Auth::user();
+    {   
+        // $this->validate($request,[
+        //     'id' => 'required|exists:carts,id',
+        //     'quantity' => 'required|integer|min:0',
+        // ]);
 
-        $status=$user->status;
 
-        if($status=='0')
-        {
-            return response()->json(['validation' => translate("Your account has not been verified yet. Contact support.")]);    
-        }
-        
-        $this->validate($request,[
+        // return $this->productService->updateCartItem($request);
+
+        $this->validate($request, [
             'id' => 'required|exists:carts,id',
             'quantity' => 'required|integer|min:0',
         ]);
+
+        $validator = Validator::make($request->all(), [
+            'id' => 'required|exists:carts,id',
+            'quantity' => 'required|integer|min:0',
+        ]);
+
+        $validator->after(function ($validator) {
+            $user = Auth::user();
+            if ($user->status != 1) {
+                $validator->errors()->add('user_status', 'Your account is not verified. Please contact support.');
+            }
+        });
+
+        if ($validator->fails()) {
+            return response()->json(['validation' => $validator->errors()]);
+        }
+
         return $this->productService->updateCartItem($request);
-    }
+        }
 
 }
