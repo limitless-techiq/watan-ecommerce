@@ -507,7 +507,7 @@
                                                         </div>
                                                   </div>
                                                 </td>
-                                                <td class="text-end nowrap">{{show_currency()}}{{short_amount($data->total)}}</td>
+                                                <td class="text-end nowrap">{{ show_currency() }}{{ number_format($data->total, 2) }}</td>
                                             </tr>
                                             @php
                                               $subTotal += ($data->total);
@@ -537,7 +537,8 @@
                                 <li class="d-flex align-items-center justify-content-between gap-4 subtotal">
                                     <span class="fw-semibold ps-4 py-4  fs-14 nowrap">
                                         {{translate("Sub Total")}}:</span>
-                                    <span class="fw-semibold text-end pe-4 py-3  fs-14 nowrap" data-sub ="{{$subTotal}}" id="subtotalamount" >{{show_currency()}}{{$subTotal}}</span>
+                                    <span class="fw-semibold text-end pe-4 py-3  fs-14 nowrap" data-sub ="{{$subTotal}}" id="subtotalamount" >{{ show_currency() }}{{ number_format($subTotal, 2) }}
+                                    </span>
                                 </li>
 
                                 <li class="order-coupon-item d-flex align-items-center justify-content-between gap-4 @if(!session()->has('coupon')) d-none @endif">
@@ -560,7 +561,8 @@
                                     <h6 class="ps-4 py-3 nowrap fs-14 fw-bold">{{translate("Total")}} :</h6>
                                     <span class="text-end pe-4 py-3 nowrap fs-14">
                                        <span id="totalamount" class="fw-bold">
-                                          {{show_currency()}}{{$subTotal - @session()->get('coupon')['amount']}}
+                                          {{-- {{show_currency()}}{{$subTotal - @session()->get('coupon')['amount']}} --}}
+                                          {{ show_currency() }}{{ number_format($subTotal, 2) }}
                                         </span>
                                     </span>
                                 </li>

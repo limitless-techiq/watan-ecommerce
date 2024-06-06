@@ -225,6 +225,7 @@
                                 </div>
                                 <div class="d-flex flex-column">
                                     <span class="each-action-item-sub">{{translate('Your Cart:')}}</span>
+                                    {{-- يوجد مشكلة بالفواصل هنا  --}}
                                     <p id="total-cart-amount"></p>
                                 </div>
                                 <div class="cart-dropdown addtocart-dropdown cart--itemlist">
