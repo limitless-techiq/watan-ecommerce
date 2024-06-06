@@ -561,7 +561,8 @@
                                     <h6 class="ps-4 py-3 nowrap fs-14 fw-bold">{{translate("Total")}} :</h6>
                                     <span class="text-end pe-4 py-3 nowrap fs-14">
                                        <span id="totalamount" class="fw-bold">
-                                          {{show_currency()}}{{$subTotal - @session()->get('coupon')['amount']}}
+                                          {{-- {{show_currency()}}{{$subTotal - @session()->get('coupon')['amount']}} --}}
+                                          {{ show_currency() }}{{ number_format($subTotal, 2) }}
                                         </span>
                                     </span>
                                 </li>
