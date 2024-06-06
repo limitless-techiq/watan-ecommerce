@@ -503,12 +503,11 @@
                                                                 {{limit_words($data->product->name,2)}}
                                                                 </a>
                                                             </h4>
-                                                            <p class="text-muted fs-12 lh-1">{{show_currency()}}{{short_amount($data->price, 2, '.', ',')}} x {{$data->quantity}}  ({{$data->attributes_value, 2, '.', ','}}) </p>
+                                                            <p class="text-muted fs-12 lh-1">{{show_currency()}}{{short_amount($data->price)}} x {{$data->quantity}}  ({{$data->attributes_value}}) </p>
                                                         </div>
                                                   </div>
                                                 </td>
-                                                <td class="text-end nowrap">{{ show_currency() }}{{ number_format($data->total, 2) }}
-                                                </td>
+                                                <td class="text-end nowrap">{{ show_currency() }}{{ number_format($data->total, 2) }}</td>
                                             </tr>
                                             @php
                                               $subTotal += ($data->total);
