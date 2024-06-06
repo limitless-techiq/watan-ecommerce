@@ -19,28 +19,28 @@ class CartController extends Controller
 
     public function store(Request $request)
     {
-        $user=Auth::user();
-
-        $status=$user->status;
-
-        if($status=='0')
-        {
-            return response()->json(['validation' => translate("Your account has not been verified yet. Contact support.")]);    
-        }
-
         $validator = Validator::make($request->all(), [
             'id' => 'required|exists:products,id',
         ],[
-            'product_id.required' => "Product must be selected",
-            'product_id.exists' => "Product doesn't exists",
+            'id.required' => "Product must be selected",
+            'id.exists' => "Product doesn't exist",
         ]);
+        
+        // إضافة تحقق من حالة المستخدم
+        $validator->after(function ($validator) use ($request) {
+            $user = Auth::user();
+            if ($user->status != 1) {
+                $validator->errors()->add('user_status', 'Your account is not verified. Please contact support.');
+            }
+        });
         
         if ($validator->fails()) {
             return response()->json(['validation' => $validator->errors()]);
         }
-
+        
         $response = $this->productService->addToCart($request);
         return response()->json($response);
+        
     }
 
     public function getCartData()
