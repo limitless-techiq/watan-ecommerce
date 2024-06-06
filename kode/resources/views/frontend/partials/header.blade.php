@@ -225,7 +225,7 @@
                                 </div>
                                 <div class="d-flex flex-column">
                                     <span class="each-action-item-sub">{{translate('Your Cart:')}}</span>
-                                    <p id="total-cart-amount"></p>
+                                    <p id="total-cart-amount">500</p>
                                 </div>
                                 <div class="cart-dropdown addtocart-dropdown cart--itemlist">
 
