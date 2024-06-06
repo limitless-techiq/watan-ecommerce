@@ -101,8 +101,8 @@ Route::middleware($globalMiddleware)->group(function () {
 
         Route::middleware(['checkUserStatus'])->group(function () {
             //Cart
-            Route::post('cart/store', [CartController::class, 'store'])->name('cart.store')->middleware('checkUserStatus');
-            Route::post('cart/update', [CartController::class, 'updateCart'])->name('cart.update')->middleware('checkUserStatus');
+            Route::post('cart/store', [CartController::class, 'store'])->name('cart.store');
+            Route::post('cart/update', [CartController::class, 'updateCart'])->name('cart.update');
         });
             Route::get('cart/data/get', [CartController::class, 'getCartData'])->name('cart.data.get');
             Route::get('cart/total/item', [CartController::class, 'cartTotalItem'])->name('cart.total.item');
