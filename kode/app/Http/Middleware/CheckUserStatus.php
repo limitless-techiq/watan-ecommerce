@@ -22,7 +22,7 @@ class CheckUserStatus
             if ($user->status == 1) {
                 return $next($request);
             }else{
-                return redirect()->route('home')->with('error',translate("Your account is banned by admin"));
+                return redirect()->route('home')->with('error',translate("Your account has not been activated yet. For emergency contact support."));
             }
         }
         abort(403);
