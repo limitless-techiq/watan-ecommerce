@@ -23,7 +23,7 @@ class CartController extends Controller
 
         $status=$user->status;
 
-        if($status==0)
+        if($status=='0')
         {
             return redirect()->route('home')->with('error',translate("Your account has not been verified yet. Contact support."));        
         }
@@ -83,6 +83,15 @@ class CartController extends Controller
 
     public function updateCart(Request $request)
     {
+        $user=Auth::user();
+
+        $status=$user->status;
+
+        if($status=='0')
+        {
+            return redirect()->route('home')->with('error',translate("Your account has not been verified yet. Contact support."));        
+        }
+        
         $this->validate($request,[
             'id' => 'required|exists:carts,id',
             'quantity' => 'required|integer|min:0',
