@@ -65,18 +65,20 @@
             </h4>
             <div class="product-price todays-deal-price">
                 @if(($product->discount_percentage) > 0)
+                <div>
                 <span>
                     
                     {{ show_currency() }}&nbsp;{{ number_format(short_amount(cal_discount($product->discount_percentage,
                     $product->stock->first()->price)), 2, '.', ',') }} 
-                    <br>
                 </span>
-                
+                </div>
+                <div>
                 <del>
                     
                     {{ show_currency() }}&nbsp;{{ number_format(short_amount($product->stock->first() ?
                     $product->stock->first()->price : $product->price), 2, '.', ',') }}
                 </del>
+                </div>
                 @else
                 <span>
                     
