@@ -1,5 +1,5 @@
 @forelse($products as $product)
-<div class="col-xl-4 col-lg-6 col-12">
+<div class="col-xl-3 col-lg-4 col-6">
     <div class="product-item">
         <div class="product-img">
             <div class="todays-deal-cart">
