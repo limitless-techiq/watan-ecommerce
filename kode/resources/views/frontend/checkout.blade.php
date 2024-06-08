@@ -376,7 +376,7 @@
 
 
                                             <div class="row">
-
+{{-- 
                                                     <div class="col-lg-12">
                                                         <div class="form-check card-radio">
                                                             <input id="cod" type="radio" name="payment_type" value="1"
@@ -394,7 +394,7 @@
                                                                 </span>
                                                             </label>
                                                         </div>
-                                                    </div>
+                                                    </div> --}}
 
                                             </div>
                                         </div>
