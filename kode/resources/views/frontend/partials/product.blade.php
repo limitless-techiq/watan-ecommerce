@@ -65,25 +65,20 @@
             </h4>
             <div class="product-price todays-deal-price">
                 @if(($product->discount_percentage) > 0)
-                <span>
-                    
-                    {{ show_currency() }}{{ number_format(short_amount(cal_discount($product->discount_percentage,
-                    $product->stock->first()->price)), 2, '.', ',') }} 
-                </span>
-                <del>
-                    
-                    {{ show_currency() }}{{ number_format(short_amount($product->stock->first() ?
-                    $product->stock->first()->price : $product->price), 2, '.', ',') }}
-                </del>
+                    <span>
+                        <span class="currency">{{ show_currency() }}</span>
+                        <span class="amount">{{ number_format(short_amount(cal_discount($product->discount_percentage, $product->stock->first()->price)), 2, '.', ',') }}</span>
+                    </span>
+                    <del>
+                        <span class="currency">{{ show_currency() }}</span>
+                        <span class="amount">{{ number_format(short_amount($product->stock->first() ? $product->stock->first()->price : $product->price), 2, '.', ',') }}</span>
+                    </del>
                 @else
-                <span>
-                    
-                    {{ show_currency() }}{{ number_format(short_amount($product->stock->first() ?
-                    $product->stock->first()->price : $product->price), 2, '.', ',') }} 
-                </span>
+                    <span>
+                        <span class="currency">{{ show_currency() }}</span>
+                        <span class="amount">{{ number_format(short_amount($product->stock->first() ? $product->stock->first()->price : $product->price), 2, '.', ',') }}</span>
+                    </span>
                 @endif
-                {{-- <br>
-                <p style="font-size: 12px; color: #f0c507;">{{ translate('Inclusive of taxes') }}</p> --}}
             </div>
 
         </div>
