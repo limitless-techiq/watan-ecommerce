@@ -378,11 +378,9 @@ use Illuminate\Validation\Rule;
 		{
 			if(session()->has('symbol')){
 				$symbol =  session()->get('symbol');
-				$symbol = $symbol.' ';
 			}
 			else{
 				$symbol =  session()->has('currency') ?  (Currency::where('id',session('currency'))->first())->symbol : general_setting('currency')->currency_symbol;
-				$symbol = $symbol.' ';
 				session()->put('symbol',$symbol);
 			}
 			return $symbol;
