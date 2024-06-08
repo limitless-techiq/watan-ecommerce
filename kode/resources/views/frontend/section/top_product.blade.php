@@ -32,8 +32,7 @@
                                 <div class='{{($product->stock->sum("qty")) > 0 ? "instock": "outstock"}} mt-0 mb-2'>
                                     <i
                                         class='@if(($product->stock->sum("qty")) > 0) fa-solid fa-circle-check @else fas fa-times-circle @endif'></i>
-                                    <p>{{($product->stock->sum("qty")) > 0 ? translate('In Stock') : translate('Stock
-                                        out') }}</p>
+                                    <p>{{($product->stock->sum("qty")) > 0 ? translate('In Stock') : translate('Out Of Stock') }}</p>
                                 </div>
 
                             </div>
