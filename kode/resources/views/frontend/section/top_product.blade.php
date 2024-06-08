@@ -51,7 +51,9 @@
 
 
                                     </span> <del>
-                                        {{show_currency()}}{{round(short_amount($product->stock->first()?$product->stock->first()->price:$product->price))}}</del>
+                                        {{ show_currency() }}{{ number_format(short_amount($product->stock->first() ?
+                                        $product->stock->first()->price : $product->price), 2) }}
+                                    </del>
 
                                     @else
                                     <span>
