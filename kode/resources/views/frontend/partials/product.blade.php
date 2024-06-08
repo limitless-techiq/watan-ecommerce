@@ -6,7 +6,7 @@
                 @php
                 $randNum = rand(6666,10000000);
                 @endphp
-                <div class="product-action">
+                <div class="product-action">    
                     <a href="javascript:void(0)" data-product_id="{{ $randNum  }}"
                         class="buy-now wave-btn addtocartbtn">
                         <span class="buy-now-icon icon-white"><svg version="1.1" x="0" y="0"
@@ -67,16 +67,16 @@
                 @if(($product->discount_percentage) > 0)
                 <span>
                     {{ show_currency() }}{{ number_format(short_amount(cal_discount($product->discount_percentage,
-                    $product->stock->first()->price)), 2, '.', ',') }}
+                    $product->stock->first()->price)), 2, '.', ',') }} @php echo ' '; @endphp
                 </span>
                 <del>
                     {{ show_currency() }}{{ number_format(short_amount($product->stock->first() ?
-                    $product->stock->first()->price : $product->price), 2, '.', ',') }}
+                    $product->stock->first()->price : $product->price), 2, '.', ',') }} @php echo ' '; @endphp
                 </del>
                 @else
                 <span>
                     {{ show_currency() }}{{ number_format(short_amount($product->stock->first() ?
-                    $product->stock->first()->price : $product->price), 2, '.', ',') }}
+                    $product->stock->first()->price : $product->price), 2, '.', ',') }} @php echo ' '; @endphp
                 </span>
                 @endif
                 {{-- <br>
