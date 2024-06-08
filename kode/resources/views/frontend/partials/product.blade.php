@@ -63,7 +63,7 @@
                     {{$product->name}}
                 </a>
             </h4>
-            <div class="product-price todays-deal-price">
+            <div class="product-price">
                 @if(($product->discount_percentage) > 0)
                 <span>
                     
