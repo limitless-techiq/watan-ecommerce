@@ -181,7 +181,7 @@ Route::middleware($globalMiddleware)->group(function () {
         });
 
         Route::get('/pages/{slug}/{id}', [FrontendController::class, 'websetupMenu'])->name('pages');
-        Route::get('/', [FrontendController::class, 'index'])->name('home');
+        // Route::get('/', [FrontendController::class, 'index'])->name('home');
     });
 
     #bkash 
