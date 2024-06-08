@@ -93,6 +93,24 @@
             z-index: -1;
         }
 
+        
+        .product-price {
+            font-size: 1.2rem;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .product-price del {
+            color: #999;
+            margin-left: 10px;
+        }
+        .product-price .currency {
+            margin-right: 5px;
+        }
+        .product-price .amount {
+            font-weight: bold;
+        }
+
+
     </style>
 </head>
 
