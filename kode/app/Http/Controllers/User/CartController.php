@@ -29,7 +29,7 @@ class CartController extends Controller
         $validator->after(function ($validator) use ($request) {
             $user = Auth::user();
             if ($user->status != 1) {
-                $validator->errors()->add('user_status', 'Your account is not verified. Please contact support.');
+                $validator->errors()->add('user_status', translate('Your account is not verified. Please contact support.'));
             }
         });
         
@@ -103,7 +103,7 @@ class CartController extends Controller
         $validator->after(function ($validator) {
             $user = Auth::user();
             if ($user->status != 1) {
-                $validator->errors()->add('user_status', 'Your account is not verified. Please contact support.');
+                $validator->errors()->add('user_status', translate('Your account is not verified. Please contact support.'));
             }
         });
 
