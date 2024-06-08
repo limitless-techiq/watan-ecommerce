@@ -66,20 +66,20 @@
             <div class="product-price todays-deal-price">
                 @if(($product->discount_percentage) > 0)
                 <span>
-                    @php echo ' '; @endphp
-                    {{ show_currency() }}{{ number_format(short_amount(cal_discount($product->discount_percentage,
-                    $product->stock->first()->price)), 2, '.', ',') }} @php echo ' '; @endphp
+                    
+                    {{ show_currency() }}&nbsp;{{ number_format(short_amount(cal_discount($product->discount_percentage,
+                    $product->stock->first()->price)), 2, '.', ',') }} 
                 </span>
                 <del>
-                    @php echo ' '; @endphp
-                    {{ show_currency() }}{{ number_format(short_amount($product->stock->first() ?
-                    $product->stock->first()->price : $product->price), 2, '.', ',') }} @php echo ' '; @endphp
+                    
+                    {{ show_currency() }}&nbsp;{{ number_format(short_amount($product->stock->first() ?
+                    $product->stock->first()->price : $product->price), 2, '.', ',') }}
                 </del>
                 @else
                 <span>
-                    @php echo ' '; @endphp
-                    {{ show_currency() }}{{ number_format(short_amount($product->stock->first() ?
-                    $product->stock->first()->price : $product->price), 2, '.', ',') }} @php echo ' '; @endphp
+                    
+                    {{ show_currency() }}&nbsp;{{ number_format(short_amount($product->stock->first() ?
+                    $product->stock->first()->price : $product->price), 2, '.', ',') }} 
                 </span>
                 @endif
                 {{-- <br>
