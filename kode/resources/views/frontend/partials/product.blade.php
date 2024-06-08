@@ -69,8 +69,9 @@
                     
                     {{ show_currency() }}&nbsp;{{ number_format(short_amount(cal_discount($product->discount_percentage,
                     $product->stock->first()->price)), 2, '.', ',') }} 
+                    <br>
                 </span>
-                <br>
+                
                 <del>
                     
                     {{ show_currency() }}&nbsp;{{ number_format(short_amount($product->stock->first() ?
