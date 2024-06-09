@@ -303,13 +303,13 @@
                 hideCookie.forEach((item) => {
                     item.addEventListener("click", () => {
                         cookies.classList.remove("showCookies");
-                        localStorage.setItem('cookieConsent', 'true');
+                        sessionStorage.setItem('cookieConsent', 'true');
                     });
                 });
             }
         };
 
-        if (!localStorage.getItem('cookieConsent')) {
+        if (!sessionStorage.getItem('cookieConsent')) {
             window.addEventListener("load", () => {
                 setTimeout(() => {
                     showCookies();
@@ -317,6 +317,26 @@
             });
         }
     }
+
+  //   const cookies = document.querySelector(".cookies");
+  // if (cookies != null) {
+  //   const showCookies = () => {
+  //     cookies.classList.add("showCookies");
+  //     if (cookies.classList.contains("showCookies")) {
+  //       const hideCookie = cookies.querySelectorAll("a");
+  //       hideCookie.forEach((item) => {
+  //         item.addEventListener("click", () => {
+  //           cookies.classList.remove("showCookies");
+  //         });
+  //       });
+  //     }
+  //   };
+  //   window.addEventListener("load", () => {
+  //     setTimeout(() => {
+  //       showCookies();
+  //     }, 6000);
+  //   });
+  // }
 });
 
 
