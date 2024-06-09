@@ -208,7 +208,7 @@
                             </div>
 
                             <div class="mb-3 attribute_options" id="attribute_options">
-                                س
+                                
                             </div>
 
                             <div class="varient_combination" id="varient_combination">

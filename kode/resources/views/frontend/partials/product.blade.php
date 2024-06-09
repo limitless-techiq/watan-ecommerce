@@ -1,5 +1,6 @@
 @forelse($products as $product)
-<div class="col-xl-3 col-lg-4 col-6">
+{{-- col-xl-3 col-lg-4 col-6 --}}
+<div class="col-xl-4 col-lg-6 col-12">
     <div class="product-item">
         <div class="product-img">
             <div class="todays-deal-cart">
@@ -63,14 +64,16 @@
                     {{$product->name}}
                 </a>
             </h4>
-            <div class="product-price todays-deal-price">
+            {{-- todays-deal-price --}}
+            <div class="product-price">
                 @if(($product->discount_percentage) > 0)
                 <span>
                     
                     {{ show_currency() }}&nbsp;{{ number_format(short_amount(cal_discount($product->discount_percentage,
                     $product->stock->first()->price)), 2, '.', ',') }} 
                 </span>
-                <del>
+                
+                <del >
                     
                     {{ show_currency() }}&nbsp;{{ number_format(short_amount($product->stock->first() ?
                     $product->stock->first()->price : $product->price), 2, '.', ',') }}

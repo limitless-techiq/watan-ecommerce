@@ -66,7 +66,7 @@
                             <td class="text-center">
                                 
                                 <span class="item-product-amount">
-                                    {{ show_currency() . number_format(short_amount($data->price) * $data->quantity, 2, '.', ',') }}
+                                    {{ show_currency() .' '. number_format(short_amount($data->price) * $data->quantity, 2, '.', ',') }}
 
                                 </span>
     

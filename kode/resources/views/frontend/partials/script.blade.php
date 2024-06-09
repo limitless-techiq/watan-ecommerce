@@ -624,16 +624,21 @@
         });
     }
     function totalCartAmount() {
-        $.ajax({
-            url: "{{ route('cart.total.amount') }}",
-            method: "GET",
-            success: function (response) {
-                var res = "{{show_currency()}}"+response
-                $('#total-cart-amount').html(res)
+    $.ajax({
+        url: "{{ route('cart.total.amount') }}",
+        method: "GET",
+        success: function (response) {
+            var amount = Number(response);
 
-            }
-        });
-    }
+            var formattedAmount = amount.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+            var res = "{{ show_currency() }} " + formattedAmount;
+
+            $('#total-cart-amount').html(res);
+        }
+    });
+}
+
 
     function wishlistItemCount() {
         $.ajax({
