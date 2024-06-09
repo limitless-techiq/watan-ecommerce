@@ -17,7 +17,7 @@
                             </a></li>
 
                         <li class="breadcrumb-item active" aria-current="page">
-                            {{translate($title)}}
+                            {{($title)}}
                         </li>
                     </ol>
                 </nav>
@@ -50,7 +50,7 @@
                                         </g>
                                     </svg></button>
                                 <div>
-                                    <h5 class="card-title"></h5>
+                                    <h5 class="card-title">{{($title)}}</h5>
                                 </div>
                             </div>
                         </div>
