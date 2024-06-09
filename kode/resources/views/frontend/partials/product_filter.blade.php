@@ -38,7 +38,7 @@
 									<h5 class="listname
 								      @if(request()->routeIs('category.product'))
 									    {{request()->route('id') == $category->id ? 'cate-menu-active' :''}}
-									  @endif">{{@get_translation($category->name)}}</h5>
+									  @endif">{{translate(@get_translation($category->name))}}</h5>
 								</div>
 
 								<span class="flex-shrink-0 ms-2 badge bg-light text-muted fs-12">
