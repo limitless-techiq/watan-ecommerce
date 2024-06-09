@@ -503,11 +503,11 @@
                                                                 {{limit_words($data->product->name,2)}}
                                                                 </a>
                                                             </h4>
-                                                            <p class="text-muted fs-12 lh-1">{{show_currency()}}{{short_amount($data->price)}} x {{$data->quantity}}  ({{$data->attributes_value}}) </p>
+                                                            <p class="text-muted fs-12 lh-1">{{show_currency()}}&nbsp;{{short_amount($data->price)}} x {{$data->quantity}}  ({{$data->attributes_value}}) </p>
                                                         </div>
                                                   </div>
                                                 </td>
-                                                <td class="text-end nowrap">{{ show_currency() }}{{ number_format($data->total, 2) }}</td>
+                                                <td class="text-end nowrap">{{ show_currency() }}&nbsp;{{ number_format($data->total, 2) }}</td>
                                             </tr>
                                             @php
                                               $subTotal += ($data->total);
@@ -537,7 +537,7 @@
                                 <li class="d-flex align-items-center justify-content-between gap-4 subtotal">
                                     <span class="fw-semibold ps-4 py-4  fs-14 nowrap">
                                         {{translate("Sub Total")}}:</span>
-                                    <span class="fw-semibold text-end pe-4 py-3  fs-14 nowrap" data-sub ="{{$subTotal}}" id="subtotalamount" >{{ show_currency() }}{{ number_format($subTotal, 2) }}
+                                    <span class="fw-semibold text-end pe-4 py-3  fs-14 nowrap" data-sub ="{{$subTotal}}" id="subtotalamount" >{{ show_currency() }}&nbsp;{{ number_format($subTotal, 2) }}
                                     </span>
                                 </li>
 
@@ -546,14 +546,14 @@
                                         {{translate("Discount")}}
                                         <span class="text-muted">({{translate("Coupon")}})</span>
                                         : </span>
-                                    <span class="text-end pe-4 py-2 nowrap fs-14">  <span>- {{show_currency()}}<span
+                                    <span class="text-end pe-4 py-2 nowrap fs-14">  <span>- {{show_currency()}}&nbsp;<span
                                         id="couponamount">{{@session()->get('coupon')['amount']}}</span></span></span>
                                 </li>
 
                                 <li class="order-cost-item order-shipping-cost d-none d-flex align-items-center justify-content-between gap-4">
                                     <span class="ps-4 py-3 nowrap fs-14">{{translate("Shipping Charge")}} :</span>
                                     <span class="text-end pe-4 py-3 nowrap fs-14" >
-                                        {{show_currency()}}<span id="shipping_cost">0</span>
+                                        {{show_currency()}}&nbsp;<span id="shipping_cost">0</span>
                                     </span>
                                 </li>
 
@@ -562,7 +562,7 @@
                                     <span class="text-end pe-4 py-3 nowrap fs-14">
                                        <span id="totalamount" class="fw-bold">
                                           {{-- {{show_currency()}}{{$subTotal - @session()->get('coupon')['amount']}} --}}
-                                          {{ show_currency() }}{{ number_format($subTotal, 2) }}
+                                          {{ show_currency() }}&nbsp;{{ number_format($subTotal, 2) }}
                                         </span>
                                     </span>
                                 </li>

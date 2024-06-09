@@ -124,7 +124,7 @@
                                 </div>
                             </div>
 
-                            <div class="overview-card">
+                            {{-- <div class="overview-card">
                                 <span class="icon">  <i class="fa-solid fa-brands fa-digital-ocean fs-20"></i></span>
                                 <div>
                                     <h5 class="fs-14">
@@ -132,7 +132,7 @@
                                     </h5>
                                     <p class="fs-12 fw-semibold  text-muted pt-2">{{translate("Total")}} : {{$digitalOrders->count()}}</p>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
 
                         <div class="card mt-5">
@@ -210,7 +210,7 @@
                                                     <td class="text-center">{{get_date_time($order->created_at)}}</td>
 
                                                     <td class="text-center">{{$order->qty}}</td>
-                                                    <td class="text-center">{{show_currency()}}{{short_amount($order->amount)}}</td>
+                                                    <td class="text-center">{{show_currency()}}&nbsp;{{number_format(short_amount($order->amount), 2, '.', ',')}}</td>
 
                                                     <td class="text-center">
                                                         <span class="badge bg-{{$order->payment_status == 2 ?'success' :"danger"}}">
