@@ -292,25 +292,33 @@
 
 
   // Cookies
-  const cookies = document.querySelector(".cookies");
-  if (cookies != null) {
-    const showCookies = () => {
-      cookies.classList.add("showCookies");
-      if (cookies.classList.contains("showCookies")) {
-        const hideCookie = cookies.querySelectorAll("a");
-        hideCookie.forEach((item) => {
-          item.addEventListener("click", () => {
-            cookies.classList.remove("showCookies");
-          });
-        });
-      }
-    };
-    window.addEventListener("load", () => {
-      setTimeout(() => {
-        showCookies();
-      }, 6000);
-    });
-  }
+  document.addEventListener("DOMContentLoaded", function() {
+    const cookies = document.querySelector(".cookies");
+
+    if (cookies != null) {
+        const showCookies = () => {
+            cookies.classList.add("showCookies");
+            if (cookies.classList.contains("showCookies")) {
+                const hideCookie = cookies.querySelectorAll("a");
+                hideCookie.forEach((item) => {
+                    item.addEventListener("click", () => {
+                        cookies.classList.remove("showCookies");
+                        localStorage.setItem('cookieConsent', 'true');
+                    });
+                });
+            }
+        };
+
+        if (!localStorage.getItem('cookieConsent')) {
+            window.addEventListener("load", () => {
+                setTimeout(() => {
+                    showCookies();
+                }, 6000);
+            });
+        }
+    }
+});
+
 
   function chechInput(selector, type = false) {
     var class_list = $(`.${selector}`);
