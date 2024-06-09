@@ -334,42 +334,41 @@ class FrontendController extends Controller
     public function productCategory($slug, $id, $type = 'physical')
     {
         $category = Category::where('status', '1')->where('id', $id)->firstOrFail();
-        $title1=$category->name . " all products";
-        return $title1;
-        // $title = ucfirst(get_translation($title1 )) ;
-        // $products = Product::search()->where(function ($query) use ($id) {
-        //     $query->where('category_id', $id)
-        //         ->orWhere('sub_category_id',  $id);
-        // })
-        //     ->wherein('status', ['0', '1'])
-        //     ->with('review', 'order', 'stock', 'digitalProductAttribute');
+
+        $title = ucfirst(get_translation($category->name ) . translate(" all products")) ;
+        $products = Product::search()->where(function ($query) use ($id) {
+            $query->where('category_id', $id)
+                ->orWhere('sub_category_id',  $id);
+        })
+            ->wherein('status', ['0', '1'])
+            ->with('review', 'order', 'stock', 'digitalProductAttribute');
 
 
-        // if ($type == 'digital') {
-        //     $digital_products =  $products->where('product_type', '101')
-        //         ->latest()
-        //         ->where(function ($query) {
-        //             $query->whereNull('seller_id')
-        //                 ->whereIn('status', [0, 1])
-        //                 ->orWhereNotNull('seller_id')
-        //                 ->whereIn('status', [1]);
-        //         })
-        //         ->paginate(paginate_number())
-        //         ->appends(request()->all());
-        //     $view = "frontend.digital_product";
-        //     return view('frontend.digital_product', compact('title', 'digital_products'));
-        // } else {
-        //     $products =  $products->where('product_type', '102')
-        //         ->where(function ($query) {
-        //             $query->whereNull('seller_id')
-        //                 ->whereIn('status', [0, 1])
-        //                 ->orWhereNotNull('seller_id')
-        //                 ->whereIn('status', [1]);
-        //         })
-        //         ->latest()->paginate(paginate_number())->appends(request()->all());
+        if ($type == 'digital') {
+            $digital_products =  $products->where('product_type', '101')
+                ->latest()
+                ->where(function ($query) {
+                    $query->whereNull('seller_id')
+                        ->whereIn('status', [0, 1])
+                        ->orWhereNotNull('seller_id')
+                        ->whereIn('status', [1]);
+                })
+                ->paginate(paginate_number())
+                ->appends(request()->all());
+            $view = "frontend.digital_product";
+            return view('frontend.digital_product', compact('title', 'digital_products'));
+        } else {
+            $products =  $products->where('product_type', '102')
+                ->where(function ($query) {
+                    $query->whereNull('seller_id')
+                        ->whereIn('status', [0, 1])
+                        ->orWhereNotNull('seller_id')
+                        ->whereIn('status', [1]);
+                })
+                ->latest()->paginate(paginate_number())->appends(request()->all());
 
-        //     return view('frontend.product', compact('title', 'products'));
-        // }
+            return view('frontend.product', compact('title', 'products'));
+        }
     }
 
     public function productSubCategory($slug, $id)
