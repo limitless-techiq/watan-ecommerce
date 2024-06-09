@@ -50,7 +50,7 @@
                                         </g>
                                     </svg></button>
                                 <div>
-                                    <h5 class="card-title">{{translate($title)}}</h5>
+                                    <h5 class="card-title"></h5>
                                 </div>
                             </div>
                         </div>
