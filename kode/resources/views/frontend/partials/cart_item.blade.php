@@ -11,7 +11,7 @@
                     href="{{ route('product.details', [make_slug($data->product->name), $data->product->id]) }}">{{
                     $data->product->name }}</a></h4>
             <span class="cart-product-price">
-                {{ $data->quantity }} X {{ show_currency() }}{{ number_format(short_amount($data->price), 2, '.', ',')
+                {{ $data->quantity }} X {{ show_currency() }}&nbsp;{{ number_format(short_amount($data->price), 2, '.', ',')
                 }}
             </span>
         </div>
@@ -23,7 +23,7 @@
 
 <div class="cart-product-total-price">
     <span>{{ translate("Total") }}: </span>
-    <small>{{ show_currency() }}{{ number_format(short_amount($subtotal), 2, '.', ',') }}</small>
+    <small>{{ show_currency() }}&nbsp;{{ number_format(short_amount($subtotal), 2, '.', ',') }}</small>
 </div>
 
 <div class="cart-product-action">
