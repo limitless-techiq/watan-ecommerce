@@ -9,7 +9,7 @@
     <div class="page-Breadcrumb">
         <div class="Container">
             <div class="breadcrumb-container">
-                <h1 class="breadcrumb-title">{{($title)}}</h1>
+                <h1 class="breadcrumb-title">{{translate($title)}}</h1>
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb mb-0">
                         <li class="breadcrumb-item"><a href="{{url('/')}}">
@@ -17,7 +17,7 @@
                             </a></li>
 
                         <li class="breadcrumb-item active" aria-current="page">
-                            {{($title)}}
+                            {{translate($title)}}
                         </li>
                     </ol>
                 </nav>
