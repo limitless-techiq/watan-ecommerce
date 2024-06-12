@@ -260,7 +260,7 @@
                             contentType: false,
                             success: function (response) {
                                 var response_data = JSON.parse(response);
-                                const currencySymbol = '{{show_currency()}}';
+                                const currencySymbol = '{{show_currency()}}&nbsp;';
                                 const price = response_data.discount_price === 0 ? response_data.price : response_data.discount_price;
                                 const priceHtml = `<span>${currencySymbol}${price}</span>`;
                                 const discountHtml = response_data.discount_price !== 0 ? ` <del>${currencySymbol}${response_data.price}</del>` : '';
