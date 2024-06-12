@@ -61,7 +61,7 @@
                             </div>
                             <div class="categorie-item-content">
                                 <h4>
-                                    {{ get_translation($category->name) }}
+                                    {{ translate($category->name) }}
                                 </h4>
                                 <p>{{$category->houseProduct->count()}}
                                     {{translate("Items Available")}}
