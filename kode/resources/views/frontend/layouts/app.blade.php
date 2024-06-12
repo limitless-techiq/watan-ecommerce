@@ -260,7 +260,7 @@
                             contentType: false,
                             success: function (response) {
                                 var response_data = JSON.parse(response);
-                                const currencySymbol = '{{show_currency()}}&nbsp;';
+                                const currencySymbol = '{{show_currency()}}';
                                 const price = response_data.discount_price === 0 ? response_data.price : response_data.discount_price;
                                 const priceHtml = `<span>${currencySymbol}${price}</span>`;
                                 const discountHtml = response_data.discount_price !== 0 ? ` <del>${currencySymbol}${response_data.price}</del>` : '';
@@ -269,7 +269,7 @@
                                 var stockHtml  = `<div class="${response_data.stock ? "instock" :"outstock"}">
                                                            <i class="${response_data.stock ? "fa-solid fa-circle-check"  :"fas fa-times-circle"}"></i>
                                                         <p>
-                                                            ${response_data.stock ? 'In Stock': 'Stock out' }
+                                                            ${response_data.stock ? 'In Stock': 'Out Of Stock' }
                                                         </p>
                                                     </div>`;
 
