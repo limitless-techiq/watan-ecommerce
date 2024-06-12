@@ -60,8 +60,11 @@
                                 <img src="{{show_image(file_path()['category']['path'].'/'.$category->banner,file_path()['category']['size'])}}" alt="{{$category->banner}}">
                             </div>
                             <div class="categorie-item-content">
+                                @php 
+                                    $tname=get_translation($category->name);
+                                @endphp
                                 <h4>
-                                    {{ translate($category->name) }}
+                                    {{ translate($tname) }}
                                 </h4>
                                 <p>{{$category->houseProduct->count()}}
                                     {{translate("Items Available")}}
