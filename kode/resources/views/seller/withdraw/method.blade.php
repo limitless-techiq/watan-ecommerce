@@ -65,11 +65,11 @@
 												<ul class="list-unstyled vstack gap-2 mb-0">
 													<li class="list-group-item d-flex justify-content-between align-items-start flex-wrap gap-2 px-2">
 														<div class="me-auto">{{translate('Withdraw Limit')}}</div>
-														<span>{{round(($withdrawMethod->min_limit))}} - {{round(($withdrawMethod->max_limit))}} {{($general->currency_name)}}</span>
+														<span>{{number_format(($withdrawMethod->min_limit), 2, '.', ',')}} - {{number_format(($withdrawMethod->max_limit), 2, '.', ',')}} {{($general->currency_name)}}</span>
 													</li>
 													<li class="list-group-item d-flex justify-content-between align-items-start flex-wrap gap-2 px-2">
 														<div class="me-auto">{{translate('Charge')}}</div>
-														<span>{{round(($withdrawMethod->fixed_charge))}} {{($general->currency_name)}} + {{round(($withdrawMethod->percent_charge))}} %</span>
+														<span>{{number_format(($withdrawMethod->fixed_charge), 2, '.', ',')}} {{($general->currency_name)}} + {{number_format(($withdrawMethod->percent_charge), 2, '.', ',')}} %</span>
 													</li>
 													<li class="list-group-item d-flex justify-content-between align-items-start flex-wrap gap-2 px-2">
 														<div class="me-auto">{{translate('Processing Time')}}</div>
