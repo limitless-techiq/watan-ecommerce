@@ -20,25 +20,25 @@
                                 <span>
                                     {{translate("Amount")}}
                                 </span>
-                                <span>{{show_currency()}}{{short_amount($paymentLog->amount)}}</span>
+                                <span>{{show_currency()}}&nbsp;{{number_format(short_amount($paymentLog->amount), 2, '.', ',')}}</span>
                             </div>
                              <div class="d-flex align-items-center justify-content-between gap-3 pay-item">
                                 <span>
                                     {{translate("Charge")}}
                                 </span>
-                                <span>{{show_currency()}}{{short_amount($paymentLog->charge)}}</span>
+                                <span>{{show_currency()}}&nbsp;{{number_format(short_amount($paymentLog->charge), 2, '.', ',')}}</span>
                             </div>
                              <div class="d-flex align-items-center justify-content-between gap-3 pay-item">
                                 <span>
                                     {{translate("Payable")}}
                                 </span>
-                                <span>{{show_currency()}}{{short_amount($paymentLog->amount + $paymentLog->charge)}}</span>
+                                <span>{{show_currency()}}&nbsp;{{number_format(short_amount($paymentLog->amount + $paymentLog->charge), 2, '.', ',')}}</span>
                             </div>
                             <div class="d-flex align-items-center justify-content-between gap-3 pay-item-last">
                                 <span>
                                     {{translate("In")}}
                                     {{$paymentLog->paymentGateway->currency->name}}</span>
-                                <span> {{$paymentLog->paymentGateway->currency->symbol}}{{round($paymentLog->final_amount)}}</span>
+                                <span> {{$paymentLog->paymentGateway->currency->symbol}}&nbsp;{{number_format($paymentLog->final_amount, 2, '.', ',')}}</span>
                             </div>
                         </div>
                     </div>

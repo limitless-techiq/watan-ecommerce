@@ -109,15 +109,15 @@
 									</td>
 
 									<td data-label="{{translate('Amount')}}">
-										<span class="text-primary fw-bold">{{show_currency()}}{{round(short_amount($withdraw->amount))}} </span>
+										<span class="text-primary fw-bold">{{show_currency()}}&nbsp;{{number_format(short_amount($withdraw->amount), 2, '.', ',')}} </span>
 									</td>
 
 									<td data-label="{{translate('Charge')}}">
-										<span class="text-danger fw-bold">{{show_currency()}}{{round(short_amount($withdraw->charge))}} </span>
+										<span class="text-danger fw-bold">{{show_currency()}}&nbsp;{{number_format(short_amount($withdraw->charge), 2, '.', ',')}} </span>
 									</td>
 
 									<td data-label="{{translate('Receivable')}}">
-										<span class="fw-bold text-success">{{@$withdraw->currency->symbol}}{{round(($withdraw->final_amount))}}</span>
+										<span class="fw-bold text-success">{{@$withdraw->currency->symbol}}&nbsp;{{number_format(($withdraw->final_amount), 2, '.', ',')}}</span>
 									</td>
 
 									<td data-label="{{translate('Status')}}">

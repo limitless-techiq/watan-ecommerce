@@ -41,7 +41,7 @@
 
                                 <div class="text-end">
                                     <h4 class="fs-22 fw-bold ff-secondary mb-2">
-                                        {{show_currency()}}{{short_amount($seller->balance)}}
+                                        {{show_currency()}}&nbsp;{{number_format(short_amount($seller->balance), 2, '.', ',')}}
                                     </h4>
 
 
@@ -75,7 +75,7 @@
 
                                 <div class="text-end">
                                     <h4 class="fs-22 fw-bold ff-secondary mb-2">
-                                        {{show_currency()}}{{short_amount($data['withdraw_amount'])}}
+                                        {{show_currency()}}&nbsp;{{number_format(short_amount($data['withdraw_amount']), 2, '.', ',')}}
                                     </h4>
 
 
@@ -471,13 +471,13 @@
                                                 <span
                                                     class="@if($transaction->transaction_type == '+')text-success @else text-danger @endif fw-bold">{{
                                                     $transaction->transaction_type }}
-                                                    {{show_currency()}}{{round(short_amount($transaction->amount))}}
+                                                    {{show_currency()}}&nbsp;{{number_format(short_amount($transaction->amount), 2, '.', ',')}}
                                                 </span>
                                             </td>
 
                                             <td data-label="{{translate('Post Balance')}}">
                                                 <span
-                                                    class="fw-bold">{{show_currency()}}{{round(short_amount($transaction->post_balance))}}
+                                                    class="fw-bold">{{show_currency()}}&nbsp;{{number_format(short_amount($transaction->post_balance), 2, '.', ',')}}
                                                 </span>
                                             </td>
 

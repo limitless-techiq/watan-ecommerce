@@ -101,11 +101,11 @@
                                     <td data-label="{{translate('Amount')}}">
                                         <span
                                             class="@if($transaction->transaction_type == '+')text-success @else text-danger @endif fw-bold">{{ $transaction->transaction_type }}
-                                            {{show_currency()}}{{round(short_amount($transaction->amount))}}
+                                            {{show_currency()}}&nbsp;{{number_format(short_amount($transaction->amount), 2, '.', ',')}}
                                         </span>
                                     </td>
                                     <td data-label="{{translate('Post Balance')}}">
-                                        <span class="fw-bold"> {{show_currency()}}{{round(short_amount($transaction->post_balance))}}
+                                        <span class="fw-bold"> {{show_currency()}}&nbsp;{{number_format(short_amount($transaction->post_balance), 2, '.', ',')}}
                                             </span>
                                     </td>
                                     <td data-label="{{translate('Details')}}">

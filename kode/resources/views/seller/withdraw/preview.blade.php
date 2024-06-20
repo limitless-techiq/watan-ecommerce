@@ -45,19 +45,19 @@
 								</li>
 								<li class="list-group-item d-flex justify-content-between align-items-start">
 									<div class="ms-2 me-auto">{{translate('Amount')}}</div>
-									<span>{{round(($withdraw->amount))}} {{$general->currency_name}}</span>
+									<span>{{number_format(($withdraw->amount), 2, '.', ',')}} {{$general->currency_name}}</span>
 								</li>
 								<li class="list-group-item d-flex justify-content-between align-items-start">
 									<div class="ms-2 me-auto">{{translate('Withdraw Charge')}}</div>
-									<span>{{round(($withdraw->charge))}} {{$general->currency_name}}</span>
+									<span>{{number_format(($withdraw->charge), 2, '.', ',')}} {{$general->currency_name}}</span>
 								</li>
 								<li class="list-group-item d-flex justify-content-between align-items-start">
 									<div class="ms-2 me-auto">{{translate('Conversion Rate')}}</div>
-									<span>1 USD = {{round(($withdraw->rate))}} {{($withdraw->currency->name)}}</span>
+									<span>1 USD = {{number_format(($withdraw->rate), 2, '.', ',')}} {{($withdraw->currency->name)}}</span>
 								</li>
 								<li class="list-group-item d-flex justify-content-between align-items-start">
 									<div class="ms-2 me-auto">{{translate('Final Amount')}}</div>
-									<span>{{round(($withdraw->final_amount))}} {{($withdraw->currency->name)}}</span>
+									<span>{{number_format(($withdraw->final_amount), 2, '.', ',')}} {{($withdraw->currency->name)}}</span>
 								</li>
 							 </ul>
 						</div>

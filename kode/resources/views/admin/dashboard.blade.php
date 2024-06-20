@@ -142,7 +142,7 @@
 
                                 <div class="text-end">
                                     <h4 class="fs-22 fw-bold ff-secondary mb-2">
-                                        {{show_currency()}}{{short_amount(Arr::get($data,'order_payment',0))}}
+                                        {{show_currency()}}&nbsp;{{number_format(short_amount(Arr::get($data,'order_payment',0)), 2, '.', ',')}}
                                     </h4>
 
 
@@ -173,7 +173,7 @@
 
                                 <div class="text-end">
                                     <h4 class="fs-22 fw-bold ff-secondary mb-2">
-                                        {{show_currency()}}{{short_amount(Arr::get($data,'total_withdraw',0))}}
+                                        {{show_currency()}}&nbsp;{{number_format(short_amount(Arr::get($data,'total_withdraw',0)), 2, '.', ',')}}
                                     </h4>
 
 
