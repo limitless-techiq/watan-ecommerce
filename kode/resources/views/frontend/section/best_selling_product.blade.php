@@ -75,11 +75,12 @@
                                             2) }}
 
                                     </span>
-                                    <del>
-                                        {{ show_currency() }}&nbsp;{{ number_format($product->stock->first() ?
-                                        $product->stock->first()->price : $product->price, 2) }}
 
+                                    <del>
+                                        {{ show_currency() }}&nbsp;{{ number_format(short_amount($product->stock->first() ?
+                                        $product->stock->first()->price : $product->price), 2) }}
                                     </del>
+                                    
 
                                     @else
                                     <span>
