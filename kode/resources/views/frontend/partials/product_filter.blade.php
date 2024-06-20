@@ -29,16 +29,19 @@
 														->orderBy('serial', 'ASC')
 														->get();
 
-												
+
 					 @endphp
 					@forelse($filterCategories as $category)
 						<li>
 							<a href="{{route('category.product', [make_slug(@get_translation($category->name)), $category->id])}}" class="d-flex cate-menu-active align-items-center position-relative">
 								<div class="flex-grow-1">
+                                    @php
+                                        $tname=get_translation($category->name);
+                                    @endphp
 									<h5 class="listname
 								      @if(request()->routeIs('category.product'))
 									    {{request()->route('id') == $category->id ? 'cate-menu-active' :''}}
-									  @endif">{{@get_translation($category->name)}}</h5>
+									  @endif">{{ $tname }}</h5>
 								</div>
 
 								<span class="flex-shrink-0 ms-2 badge bg-light text-muted fs-12">

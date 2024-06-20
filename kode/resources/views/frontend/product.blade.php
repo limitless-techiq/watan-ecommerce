@@ -9,7 +9,7 @@
     <div class="page-Breadcrumb">
         <div class="Container">
             <div class="breadcrumb-container">
-                <h1 class="breadcrumb-title">{{($title)}}</h1>
+                <h1 class="breadcrumb-title">{{translate($title)}}</h1>
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb mb-0">
                         <li class="breadcrumb-item"><a href="{{url('/')}}">
@@ -50,7 +50,7 @@
                                         </g>
                                     </svg></button>
                                 <div>
-                                    <h5 class="card-title"></h5>
+                                    <h5 class="card-title">{{translate($title)}}</h5>
                                 </div>
                             </div>
                         </div>

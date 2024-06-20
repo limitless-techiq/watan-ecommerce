@@ -269,7 +269,7 @@
                                 var stockHtml  = `<div class="${response_data.stock ? "instock" :"outstock"}">
                                                            <i class="${response_data.stock ? "fa-solid fa-circle-check"  :"fas fa-times-circle"}"></i>
                                                         <p>
-                                                            ${response_data.stock ? 'In Stock': 'Stock out' }
+                                                            ${response_data.stock ? 'In Stock': 'Out Of Stock' }
                                                         </p>
                                                     </div>`;
 

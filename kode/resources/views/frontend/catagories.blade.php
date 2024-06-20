@@ -5,12 +5,12 @@
 
     <div class="breadcrumb-banner-img">
         <img src="{{show_image(file_path()['frontend']['path'].'/'.@frontend_section_data($breadcrumb->value,'image'),@frontend_section_data($breadcrumb->value,'image','size'))}}" alt="breadcrumb.jpg">
-    </div> 
+    </div>
 
     <div class="page-Breadcrumb">
         <div class="Container">
             <div class="breadcrumb-container">
-                <h1 class="breadcrumb-title">{{($title)}}</h1>
+                <h1 class="breadcrumb-title">{{translate($title)}}</h1>
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb mb-0">
                         <li class="breadcrumb-item"><a href="{{url('/')}}">
@@ -60,8 +60,11 @@
                                 <img src="{{show_image(file_path()['category']['path'].'/'.$category->banner,file_path()['category']['size'])}}" alt="{{$category->banner}}">
                             </div>
                             <div class="categorie-item-content">
+                                @php
+                                    $tname=get_translation($category->name);
+                                @endphp
                                 <h4>
-                                    {{ get_translation($category->name) }}
+                                    {{ $tname }}
                                 </h4>
                                 <p>{{$category->houseProduct->count()}}
                                     {{translate("Items Available")}}

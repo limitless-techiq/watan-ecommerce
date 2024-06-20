@@ -162,7 +162,7 @@
                                                                             </div>
                                                                         </td>
                                                                         <td class="text-center">
-                                                                            <span>{{show_currency()}}{{short_amount($orderDetail->total_price)}}</span>
+                                                                            <span>{{show_currency()}}&nbsp;{{number_format(short_amount($orderDetail->total_price), 2, '.', ',')}}</span>
                                                                         </td>
 
                                                                         <td class="text-end">

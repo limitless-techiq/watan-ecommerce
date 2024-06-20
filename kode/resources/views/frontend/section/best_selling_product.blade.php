@@ -68,21 +68,23 @@
                                 </div>
                                 <div class="product-price">
                                     @if(($product->discount_percentage) > 0)
+
                                     <span>
                                         {{ show_currency() }}&nbsp;{{
-                                        number_format(cal_discount($product->discount_percentage,
-                                        $product->stock->first()->price), 2) }}
-
+                                        number_format(short_amount(cal_discount($product->discount_percentage,
+                                        $product->stock->first()->price)), 2, '.', ',') }}
                                     </span>
-                                    <del>
-                                        {{ show_currency() }}&nbsp;{{ number_format($product->stock->first() ?
-                                        $product->stock->first()->price : $product->price, 2) }}
+                                    
 
+                                    <del>
+                                        {{ show_currency() }}&nbsp;{{ number_format(short_amount($product->stock->first() ?
+                                        $product->stock->first()->price : $product->price), 2, '.', ',') }}
                                     </del>
+                                    
 
                                     @else
                                     <span>
-                                        {{show_currency()}}&nbsp;{{short_amount($product->stock->first()?$product->stock->first()->price:$product->price)}}
+                                        {{show_currency()}}&nbsp;{{number_format(short_amount($product->stock->first()?$product->stock->first()->price:$product->price),  2, '.', ',')}}
                                     </span>
 
                                     @endif

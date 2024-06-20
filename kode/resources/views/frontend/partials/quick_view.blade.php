@@ -33,30 +33,30 @@
             @if(count($product->campaigns) != 0 && $product->campaigns->first()->end_time >
             Carbon\Carbon::now()->toDateTimeString() && $product->campaigns->first()->status == '1')
             @if(($product->campaigns->first()->pivot->discount) == 0)
-            <span>{{ show_currency() }}{{ number_format(short_amount($product->price), 2, '.', ',') }}</span>
+            <span>{{ show_currency() }}&nbsp;{{ number_format(short_amount($product->price), 2, '.', ',') }}</span>
             @else
             <span>
-                {{ show_currency() }}{{ number_format(short_amount(discount($product->stock->first() ?
+                {{ show_currency() }}&nbsp;{{ number_format(short_amount(discount($product->stock->first() ?
                 $product->stock->first()->price : $product->price, $product->campaigns->first()->pivot->discount,
                 $product->campaigns->first()->pivot->discount_type)), 2, '.', ',') }}
             </span>
             <del>
-                {{ show_currency() }}{{ number_format(short_amount($product->stock->first()->price), 2, '.', ',') }}
+                {{ show_currency() }}&nbsp;{{ number_format(short_amount($product->stock->first()->price), 2, '.', ',') }}
             </del>
             @endif
             @else
             @if(($product->discount_percentage) > 0)
             <span>
-                {{ show_currency() }}{{ number_format(short_amount(cal_discount($product->discount_percentage,
+                {{ show_currency() }}&nbsp;{{ number_format(short_amount(cal_discount($product->discount_percentage,
                 $product->stock->first()->price)), 2, '.', ',') }}
             </span>
             <del>
-                {{ show_currency() }}{{ number_format(short_amount($product->stock->first() ?
+                {{ show_currency() }}&nbsp;{{ number_format(short_amount($product->stock->first() ?
                 $product->stock->first()->price : $product->price), 2, '.', ',') }}
             </del>
             @else
             <span>
-                {{ show_currency() }}{{ number_format(short_amount($product->stock->first() ?
+                {{ show_currency() }}&nbsp;{{ number_format(short_amount($product->stock->first() ?
                 $product->stock->first()->price : $product->price), 2, '.', ',') }}
             </span>
             @endif
@@ -114,7 +114,7 @@
                 <div class="outstock">
                     <i class="fas fa-times-circle"></i>
                     <p>
-                        {{translate("Stock out")}}
+                        {{translate("Out Of Stock")}}
                     </p>
                 </div>
                 @endif
