@@ -126,7 +126,7 @@ Route::middleware($globalMiddleware)->group(function () {
             Route::get('/get/reviews', [FrontendController::class, 'getProductReview'])->name('get.product.review');
 
 
-            Route::middleware('auth')->prefix('user')->name('user.')->group(function () {
+            Route::prefix('user')->name('user.')->group(function () {
 
                 Route::middleware(['checkUserStatus'])->group(function () {
 
