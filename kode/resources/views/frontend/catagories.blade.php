@@ -60,7 +60,7 @@
                                     $tname=get_translation($category->name);
                                 @endphp
                                 <h4>
-                                    {{ translate($tname) }}
+                                    $tname
                                 </h4>
                                 <p>{{$category->houseProduct->count()}}
                                     {{translate("Items Available")}}
