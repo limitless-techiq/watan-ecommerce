@@ -1,33 +1,31 @@
 @extends('frontend.layouts.app')
 @section('content')
-
 <div class="breadcrumb-banner">
-
     <div class="breadcrumb-banner-img">
         <img src="{{show_image(file_path()['frontend']['path'].'/'.@frontend_section_data($breadcrumb->value,'image'),@frontend_section_data($breadcrumb->value,'image','size'))}}" alt="breadcrumb.jpg">
-    </div> 
-
+    </div>
     <div class="page-Breadcrumb">
         <div class="Container">
             <div class="breadcrumb-container">
-                <h1 class="breadcrumb-title">{{($title)}}</h1>
+                <h1 class="breadcrumb-title">
+                    {{translate($title)}}
+                </h1>
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb mb-0">
-                        <li class="breadcrumb-item"><a href="{{url('/')}}">
-                            {{translate('home')}}
-                        </a></li>
-
+                        <li class="breadcrumb-item">
+                            <a href="{{url('/')}}">
+                                {{translate('home')}}
+                            </a>
+                        </li>
                         <li class="breadcrumb-item active" aria-current="page">
                             {{translate($title)}}
                         </li>
-
                     </ol>
                 </nav>
             </div>
         </div>
     </div>
 </div>
-
 <section class="pb-80">
     <div class="Container">
         <div class="title-with-tab section-title">
@@ -44,13 +42,11 @@
                         {{translate("All")}}
                     </a>
                     <a href="{{route('top.category')}}" class="title-tab-btn  {{request()->routeIs('top.category') ?'active-title-tab' : '' }}">
-                       {{translate("Top Category")}}
+                        {{translate("Top Category")}}
                     </a>
-
                 </div>
             </div>
         </div>
-
         <div class="all-categories">
             <div class="row g-2 g-md-4">
                 @forelse($listings as $category)
@@ -60,10 +56,11 @@
                                 <img src="{{show_image(file_path()['category']['path'].'/'.$category->banner,file_path()['category']['size'])}}" alt="{{$category->banner}}">
                             </div>
                             <div class="categorie-item-content">
-                                @php 
+                                @php
                                     $tname=get_translation($category->name);
                                 @endphp
                                 <h4>
+                                    {{ $tname }}
                                     {{ translate($tname) }}
                                 </h4>
                                 <p>{{$category->houseProduct->count()}}
@@ -78,13 +75,10 @@
                     </div>
                 @endforelse
             </div>
-
             <div class="mt-5 mx-4 d-flex align-items-center justify-content-end">
                     {{$listings->withQueryString()->links()}}
             </div>
         </div>
     </div>
 </section>
-
 @endsection
-
