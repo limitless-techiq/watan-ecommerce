@@ -61,7 +61,6 @@ class FrontendController extends Controller
 
     public function index()
     {
-
         $title = "Home Page";
         $banners = Banner::all();
         $now = now()->toDateTimeString();
