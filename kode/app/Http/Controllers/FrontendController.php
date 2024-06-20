@@ -61,21 +61,17 @@ class FrontendController extends Controller
 
     public function index()
     {
-        if (Auth::check()) {
-            $title = "Home Page";
-            $banners = Banner::all();
-            $now = now()->toDateTimeString();
-            $campaigns = Campaign::with('products')
-                ->where('status', '1')
-                ->where('start_time', '<=', $now)
-                ->where('end_time', '>=', $now)
-                ->take(4)
-                ->get();
-            return view('frontend.home', compact('title', 'campaigns'));
-        } else {
-            $title = "Login";
-            return view('auth.login', compact('title'));
-        }
+
+        $title = "Home Page";
+        $banners = Banner::all();
+        $now = now()->toDateTimeString();
+        $campaigns = Campaign::with('products')
+            ->where('status', '1')
+            ->where('start_time', '<=', $now)
+            ->where('end_time', '>=', $now)
+            ->take(4)
+            ->get();
+        return view('frontend.home', compact('title', 'campaigns'));
     }
 
     /**
@@ -335,7 +331,7 @@ class FrontendController extends Controller
     {
         $category = Category::where('status', '1')->where('id', $id)->firstOrFail();
 
-        $title = ucfirst(get_translation($category->name )) ;
+        $title = ucfirst(get_translation($category->name));
         $products = Product::search()->where(function ($query) use ($id) {
             $query->where('category_id', $id)
                 ->orWhere('sub_category_id',  $id);
