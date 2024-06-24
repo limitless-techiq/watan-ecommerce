@@ -16,7 +16,7 @@ class Authenticate extends Middleware
     {
         if (!$request->expectsJson()) {
             session()->put('error','You Need To Login First');
-            return route('login');
+            return route('home');
         }
     }
 }
