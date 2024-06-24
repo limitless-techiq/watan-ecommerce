@@ -62,7 +62,7 @@ class FrontendController extends Controller
     public function index()
     {
         if (!auth()->check()) {
-            return redirect()->route('login')->with('error', 'You need to login first.');
+            return redirect()->route('login');
         }
         $title = "Home Page";
         $banners = Banner::all();
