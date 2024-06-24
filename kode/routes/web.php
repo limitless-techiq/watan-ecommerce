@@ -39,7 +39,7 @@ try {
 
 Route::middleware($globalMiddleware)->group(function () {
 
-    Route::middleware('auth')->group(function () {
+    //Route::middleware('auth')->group(function () {
         Route::middleware(['prevent.back.history'])->group(function () {
 
             Route::get('cron/run', [CronController::class, 'handle'])->name('cron.run');
@@ -239,7 +239,7 @@ Route::middleware($globalMiddleware)->group(function () {
         Route::get('/paymnet/success/{trx_number}', [PaymentController::class, 'paymentSuccess'])->name('payment.success');
         Route::get('/paymnet/failed/{trx_number}', [PaymentController::class, 'paymentFailed'])->name('payment.failed');
         Route::get('/order/success/{orderId}', [PaymentController::class, 'orderSuccess'])->name('order.success');
-    });
+    //});
 });
 
 
