@@ -26,6 +26,7 @@ return new class extends Migration
             $table->decimal('price', 18,8)->default(0);
             $table->decimal('discount', 18,8)->nullable();
             $table->decimal('discount_percentage', 18,8)->nullable();
+            $table->decimal('weight', 18,2)->nullable();
             $table->string('featured_image')->nullable();
             $table->text('short_description')->nullable();
             $table->text('description')->nullable();

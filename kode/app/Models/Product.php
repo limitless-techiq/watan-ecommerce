@@ -43,6 +43,7 @@ class Product extends Model
         'price',
         'discount',
         'discount_percentage',
+        'weight',
         'featured_image',
         'short_description',
         'description',
