@@ -45,17 +45,19 @@
                             </div>
 
                             <div class="card-body">
-                                <div class="row g-3">
-                                    <div class="col-lg-6">
-                                        <div>
-                                            <label class="form-label" for="name">
-                                                {{translate("Product Title")}} <span class="text-danger" >*</span>
-                                            </label>
+                                <div class="row g-4">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div>
+                                                <label class="form-label" for="name">
+                                                    {{translate("Product Title")}} <span class="text-danger" >*</span>
+                                                </label>
 
-                                            <input  name="name" id="name" type="text" class="form-control"  value="{{$product->name}}"
-                                                placeholder="Enter product title" required>
-                                            <div class="invalid-feedback">
-                                                {{translate("Please Enter a product title")}}
+                                                <input  name="name" id="name" type="text" class="form-control"  value="{{$product->name}}"
+                                                    placeholder="Enter product title" required>
+                                                <div class="invalid-feedback">
+                                                    {{translate("Please Enter a product title")}}
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
