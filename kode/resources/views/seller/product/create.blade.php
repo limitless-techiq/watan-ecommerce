@@ -62,7 +62,7 @@
                                     </div>
                                 </div>
                                 
-                                <div class="form-row">
+                                <div class="col-lg-4">
                                     <div class="col-lg-6 mb-3">
                                         <label class="form-label" for="price">
                                             {{translate("Regular price (Without taxes)")}} <span class="text-danger">*</span>
