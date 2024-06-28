@@ -60,21 +60,26 @@
                                         </div>
                                     </div>
 
-                                    <div class="row">
-                                        <div class="col-lg-6 mb-3">
-                                            <label class="form-label" for="price">
-                                                {{translate("Regular price (Without taxes)")}} <span class="text-danger">*</span>
-                                            </label>
-                                            <input  step="any" type="number" class="form-control" id="price" name="price"
-                                                value="{{($product->price)}}" placeholder="{{translate('Product Price')}}">
-                                        </div>
-                                        <div class="col-lg-6 mb-3">
-                                            <label class="form-label" for="tax_percentage">
-                                                {{translate("Tax Percentage(%)")}} <span class="text-danger">*</span>
-                                            </label>
-                                            <input step="any" required type="number" class="form-control" id="tax_percentage" name="tax_percentage"
-                                                value="{{old('tax_percentage') ? old('tax_percentage') : 0 }}" placeholder="{{translate('Tax percentage')}}">
-                                        </div>
+                                    <div class="col-lg-4">
+                                        <label class="form-label" for="price">
+                                            {{translate("Regular price (Without taxes)")}} <span class="text-danger">*</span>
+                                        </label>
+                                        <input  step="any" type="number" class="form-control" id="price" name="price"
+                                            value="{{($product->price)}}" placeholder="{{translate('Product Price')}}">
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <label class="form-label" for="tax_percentage">
+                                            {{translate("Tax Percentage(%)")}} <span class="text-danger">*</span>
+                                        </label>
+                                        <input step="any" required type="number" class="form-control" id="tax_percentage" name="tax_percentage"
+                                            value="{{old('tax_percentage') ? old('tax_percentage') : 0 }}" placeholder="{{translate('Tax percentage')}}">
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <label class="form-label" for="Weight">
+                                            {{translate("Weight")}} <span class="text-danger">*</span>
+                                        </label>
+                                        <input step="any" required type="number" class="form-control" id="weight" name="weight"
+                                            value="{{old('weight')}}" placeholder="{{translate('Product Weight')}}">
                                     </div>
 
                                     <div class="col-lg-4">
