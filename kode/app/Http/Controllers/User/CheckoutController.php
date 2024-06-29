@@ -13,6 +13,7 @@ use App\Models\PaymentMethod;
 use App\Http\Utility\PaymentInsert;
 use App\Http\Utility\SendMail;
 use App\Models\User;
+use App\Models\GeneralSetting;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 
@@ -29,7 +30,8 @@ class CheckoutController extends Controller
     public function checkout(? int $productId  =  null)
     {
         
-
+        $general = GeneralSetting::first();
+        $tax=$general->commission;
         $title = "Checkout";
         $user  =  auth_user('web');
         $items = $this->productService->getCartItem();
@@ -40,7 +42,7 @@ class CheckoutController extends Controller
         $shippingDeliverys = ShippingDelivery::where('status', 1)->orderBy('id', 'DESC')->with('method')->get();
         $countries         = json_decode(file_get_contents(resource_path(config('constants.options.country_code')) . 'countries.json'),true);
 
-        return view('frontend.checkout', compact('title', 'items', 'shippingDeliverys', 'paymentMethods', 'user','countries'));
+        return view('frontend.checkout', compact('title', 'items','tax', 'shippingDeliverys', 'paymentMethods', 'user','countries'));
     }
 
     public function order(Request $request)

@@ -330,9 +330,9 @@
                                                                 type="radio" class="form-check-input shiping-info checkout-radio-btn" value="{{$shippingDelivery->id}}">
                                                             <label class="form-check-label pointer"
                                                                 for="{{$shippingDelivery->id}}">
-                                                                <span
+                                                                {{-- <span
                                                                     class="fs-16 float-end mt-3 text-wrap d-block">{{show_currency()}}{{short_amount($shippingDelivery->price)}}
-                                                                </span>
+                                                                </span> --}}
 
                                                                 <span class="fs-14 mb-1 text-wrap d-block">
                                                                     {{@$shippingDelivery->method->name}}
@@ -550,10 +550,17 @@
                                         id="couponamount">{{@session()->get('coupon')['amount']}}</span></span></span>
                                 </li>
 
-                                <li class="order-cost-item order-shipping-cost d-none d-flex align-items-center justify-content-between gap-4">
+                                {{-- <li class="order-cost-item order-shipping-cost d-none d-flex align-items-center justify-content-between gap-4">
                                     <span class="ps-4 py-3 nowrap fs-14">{{translate("Shipping Charge")}} :</span>
                                     <span class="text-end pe-4 py-3 nowrap fs-14" >
                                         {{show_currency()}}&nbsp;<span id="shipping_cost">0</span>
+                                    </span>
+                                </li> --}}
+
+                                <li class="order-cost-item order-shipping-cost d-none d-flex align-items-center justify-content-between gap-4">
+                                    <span class="ps-4 py-3 nowrap fs-14">{{translate("Tax and shipping Charge")}} {{$tax}} %:</span>
+                                    <span class="text-end pe-4 py-3 nowrap fs-14" >
+                                        {{show_currency()}}&nbsp;{{$subTotal*$tax/100}}
                                     </span>
                                 </li>
 
@@ -562,7 +569,7 @@
                                     <span class="text-end pe-4 py-3 nowrap fs-14">
                                        <span id="totalamount" class="fw-bold">
                                           {{-- {{show_currency()}}{{$subTotal - @session()->get('coupon')['amount']}} --}}
-                                          {{ show_currency() }}&nbsp;{{ number_format($subTotal, 2) }}
+                                          {{ show_currency() }}&nbsp;{{ number_format(($subTotal+($subTotal*$tax/100)), 2) }}
                                         </span>
                                     </span>
                                 </li>
