@@ -569,7 +569,7 @@
                                     <span class="text-end pe-4 py-3 nowrap fs-14">
                                        <span id="totalamount" class="fw-bold">
                                           {{-- {{show_currency()}}{{$subTotal - @session()->get('coupon')['amount']}} --}}
-                                          {{ show_currency() }}&nbsp;{{ number_format(($subTotal+($subTotal*$tax/100)), 2) }}
+                                          {{ show_currency() }}&nbsp;{{ number_format((($subTotal*$tax/100)), 2) }}
                                         </span>
                                     </span>
                                 </li>
