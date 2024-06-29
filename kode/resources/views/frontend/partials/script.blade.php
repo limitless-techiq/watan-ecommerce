@@ -514,7 +514,7 @@
                     $('#couponamount').text(response.amount);
                     $('#couponcode').text(response.code);
                     var afterdiscount = parseFloat(subtotal) - parseFloat(response.amount);
-                    var totalcartamount = parseFloat(afterdiscount) + parseFloat(shippingcost);
+                    var totalcartamount = parseFloat(afterdiscount) ;
                     $('#totalamount').text(parseFloat((totalcartamount).toFixed(2)));
                     $('.order-coupon-item').removeClass('d-none');
                     getCartItemData();
