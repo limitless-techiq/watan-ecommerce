@@ -26,7 +26,7 @@
 							</h5>
 
 							<p class="text-muted mb-0">
-								{{show_currency()}}{{round(short_amount($seller->balance))}}
+								{{show_currency()}}&nbsp;{{number_format(short_amount($seller->balance), 2, '.', ',')}}
 							</p>
 
 							<ul class="ps-0 mt-3 mb-0">

@@ -40,7 +40,7 @@
                                 <span>
                                     {{translate("In")}}
                                     {{$paymentLog->paymentGateway->currency->name}}</span>
-                                <span> {{$paymentLog->paymentGateway->currency->symbol}}{{round($paymentLog->final_amount)}}</span>
+                                <span> {{$paymentLog->paymentGateway->currency->symbol}}&nbsp;{{number_format($paymentLog->final_amount, 2, '.', ',')}}</span>
                             </div>
                         </div>
                     </div>

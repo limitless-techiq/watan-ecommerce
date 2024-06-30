@@ -103,7 +103,7 @@
 											</td>
 
 											<td>
-												{{show_currency()}}{{round(short_amount($orderDetail->product->discount))}}
+												{{show_currency()}}&nbsp;{{number_format(short_amount($orderDetail->product->price), 2, '.', ',')}}
 											</td>
 
 											<td>
@@ -111,7 +111,7 @@
 											</td>
 
 											<td>
-												{{show_currency()}}{{round(short_amount($orderDetail->total_price))}}
+												{{show_currency()}}&nbsp;{{number_format(short_amount($orderDetail->total_price), 2, '.', ',')}}
 											</td>
 
 											<td data-label="{{translate('Statis')}}">
@@ -148,17 +148,17 @@
                                                                 {{translate('Total Amount')}}
                                                                  :</td>
                                                             <td class="text-end">
-                                                                {{show_currency()}}{{round(short_amount($subtotal))}}
+                                                                {{show_currency()}}&nbsp;{{number_format(short_amount($subtotal), 2, '.', ',')}}
                                                             </td>
                                                         </tr>
 
                                                         <tr>
                                                             <td class="text-start">
-                                                                {{translate('Shipping Cost')}}
+                                                                {{translate('Tax and shipping Cost')}}&nbsp;%{{short_amount($order->shipping_charge)}}
                                                             </td>
                                                             <td class="text-end">
                                                                 @if($order->shipping_deliverie_id)
-                                                                    {{show_currency()}}{{round(short_amount($order->shipping_charge))}}
+                                                                    {{show_currency()}}&nbsp;{{number_format(short_amount(($order->shipping_charge*$subtotal/100)), 2, '.', ',')}}
                                                                 @else
                                                                     0
                                                                 @endif
@@ -168,7 +168,7 @@
                                                         <tr class="border-top border-top-dashed">
                                                             <th scope="row" class="text-start"><span class="fw-bold">{{translate('Total')}}:</span></th>
                                                             <th class="text-end">
-                                                                {{show_currency()}}{{round(short_amount($order->shipping_charge + $subtotal ))}}
+                                                                {{show_currency()}}&nbsp;{{number_format(short_amount(($order->shipping_charge*$subtotal/100) + $subtotal ), 2, '.', ',')}}
                                                             </th>
                                                         </tr>
                                                     </tbody>

@@ -345,7 +345,7 @@
                                     </td>
 
                                     <td>
-                                        <h5 class="fs-14 my-1 fw-normal">{{show_currency()}}${Math.round(order_details[i].total_price)} </h5>
+                                        <h5 class="fs-14 my-1 fw-normal">{{show_currency()}}${(order_details[i].total_price)} </h5>
                                         <span class="text-muted">{{translate('Amount')}}</span>
                                     </td>
                                 </tr>`;

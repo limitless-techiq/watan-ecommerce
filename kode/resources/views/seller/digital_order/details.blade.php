@@ -66,7 +66,7 @@
 												{{(@$digitalProductAttributes ?@$digitalProductAttributes->name :"N/A")}}
 											</td>
 											<td>
-												{{show_currency()}}{{round(short_amount($orderDetail->total_price))}}
+												{{show_currency()}}&nbsp;{{number_format(short_amount($orderDetail->total_price), 2, '.', ',')}}
 											</td>
 
 											<td data-label="{{translate('Action')}}">

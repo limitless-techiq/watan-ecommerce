@@ -73,7 +73,7 @@
                                             </td>
 
                                             <td data-label="{{translate('Price')}}">
-                                                <span>{{round(short_amount($digitalProductAttribute->price))}} {{($general->currency_name)}}</span>
+                                                <span>{{number_format(short_amount($digitalProductAttribute->price), 2, '.', ',')}}&nbsp;{{($general->currency_name)}}</span>
                                             </td>
 
                                             <td data-label="{{translate('Status')}}">

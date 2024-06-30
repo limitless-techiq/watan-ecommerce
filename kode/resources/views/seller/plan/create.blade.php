@@ -33,7 +33,7 @@
 										<h5 class="mb-1">{{ucfirst($plan->name)}}</h5>
 
 
-										<h3><sup><small>{{show_currency()}}</small></sup>{{round(short_amount($plan->amount))}}</h3>
+										<h3><sup><small>{{show_currency()}}&nbsp;</small></sup>{{number_format(short_amount($plan->amount), 2, '.', ',')}}</h3>
 
 									</div>
 

@@ -216,7 +216,7 @@
 						<select class="form-select" name="id" id="id" required>
 							<option value="">{{translate('Select One')}}</option>
 							@foreach($plans as $plan)
-								<option value="{{$plan->id}}">{{ucfirst($plan->name)}} -- {{show_currency()}}{{round(short_amount($plan->amount))}} </option>
+								<option value="{{$plan->id}}">{{ucfirst($plan->name)}} -- {{show_currency()}}&nbsp;{{number_format(short_amount($plan->amount), 2, '.', ',')}} </option>
 							@endforeach
 						</select>
 					</div>

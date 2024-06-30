@@ -457,7 +457,7 @@
                     "
                   >
                     {{translate('Total')}}:
-                    <small style="font-weight: 700; padding-left: 30px">{{show_currency()}}&nbsp;{{number_format(short_amount(($subtotal*$order->shipping_charge/100) + $subtotal))}}</small>
+                    <small style="font-weight: 700; padding-left: 30px">{{show_currency()}}&nbsp;{{number_format(short_amount(($subtotal*$order->shipping_charge/100) + $subtotal), 2, '.', ',')}}</small>
                   </p>
                 </div>
               </div>
