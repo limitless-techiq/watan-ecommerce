@@ -514,7 +514,7 @@
                     $('#couponamount').text(response.amount);
                     $('#couponcode').text(response.code);
                     var afterdiscount = parseFloat(subtotal) - parseFloat(response.amount);
-                    var totalcartamount = parseFloat(afterdiscount) ;
+                    var totalcartamount = parseFloat(afterdiscount) + parseFloat(shippingcost);
                     $('#totalamount').text(parseFloat((totalcartamount).toFixed(2)));
                     $('.order-coupon-item').removeClass('d-none');
                     getCartItemData();
@@ -570,7 +570,7 @@
         }
         var subtotalamount = $('#subtotalamount').attr('data-sub');
         var value = $(this).data('shipping_price');
-        var totalamount = parseFloat(subtotalamount) + parseFloat(value);
+        var totalamount = parseFloat(subtotalamount) ;
         var aftertotalamount = parseFloat(totalamount) - parseFloat(couponamount);
         $('#shipping_cost').text(`${value}`);
         $('#totalamount').text(parseFloat(aftertotalamount).toFixed(2));
