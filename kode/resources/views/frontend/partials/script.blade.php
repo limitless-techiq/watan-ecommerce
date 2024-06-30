@@ -572,10 +572,10 @@
         var value = $(this).data('shipping_price');
         var totalamount = parseFloat(subtotalamount) ;///+ parseFloat(value)
         var aftertotalamount = parseFloat(totalamount+(totalamount*parseFloat(value)/100)) - parseFloat(couponamount);
-        var shipping_cost=value;
-        $('#shipping_cost').text(`${shipping_cost}`);
+        $('#shipping_cost').text(`${value}`);
         $('#totalamount').text(parseFloat(aftertotalamount).toFixed(2));
         $('.order-shipping-cost').removeClass('d-none');
+        $('#shipping_cost1').text(`${totalamount*value/100}`);
     });
 
 
