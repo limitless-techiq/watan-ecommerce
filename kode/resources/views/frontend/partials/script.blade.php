@@ -572,7 +572,9 @@
         var value = $(this).data('shipping_price');
         var totalamount = parseFloat(subtotalamount) ;///+ parseFloat(value)
         var aftertotalamount = parseFloat(totalamount+(totalamount*parseFloat(value)/100)) - parseFloat(couponamount);
-        $('#shipping_cost').text(`${totalamount*value/100}`);///$('#shipping_cost').text(`${value}`);
+        var formattedShippingCost = numberFormat(totalamount*value/100);
+        $('#shipping_cost1').text(`${formattedShippingCost}`);
+        $('#shipping_cost').text(`${value}`);
         $('#totalamount').text(parseFloat(aftertotalamount).toFixed(2));
         $('.order-shipping-cost').removeClass('d-none');
     });
