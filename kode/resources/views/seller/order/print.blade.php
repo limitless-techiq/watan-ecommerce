@@ -202,7 +202,7 @@
                           font-weight: 500;
                         "
                       >
-                        {{translate('Price')}}
+                        {{translate('Shipping and taxes')}}
                       </th>
                     </tr>
                     <tr style="border: 1px solid #dddddd; border-style:solid !important;">
@@ -241,7 +241,7 @@
                           border: 1px solid #dddddd;
                            border-style:solid !important;
                         ">
-                        {{show_currency()}}{{@round(short_amount(@$order->shipping->price))}}
+                        %&nbsp;{{@number_format(short_amount(@$order->shipping->price), 2, '.', ',')}}
                       </td>
                     </tr>
                   </table>
@@ -324,7 +324,7 @@
                         border: 1px solid #dddddd;
                          border-style:solid !important;
                       "
-                    >{{show_currency()}}{{round(short_amount($orderDetail->total_price/$orderDetail->quantity))}}
+                    >{{show_currency()}}&nbsp;{{number_format(short_amount($orderDetail->total_price/$orderDetail->quantity), 2, '.', ',')}}
                     </td>
                     <td
                       style="
@@ -344,7 +344,7 @@
                          border-style:solid !important;
                       "
                     >
-                      {{show_currency()}}{{round(short_amount($orderDetail->total_price),2)}}
+                      {{show_currency()}}&nbsp;{{number_format(short_amount($orderDetail->total_price), 2, '.', ',')}}
                     </td>
                   </tr>
                   @php
@@ -368,7 +368,7 @@
                         text-align: center;
                       "
                     >
-                    {{show_currency()}}{{round(short_amount($subtotal),2)}}
+                    {{show_currency()}}&nbsp;{{number_format(short_amount($subtotal), 2, '.', ',')}}
                     </td>
                   </tr>
                 </table>
@@ -424,7 +424,7 @@
                     ">
                     {{translate('Sub Total')}} :
                     <small style="padding-left: 30px; color: #333; font-size: 14px"
-                      >{{show_currency()}}{{round(short_amount($subtotal),2)}}</small
+                      >{{show_currency()}}&nbsp;{{number_format(short_amount($subtotal), 2, '.', ',')}}</small
                     >
                   </p>
                   @if($order->shipping_deliverie_id)
@@ -440,8 +440,8 @@
                         color: #555;
                       "
                     >
-                      {{translate('Shipping Cost')}} :
-                      <small style="padding-left: 30px; color: #333; font-size: 14px">{{show_currency()}}{{round(short_amount($order->shipping_charge),2)}}</small>
+                      {{translate('Shipping and Taxes Cost')}} %{{short_amount($order->shipping_charge)}} :
+                      <small style="padding-left: 30px; color: #333; font-size: 14px">{{show_currency()}}&nbsp;{{number_format(short_amount($order->shipping_charge*$subtotal/100), 2, '.', ',')}}</small>
                     </p>
                   @endif
 
@@ -457,7 +457,7 @@
                     "
                   >
                     {{translate('Total')}}:
-                    <small style="font-weight: 700; padding-left: 30px">{{show_currency()}}{{round(short_amount($order->shipping_charge + $subtotal))}}</small>
+                    <small style="font-weight: 700; padding-left: 30px">{{show_currency()}}&nbsp;{{number_format(short_amount(($subtotal*$order->shipping_charge/100) + $subtotal))}}</small>
                   </p>
                 </div>
               </div>
