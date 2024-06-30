@@ -98,16 +98,16 @@ class AdminController extends Controller
 
 
         $data['subscription_earning']      = $totalAmount;
-        $data['order_payment']             = round(Order::where('payment_status', Order::PAID)->sum('amount'));
-        $data['total_withdraw']            = round(Withdraw::where('status', PaymentLog::SUCCESS)->sum('amount'));
+        $data['order_payment']             = Order::where('payment_status', Order::PAID)->sum('amount');
+        $data['total_withdraw']            = Withdraw::where('status', PaymentLog::SUCCESS)->sum('amount');
 
 
 
         $data['total_customer']            = User::count();
         $data['total_seller']              = Seller::count();
-        $data['total_payment']             = round(Order::where('payment_status', Order::PAID)->sum('amount')) +  
-                                             round(PaymentLog::where('status', PaymentLog::SUCCESS)->sum('charge'))+
-                                             round(Withdraw::where('status', PaymentLog::SUCCESS)->sum('charge'))
+        $data['total_payment']             = Order::where('payment_status', Order::PAID)->sum('amount') +  
+                                             PaymentLog::where('status', PaymentLog::SUCCESS)->sum('charge')+
+                                             Withdraw::where('status', PaymentLog::SUCCESS)->sum('charge')
                                              +      $totalAmount;
                                              
         $data['total_withdraw']            = Withdraw::where('status', Withdraw::SUCCESS)->sum('amount');
