@@ -62,7 +62,7 @@ class CheckoutService extends Controller
      * create an order 
      */
     public function createOrder($request ,$cal,$shippingData){
-        $totalAmount = $cal['total_cart_amount'] - $cal['coupon_amount'] + $shippingData['shipping_delivery']->price;
+        $totalAmount = $cal['total_cart_amount'] - $cal['coupon_amount'] + ($cal['total_cart_amount']*$shippingData['shipping_delivery']->price/100);
         $order = Order::create([
             'shipping_deliverie_id' => $shippingData['shipping_delivery']->id,
             'customer_id'           => auth()->user()?auth()->user()->id :null,
