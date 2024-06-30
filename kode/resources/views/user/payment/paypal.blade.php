@@ -20,19 +20,19 @@
                                 <span>
                                     {{translate("Amount")}}
                                 </span>
-                                <span>{{show_currency()}}&nbsp;{{number_format(short_amount($paymentLog->amount), 2, '.', ',')}}</span>
+                                <span>{{show_currency()}}&nbsp;{{number_format($paymentLog->amount, 2, '.', ',')}}</span>
                             </div>
                              <div class="d-flex align-items-center justify-content-between gap-3 pay-item">
                                 <span>
                                     {{translate("Charge")}}
                                 </span>
-                                <span>{{show_currency()}}&nbsp;{{number_format(short_amount($paymentLog->charge), 2, '.', ',')}}</span>
+                                <span>{{show_currency()}}&nbsp;{{number_format($paymentLog->charge, 2, '.', ',')}}</span>
                             </div>
                              <div class="d-flex align-items-center justify-content-between gap-3 pay-item">
                                 <span>
                                     {{translate("Payable")}}
                                 </span>
-                                <span>{{show_currency()}}&nbsp;{{number_format(short_amount($paymentLog->amount + $paymentLog->charge), 2, '.', ',')}}</span>
+                                <span>{{show_currency()}}&nbsp;{{number_format($paymentLog->amount + $paymentLog->charge, 2, '.', ',')}}</span>
                             </div>
                             <div class="d-flex align-items-center justify-content-between gap-3 pay-item-last">
                                 <span>
