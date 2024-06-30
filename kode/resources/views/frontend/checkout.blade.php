@@ -559,7 +559,7 @@
 
                                 <li class="order-cost-item order-shipping-cost d-none d-flex align-items-center justify-content-between gap-4">
                                     <span class="ps-4 py-3 nowrap fs-14">{{translate("Tax and shipping Charge")}} %<span id="shipping_cost"></span> :</span>
-                                    <span class="text-end pe-4 py-3 nowrap fs-14" id="shipping_cost1">
+                                    <span class="text-end pe-4 py-3 nowrap fs-14">
                                         {{show_currency()}}&nbsp;<span id="shipping_cost1"></span>
                                     </span>
                                 </li>
