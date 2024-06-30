@@ -23,7 +23,7 @@ class CheckoutService extends Controller
         }
         if(session()->has('coupon')){
             $coupon = Coupon::where('code', session()->get('coupon')['code'])->first();
-            $couponAmount = ($coupon->discount($totalCartAmount));
+            $couponAmount = round(($coupon->discount($totalCartAmount)));
         }
         $response['coupon_amount'] =    $couponAmount;
         $response['total_cart_amount'] =    $totalCartAmount;

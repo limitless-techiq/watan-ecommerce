@@ -115,6 +115,8 @@ class CheckoutController extends Controller
         $order = $this->checkoutService->createOrder($request,$calculations,$shippingResponse);
         $this->checkoutService->createOrderDetails( $items,$order);
         $this->checkoutService->notifyUser($order);
+        return $calculations;
+
 
         if($request->payment_type == 1){
             $this->checkoutService->cleanCart($items);
