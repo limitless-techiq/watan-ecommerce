@@ -415,7 +415,7 @@
         var discounted_price = price_with_tax - (price_with_tax * parseFloat(discount) / 100);
         
         if(parseFloat(discount) !== 0){
-            $("#dicountAmount").text("Discount Price: " + discounted_price);
+            $("#dicountAmount").text("Final Price: " + discounted_price);
         } else {
             $("#dicountAmount").text('');
         }
@@ -430,7 +430,21 @@ $('#price').on('keyup', function() {
     
     if(parseFloat(price) !== 0 && parseFloat(discount) !== 0){
         var discounted_price = price_with_tax - (price_with_tax * parseFloat(discount) / 100);
-        $("#dicountAmount").text("Discount Price: " + discounted_price);
+        $("#dicountAmount").text("Final Price: " + discounted_price);
+    } else {
+        $("#dicountAmount").text('');
+    }
+});
+
+$('#tax_percentage').on('keyup', function() {
+    var tax_percentage = $(this).val();
+    var price = $("#price").val();
+    var discount = $("#discount_percentage").val();
+    var price_with_tax = parseFloat(price) + (parseFloat(price) * parseFloat(tax_percentage) / 100);
+    
+    if(parseFloat(price) !== 0 && parseFloat(tax_percentage) !== 0){
+        var discounted_price = price_with_tax - (price_with_tax * parseFloat(discount) / 100);
+        $("#dicountAmount").text("Final Price: " + discounted_price);
     } else {
         $("#dicountAmount").text('');
     }
