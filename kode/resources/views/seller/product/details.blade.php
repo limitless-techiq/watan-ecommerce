@@ -84,7 +84,7 @@
                                     <span class="fw-semibold">
                                         {{translate('Price')}}
                                     </span>
-                                    <span>{{show_currency()}}{{short_amount($product->price)}}</span>
+                                    <span>{{show_currency()}}&nbsp;{{number_format($product->price, 2, '.', ',')}}</span>
                                 </li>
 
                                 @if($product->shippingDelivery->isNotEmpty())
@@ -128,7 +128,7 @@
                                     <span class="fw-semibold">
                                         {{translate('Order Amount')}}
                                     </span>
-                                    <span class="font-weight-bold">{{$product->order->sum('amount')}}{{$general->currency_name}}</span>
+                                    <span class="font-weight-bold">{{number_format($product->order->sum('amount'), 2, '.', ',')}}&nbsp;{{$general->currency_name}}</span>
                                 </li>
 
                                 <li class=" d-flex justify-content-between align-items-center flex-wrap gap-2 list-group-item">

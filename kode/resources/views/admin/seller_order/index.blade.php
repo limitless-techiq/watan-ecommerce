@@ -217,7 +217,7 @@
 
                                             <td data-label="{{translate('Amount')}}">
                                                 <span class="fw-bold">
-                                                    {{(show_currency())}}{{round(short_amount($order->amount))}}</span><br>
+                                                    {{(show_currency())}}&nbsp;{{number_format(short_amount($order->amount), 2, '.', ',')}}</span><br>
                                                     @if($order->payment_status == App\Models\Order::UNPAID)
                                                            <span class="badge badge-soft-danger">{{translate('Unpaid')}}</span>
                                                         @elseif($order->payment_status == App\Models\Order::PAID)
